@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+:root{--green:#0ae448;--lt:#abff84;--black:#0e100f;--white:#fffce1}
+
+*{box-sizing:border-box}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;font-family:Quicksand, sans-serif}
+.logo{font-weight:600;font-size:0.9rem;color:var(--white);z-index:310}
+.logo a{color:var(--white);text-decoration:none}
+.menu-toggle{width:44px;height:44px;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:310;position:relative;padding:0}
+
+.nav{position:fixed;inset:0;z-index:200;padding:1rem;pointer-events:none;visibility:hidden;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem}
+.nav-bg{position:absolute;inset:0;background:rgba(0,0,0,0.4);opacity:0}
+.nav-panel{border:solid 2px;border-radius:10px}
+.nav-top{flex:1;width:100%;background:var(--white);color:var(--black);transform:translateX(-101%);display:flex;flex-direction:column;padding:50px 28px 28px;overflow-y:auto;position:relative;z-index:3;border-color:var(--black)}
+.nav-middle{position:relative;width:100%;background:linear-gradient(135deg,#0ae448 0%,#abff84 40%,#6fdd8b 70%,#0ae448 100%);color:var(--black);display:flex;flex-direction:column;justify-content:center;padding:24px 28px;z-index:2;border-color:#065a1e;min-height:180px}
+.nav-bottom{position:relative;height:120px;width:100%;background:var(--black);color:#7c7c6f;transform:translateX(101%);display:flex;align-items:center;padding:24px 28px;z-index:1;border-color:#42433d}
+.nav-list{list-style:none;display:flex;flex-direction:column;gap:0;flex:1;justify-content:center}
+.nav-item{overflow:hidden}
+.nav-link{display:block;text-decoration:none;color:var(--black);padding:10px 0;font-size:clamp(1.5rem,4vw,1.8rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em}
+.nav-login{margin-top:auto;padding-top:20px;font-size:0.82rem;color:#7c7c6f;font-family:monospace}
+.nav-asset img{position:absolute;bottom:0;right:2rem;width:100px;height:auto}
+
+/* SVG bars */
+.bar-top,.bar-bot{stroke:var(--white)}
+
+/* make panels visible when JS sets visibility */
+#nav[style*="visibility: visible"]{pointer-events:auto}
