@@ -1,0 +1,11 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Orange body -->
+  <circle cx="100" cy="100" r="80" fill="#FFA500" />
+  <!-- Orange segments -->
+  <line x1="100" y1="20" x2="100" y2="180" stroke="#FFB84D" stroke-width="2" />
+  <line x1="20" y1="100" x2="180" y2="100" stroke="#FFB84D" stroke-width="2" />
+  <line x1="35" y1="35" x2="165" y2="165" stroke="#FFB84D" stroke-width="2" />
+  <line x1="165" y1="35" x2="35" y2="165" stroke="#FFB84D" stroke-width="2" />
+  <!-- Orange leaf -->
+  <ellipse cx="140" cy="40" rx="15" ry="25" fill="#228B22" transform="rotate(-30 140 40)" />
+</svg>
