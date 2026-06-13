@@ -6,9 +6,9 @@
 }
 
 /* Sticky navbar styles */
-nav {
+/* nav {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* Main content area */
 main {
@@ -49,6 +49,61 @@ button:hover {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+/* Orange image fade + slow zoom animation */
+.orange-fade-zoom img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  animation: orangeFadeZoom 3s cubic-bezier(.22,.9,.26,1) forwards;
+}
+
+@keyframes orangeFadeZoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.45);
+  }
+  60% {
+    opacity: 0.98;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orange-fade-zoom img {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* U appear animation: fade-in only, delayed until orange finishes */
+.u-appear {
+  opacity: 0;
+  animation: uAppear 1s ease-in forwards;
+  animation-delay: 3s; /* matches orange animation duration */
+  z-index: 30;
+}
+
+@keyframes uAppear {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .u-appear {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }
 

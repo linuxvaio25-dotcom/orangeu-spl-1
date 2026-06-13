@@ -1,52 +1,26 @@
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import React, { useEffect } from 'react';
+import { initAnimatedWords } from '../animatedtext';
+import { words } from '../index';
 
 const Home = () => {
-  const orangeRef = useRef(null);
-  const uLetterRef = useRef(null);
-
-  useEffect(() => {
-    // Set initial positions
-    gsap.set(orangeRef.current, { x: -200, y: -350, opacity: 0 });
-    gsap.set(uLetterRef.current, { x: 200, y: 350, opacity: 0 });
-
-    // Animation timeline
-    const tl = gsap.timeline();
-
-    // Orange animates to center from top left
-    tl.to(orangeRef.current, {
-      duration: 2.2,
-      x: 0,
-      y: 0,
-      opacity: 1,
-      ease: 'sine.inOut',
-    }, 0);
-
-    // U letter animates to center from bottom right
-    tl.to(
-      uLetterRef.current,
-      {
-        duration: 2.2,
-        x: 0,
-        y: 0,
-        opacity: 1,
-        ease: 'sine.inOut',
-      },
-      0 // Start at same time as orange
-    );
-  }, []);
+  useEffect(() => { initAnimatedWords(); }, []);
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 bg-orange-400 relative overflow-hidden">
+    <div
+      className="flex-1 min-h-screen flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden"
+      style={{ background: 'radial-gradient(circle at 10% 20%, #fffdf5 0%, #ffe6c2 20%, #ffd09a 50%, #ffb76b 100%)' }}
+    >
       <div className="absolute inset-0 flex items-center justify-center">
-        {/* Orange image sliding down from top left */}
-        <div ref={orangeRef} className="absolute">
-          <img src="/orange.svg" alt="Orange" className="w-40 h-40" />
-        </div>
-
-        {/* Letter U sliding up from bottom right */}
-        <div ref={uLetterRef} className="absolute text-9xl font-black text-black">
-          U
+        <div className="relative orange-fade-zoom">
+          <img src="/red_orange-resize-2.png" alt="Orange" className="z-20 block" />
+          <span className="u-appear absolute inset-0 flex items-center justify-center text-9xl md:text-9xl font-extrabold text-black pointer-events-none">U</span>
+          <div className="animated-words absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-8 text-2xl text-black font-extrabold">
+            {words.map((w) => (
+              <span key={w} className="word">
+                {w}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -59,5 +33,4 @@ const Home = () => {
     </div>
   );
 };
-
 export default Home;
