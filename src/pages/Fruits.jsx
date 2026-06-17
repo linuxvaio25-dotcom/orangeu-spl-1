@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { fruitsections } from '../index.js';
 
 const Fruits = () => {
   const [openSection, setOpenSection] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [videoSection, setVideoSection] = useState(null);
+  const videoRef = useRef(null);
 
   const toggleSection = (title) => {
-    setOpenSection((current) => (current === title ? null : title));
+    setOpenSection((current) => {
+      const newVal = current === title ? null : title;
+      setVideoSection(newVal ? title : null);
+      return newVal;
+    });
   };
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (videoSection) {
+      const p = videoRef.current.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    } else {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, [videoSection]);
 
   const updateQuantity = (quantity) => {
     setSelectedItem((current) => (current ? { ...current, quantity } : current));
@@ -25,17 +42,15 @@ const Fruits = () => {
           {fruitsections.map((section) => {
             const isOpen = openSection === section.title;
             return (
-              <section
-                key={section.title}
-                //className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-lg"
-              >
+              <section key={section.title}>
                 <div className="text-lg font-semibold text-gray-900">{section.title}</div>
-                <div className="mt-3 flex justify-start">
+                <div className="mt-3 flex items-center gap-3">
                   <button
                     type="button"
                     onClick={() => toggleSection(section.title)}
                     aria-expanded={isOpen}
                     className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-transparent text-indigo-500 shadow-sm transition hover:shadow-lg"
+                    title={`${isOpen ? 'Collapse' : 'Expand'} ${section.title}`}
                   >
                     <svg
                       className={`h-5 w-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
@@ -49,21 +64,82 @@ const Fruits = () => {
                   </button>
                 </div>
 
-                <div className={`accordion-panel mt-5 space-y-4 ${isOpen ? 'open' : ''}`}>
-                  <p className="text-gray-600">{section.description}</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {section.items.map((item) => (
-                      <button
-                        key={item.label}
-                        type="button"
-                        onClick={() => setSelectedItem({ ...item, category: section.title, quantity: 1 })}
-                        className="orange-cursor rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-left text-sm text-gray-800 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-300"
-                      >
-                        <span className="mr-2 text-xl">{item.emoji}</span>
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
+                {/*
+                  ORIGINAL PANEL (commented out for comparison)
+                <div className={`accordion-panel mt-5 space-y-4 ${isOpen ? 'open' : ''} relative overflow-hidden rounded-2xl`}>
+                  {isOpen && (
+                    <>
+                      <video
+                        ref={videoRef}
+                        src={
+                          section.title === 'Fruits'
+                            ? '/fruits-1.mp4'
+                            : section.title === 'Juice'
+                            ? '/juice-1.mp4'
+                            : '/smoothie-1.mp4'
+                        }
+                        className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
+                        muted
+                        playsInline
+                        loop
+                      />
+                      <div className="relative z-10">
+                        <p className="text-gray-600">{section.description}</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {section.items.map((item) => (
+                            <button
+                              key={item.label}
+                              type="button"
+                              onClick={() => setSelectedItem({ ...item, category: section.title, quantity: 1 })}
+                              className="orange-cursor rounded-2xl border border-gray-200 bg-slate-50 px-4 py-3 text-left text-sm text-gray-800 transition hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                            >
+                              <span className="mr-2 text-xl">{item.emoji}</span>
+                              {item.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+                */}
+
+                {/* Transparent panel (active) - no visible panel backgrounds */}
+                <div className={`accordion-panel mt-5 space-y-4 ${isOpen ? 'open' : ''} relative overflow-hidden bg-transparent border-0 shadow-none`}>
+                  {isOpen && (
+                    <>
+                      <video
+                        ref={videoRef}
+                        src={
+                          section.title === 'Fruits'
+                            ? '/fruits-1.mp4'
+                            : section.title === 'Juice'
+                            ? '/juice-1.mp4'
+                            : '/smoothie-1.mp4'
+                        }
+                        className="absolute inset-0 w-full h-full object-cover opacity-30 pointer-events-none"
+                        muted
+                        playsInline
+                        loop
+                      />
+                      <div className="relative z-10 bg-transparent">
+                        <p className="text-gray-600">{section.description}</p>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {section.items.map((item) => (
+                            <button
+                              key={item.label}
+                              type="button"
+                              onClick={() => setSelectedItem({ ...item, category: section.title, quantity: 1 })}
+                              className="orange-cursor rounded-2xl border border-transparent bg-transparent px-4 py-3 text-left text-sm text-gray-800 transition hover:bg-slate-100/40 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                            >
+                              <span className="mr-2 text-xl">{item.emoji}</span>
+                              {item.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               </section>
             );
@@ -119,6 +195,7 @@ const Fruits = () => {
           </div>
         </div>
       )}
+      
     </div>
   );
 };

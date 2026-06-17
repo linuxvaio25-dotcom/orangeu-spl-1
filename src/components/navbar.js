@@ -33,8 +33,8 @@ export function init() {
 
     .fromTo(
       '.nav-item',
-      { opacity: 0, x: -20 },
-      { opacity: 1, x: 0, duration: 1.2, ease: 'expo.out', stagger: 0.03 },
+      { opacity: 0, x: 80, rotation: 'random(-20, 20)' },
+      { opacity: 1, x: 0, rotation: 0, duration: 1.5, ease: 'power3.out', stagger: 0.2, overwrite: true },
       0.1
     )
 
