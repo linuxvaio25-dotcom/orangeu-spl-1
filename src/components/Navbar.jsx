@@ -86,11 +86,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="nav-panel nav-bottom nav-border">
+        {/* <div className="nav-panel nav-bottom nav-border">
           <div className="nav-asset">
             <img src="/orange.svg" alt="asset" />
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Alternate: each link gets its own panel (commented out)
