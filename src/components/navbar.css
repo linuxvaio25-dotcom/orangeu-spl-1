@@ -61,20 +61,20 @@
 }
 
 .nav-middle{
-  /* min-height: 320px; make the panel taller */
-  /*padding: 40px 28px;  more space around links */
-  /*background-image: url('/orange-2.svg');*/
+   min-height: 320px; /* make the panel taller */ 
+  padding: 40px 28px;  /*more space around links */
+  background-image: url('/oranges-2.jpg');
   /* background: #e8e8e8 url('/orange-2.svg') center/contain no-repeat; */
-  background: url('/orange-2.svg') center/contain no-repeat;
-  /*background-size: cover;
+  /*background: url('/oranges-1.png') center/contain no-repeat center no-repeat;*/
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;*/
+  background-repeat: no-repeat;
   /*position:relative;width:100%;background:#ff7e22;*/
   /* background:linear-gradient(135deg,#0ae448 0%,#abff84 40%,#6fdd8b 70%,#0ae448 100%); */color:var(--black);display:flex;flex-direction:column;justify-content:center;padding:30px 28px;z-index:4;min-height:240px;box-shadow:0 12px 24px rgba(0,0,0,0.10);margin-top:0;margin-bottom:0}
 .nav-middle::before{content:"";position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:18px;height:24px;background:#3f6d06;border-radius:0 0 50% 50%;box-shadow:0 4px 12px rgba(0,0,0,0.10)}
 .nav-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;justify-content:center;align-items:center;padding:0;margin:0}
 .nav-item{overflow:hidden;width:auto;max-width:none}
-.nav-bottom{position:relative;height:140px;width:85%;max-width:340px;background:linear-gradient(135deg,#fde74c 0%,#f7e04b 40%,#f6d23c 70%,#f8cb42 100%);color:#2f2a12;display:flex;align-items:center;justify-content:center;padding:24px 28px;z-index:3;margin:20px auto 0;box-shadow:0 10px 22px rgba(0,0,0,0.10)}
+/*.nav-bottom{position:relative;height:140px;width:85%;max-width:340px;background:linear-gradient(135deg,#fde74c 0%,#f7e04b 40%,#f6d23c 70%,#f8cb42 100%);color:#2f2a12;display:flex;align-items:center;justify-content:center;padding:24px 28px;z-index:3;margin:20px auto 0;box-shadow:0 10px 22px rgba(0,0,0,0.10)}
 /* Alternate per-link panels styling
 .nav-panels{display:flex;flex-direction:column;gap:20px;align-items:center;padding:18px}
 .link-panel{width:90%;max-width:360px;border-radius:28px;padding:18px 20px;background:linear-gradient(135deg,#0ae448 0%,#abff84 100%);box-shadow:0 10px 22px rgba(0,0,0,0.06);display:flex;justify-content:center}

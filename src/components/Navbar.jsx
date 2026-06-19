@@ -46,10 +46,10 @@ const Navbar = () => {
           className="menu-toggle"
           onClick={() => toggleNav()}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="bar">
+          {/* <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="bar">
             <line className="bar-top" x1="3" y1="7" x2="17" y2="7" strokeWidth="2" strokeLinecap="round" />
             <line className="bar-bot" x1="3" y1="13" x2="17" y2="13" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+          </svg> */}
         </button>
       </div>
 
