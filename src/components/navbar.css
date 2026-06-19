@@ -63,7 +63,7 @@
 .nav-middle{
    min-height: 320px; /* make the panel taller */ 
   padding: 40px 28px;  /*more space around links */
-  background-image: url('/oranges-2.jpg');
+  background-image: url('/fruits-4.jpg');
   /* background: #e8e8e8 url('/orange-2.svg') center/contain no-repeat; */
   /*background: url('/oranges-1.png') center/contain no-repeat center no-repeat;*/
   background-size: cover;
