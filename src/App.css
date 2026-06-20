@@ -137,3 +137,10 @@ button:hover {
   }
 }
 
+/* Fruit background */
+.fruit-bg {
+  background-image: url('/fruits-3.jpg');
+  background-size: 'cover';
+  background-position: 'center';
+  background-attachment: 'fixed',
+}

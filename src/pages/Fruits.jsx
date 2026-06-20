@@ -100,7 +100,7 @@ const Fruits = () => {
   };
 
   return (
-    <div className="relative flex-1 px-4 py-8">
+    <div className="relative flex-1 px-4 py-8 fruit-bg">
 
       {/* ── Two video layers for crossfading ── */}
       <video ref={videoA} style={videoBase} muted playsInline loop />
