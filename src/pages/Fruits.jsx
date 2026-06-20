@@ -28,16 +28,49 @@ const Fruits = () => {
 
     if (!current || !incoming) return;
 
+    // if (!src) {
+    //   // Fade out the current video
+    //   current.style.transition  = `opacity ${FADE_MS}ms ease`;
+    //   // current.style.opacity     = '0';
+    //   current.style.opacity     = '0';
+    //   fadeTimer.current = setTimeout(() => {
+    //     current.pause();
+    //     current.currentTime = 0;
+    //   }, FADE_MS);
+    //   return;
+
     if (!src) {
-      // Fade out the current video
-      current.style.transition  = `opacity ${FADE_MS}ms ease`;
-      // current.style.opacity     = '0';
-      current.style.opacity     = '0';
-      fadeTimer.current = setTimeout(() => {
-        current.pause();
-        current.currentTime = 0;
-      }, FADE_MS);
-      return;
+  [videoA.current, videoB.current].forEach((video) => {
+    if (!video) return;
+
+    video.style.transition = `opacity ${FADE_MS}ms ease`;
+    video.style.opacity = '0';
+  });
+
+  // fadeTimer.current = setTimeout(() => {
+  //   [videoA.current, videoB.current].forEach((video) => {
+  //     if (!video) return;
+
+  //     video.pause();
+  //     video.currentTime = 0;
+  //     video.src = '';
+  //   });
+  // }, FADE_MS);
+
+  fadeTimer.current = setTimeout(() => {
+  [videoA.current, videoB.current].forEach((video) => {
+    if (!video) return;
+
+    video.pause();
+    video.currentTime = 0;
+    video.src = '';
+  });
+
+  activeSlot.current = 'a';
+}, FADE_MS);
+
+  return;
+
     }
 
     // Prepare incoming video (hidden, ready to play)
