@@ -160,18 +160,21 @@ export default Home; */}
         title="Any Fruit"
         cards={cards1}
         direction="left"
+        titleAlign="left"
       />
 
       <ScrollSection
         title="Any Way"
         cards={cards2}
         direction="right"
+        titleAlign="right"
       />
 
       <ScrollSection
         title="Any Occasion"
         cards={cards3}
         direction="left"
+        titleAlign="left"
       />
     </div>
   );

@@ -4,7 +4,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ScrollSection = ({ title, cards, direction }) => {
+// const ScrollSection = ({ title, cards, direction }) => {
+    const ScrollSection = ({ title, cards, direction, titleAlign }) => {
     const sectionRef = useRef(null);
     const titleRef = useRef(null);
     const cardsRef = useRef([]);
@@ -44,27 +45,40 @@ const ScrollSection = ({ title, cards, direction }) => {
         // });
 
         const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: section,
-    start: "top top",
-    end: "+=2500",
-    scrub: true,
-    pin: true,
-  },
-});
+            scrollTrigger: {
+                trigger: section,
+                start: "top top",
+                end: "+=2500",
+                scrub: true,
+                pin: true,
+            },
+        });
 
-tl.fromTo(
-  titleRef.current,
-  {
-    opacity: 0,
-    y: 80,
-  },
-  {
-    opacity: 1,
-    y: 0,
-    duration: 0.5,
-  }
-);
+        // tl.fromTo(
+        //   titleRef.current,
+        //   {
+        //     opacity: 0,
+        //     y: 80,
+        //   },
+        //   {
+        //     opacity: 1,
+        //     y: 0,
+        //     duration: 0.5,
+        //   }
+        // );
+
+        tl.fromTo(
+            titleRef.current,
+            {
+                opacity: 0,
+                x: direction === "left" ? 200 : -200, // left sections fade from right, right section fades from left
+            },
+            {
+                opacity: 1,
+                x: 0,
+                duration: 0.5,
+            }
+        );
 
         // cardsRef.current.forEach((card, index) => {
         //   tl.fromTo(
@@ -116,7 +130,14 @@ tl.fromTo(
 
     return (
         <section className="section" ref={sectionRef}>
-            <h1 className="section-title" ref={titleRef}>
+            {/* <h1 className="section-title" ref={titleRef}>
+                {title}
+            </h1> */}
+            <h1
+                className="section-title"
+                ref={titleRef}
+                style={{ textAlign: titleAlign || "left" }}
+            >
                 {title}
             </h1>
 
@@ -156,7 +177,7 @@ tl.fromTo(
                 ))}
             </div>
         </section>
-        
+
     );
 };
 
