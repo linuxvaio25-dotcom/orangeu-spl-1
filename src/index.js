@@ -119,3 +119,58 @@ export const words = ['glad', 'happy', 'excited', 'hungry', 'thirsty', 'joyful',
 
 // Export a default for consumers that prefer default import
 export default words;
+
+// index.js
+
+//export const words = ["Connect", "Learn", "Share"]; // your existing export
+
+import oranges1 from './assets/oranges-1.jpg';
+import pineapple1 from './assets/pineapple-1.jpg';
+
+export const cardImages1 = [
+  oranges1,
+  pineapple1,
+  oranges1,
+  oranges1,
+  oranges1,
+];
+export const cardImages2 = [
+  oranges1,
+  oranges1,
+  oranges1,
+  oranges1,
+  oranges1,
+];
+export const cardImages3 = [
+  oranges1,
+  oranges1,
+  oranges1,
+  oranges1,
+  oranges1,
+];
+
+// export const cardImages1 = [
+//   img1 from './assets/oranges-1.jpg',
+//   ".assets/oranges-1.jpg",
+//   "/images/section1-card3.jpg",
+//   "/images/section1-card4.jpg",
+//   "/images/section1-card5.jpg",
+// ];
+
+// export const cardImages2 = [
+//   "/images/section2-card1.jpg",
+//   "/images/section2-card2.jpg",
+//   "/images/section2-card3.jpg",
+//   "/images/section2-card4.jpg",
+//   "/images/section2-card5.jpg",
+// ];
+
+// export const cardImages3 = [
+//   "/images/section3-card1.jpg",
+//   "/images/section3-card2.jpg",
+//   "/images/section3-card3.jpg",
+//   "/images/section3-card4.jpg",
+//   "/images/section3-card5.jpg",
+// ];
+
+//export default {cardsImages1, cardImages2, cardImages3, words};

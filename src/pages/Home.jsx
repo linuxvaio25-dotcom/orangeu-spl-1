@@ -1,27 +1,46 @@
 import React, { useEffect } from 'react';
 import { initAnimatedWords } from '../animatedtext';
-import { words } from '../index';
+//import { words } from '../index';
+import { words, cardImages1, cardImages2, cardImages3 } from '../index';
 import ScrollSection from "../components/ScrollSection";
 
 const Home = () => {
   useEffect(() => { initAnimatedWords(); }, []);
 
-  const cards1 = Array.from({ length: 5 }, (_, i) => ({
+  // const cards1 = Array.from({ length: 5 }, (_, i) => ({
+  //   id: i,
+  //   title: `Card ${i + 1}`,
+  //   image: `/images/card${i + 1}.jpg`,
+  // }));
+
+  // const cards2 = Array.from({ length: 5 }, (_, i) => ({
+  //   id: i,
+  //   title: `Card ${i + 1}`,
+  //   image: `/images/card${i + 1}.jpg`,
+  // }));
+
+  // const cards3 = Array.from({ length: 5 }, (_, i) => ({
+  //   id: i,
+  //   title: `Card ${i + 1}`,
+  //   image: `/images/card${i + 1}.jpg`,
+  // }));
+
+  const cards1 = cardImages1.map((image, i) => ({
     id: i,
     title: `Card ${i + 1}`,
-    image: `/images/card${i + 1}.jpg`,
+    image,
   }));
 
-  const cards2 = Array.from({ length: 5 }, (_, i) => ({
+  const cards2 = cardImages2.map((image, i) => ({
     id: i,
     title: `Card ${i + 1}`,
-    image: `/images/card${i + 1}.jpg`,
+    image,
   }));
 
-  const cards3 = Array.from({ length: 5 }, (_, i) => ({
+  const cards3 = cardImages3.map((image, i) => ({
     id: i,
     title: `Card ${i + 1}`,
-    image: `/images/card${i + 1}.jpg`,
+    image,
   }));
 
   return (

@@ -145,8 +145,8 @@ tl.fromTo(
                         }}
                     >
                         <img
-                            // src={card.image}
-                            src={'/pineapple-1.jpg'}
+                            src={card.image}
+                            //src={'/pineapple-1.jpg'}
                             alt={card.title}
                             className="card-image"
                         />
