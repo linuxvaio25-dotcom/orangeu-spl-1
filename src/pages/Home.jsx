@@ -125,7 +125,7 @@ export default Home; */}
         </p>
       </article> */}
       {/* Friends Article */}
-      <article
+      {/* <article
         id="friends"
         className="max-w-5xl mx-auto px-6 py-20 text-center"
       >
@@ -134,7 +134,7 @@ export default Home; */}
           Discover new friends, stay connected with existing ones, and engage
           with the OrangeU community.
         </p>
-      </article>
+      </article> */}
 
       {/* Animated Card Sections */}
       <ScrollSection
