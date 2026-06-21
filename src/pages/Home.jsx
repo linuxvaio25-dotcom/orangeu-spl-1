@@ -1,13 +1,33 @@
 import React, { useEffect } from 'react';
 import { initAnimatedWords } from '../animatedtext';
 import { words } from '../index';
+import ScrollSection from "../components/ScrollSection";
 
 const Home = () => {
   useEffect(() => { initAnimatedWords(); }, []);
 
+  const cards1 = Array.from({ length: 5 }, (_, i) => ({
+    id: i,
+    title: `Card ${i + 1}`,
+    image: `/images/card${i + 1}.jpg`,
+  }));
+
+  const cards2 = Array.from({ length: 5 }, (_, i) => ({
+    id: i,
+    title: `Card ${i + 1}`,
+    image: `/images/card${i + 1}.jpg`,
+  }));
+
+  const cards3 = Array.from({ length: 5 }, (_, i) => ({
+    id: i,
+    title: `Card ${i + 1}`,
+    image: `/images/card${i + 1}.jpg`,
+  }));
+
   return (
     <div
-      className="flex-1 min-h-screen flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden"
+      // className="flex-1 min-h-screen flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden"
+      className="flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden"
       style={{ background: 'radial-gradient(circle at 10% 20%, #fffdf5 0%, #ffe6c2 20%, #ffd09a 50%, #ffb76b 100%)' }}
     >
       {/* <div className="absolute inset-0 flex items-center justify-center">
@@ -35,7 +55,7 @@ const Home = () => {
 };
 export default Home; */}
 
-{/* Hero Section */}
+      {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center px-4 py-12 relative">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative orange-fade-zoom">
@@ -70,7 +90,7 @@ export default Home; */}
       </section>
 
       {/* Home Article */}
-      <article
+      {/* <article
         id="home"
         className="max-w-5xl mx-auto px-6 py-20 text-center"
       >
@@ -79,10 +99,10 @@ export default Home; */}
           OrangeU is a community-centered platform where users can connect,
           learn, and share experiences.
         </p>
-      </article>
+      </article> */}
 
       {/* About Article */}
-      <article
+      {/* <article
         id="about"
         className="max-w-5xl mx-auto px-6 py-20 text-center"
       >
@@ -91,8 +111,19 @@ export default Home; */}
           Our mission is to build meaningful connections and provide a welcoming
           environment for everyone.
         </p>
-      </article>
+      </article> */}
 
+      {/* Friends Article */}
+      {/* <article
+        id="friends"
+        className="max-w-5xl mx-auto px-6 py-20 text-center"
+      >
+        <h2 className="text-4xl font-bold mb-6">Friends</h2>
+        <p className="text-lg">
+          Discover new friends, stay connected with existing ones, and engage
+          with the OrangeU community.
+        </p>
+      </article> */}
       {/* Friends Article */}
       <article
         id="friends"
@@ -104,6 +135,25 @@ export default Home; */}
           with the OrangeU community.
         </p>
       </article>
+
+      {/* Animated Card Sections */}
+      <ScrollSection
+        title="Text1"
+        cards={cards1}
+        direction="left"
+      />
+
+      <ScrollSection
+        title="Text2"
+        cards={cards2}
+        direction="right"
+      />
+
+      <ScrollSection
+        title="Text3"
+        cards={cards3}
+        direction="left"
+      />
     </div>
   );
 };
