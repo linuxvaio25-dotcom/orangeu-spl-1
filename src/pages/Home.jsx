@@ -138,19 +138,19 @@ export default Home; */}
 
       {/* Animated Card Sections */}
       <ScrollSection
-        title="Text1"
+        title="Any Fruit"
         cards={cards1}
         direction="left"
       />
 
       <ScrollSection
-        title="Text2"
+        title="Any Way"
         cards={cards2}
         direction="right"
       />
 
       <ScrollSection
-        title="Text3"
+        title="Any Occasion"
         cards={cards3}
         direction="left"
       />
