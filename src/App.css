@@ -243,3 +243,14 @@ button:hover {
   margin-bottom: 15px;
 }
 
+.animated-words {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem; /* spacing between words */
+    align-items: center;
+}
+
+.word {
+    display: inline-block; /* required for GSAP y/rotation to work correctly */
+    white-space: nowrap;
+}
