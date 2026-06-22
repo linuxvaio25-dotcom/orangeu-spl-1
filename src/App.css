@@ -254,3 +254,21 @@ button:hover {
     display: inline-block; /* required for GSAP y/rotation to work correctly */
     white-space: nowrap;
 }
+
+.topbar-hidden {
+  opacity: 0;
+  transform: translateY(-30px);
+  pointer-events: none;
+}
+
+.topbar-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.topbar {
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}

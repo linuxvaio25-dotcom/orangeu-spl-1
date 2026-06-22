@@ -75,7 +75,7 @@ const Home = () => {
 export default Home; */}
 
       {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-4 py-12 relative">
+      <section className="hero-section min-h-screen flex flex-col items-center justify-center px-4 py-12 relative">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative orange-fade-zoom">
             <img
@@ -108,6 +108,7 @@ export default Home; */}
           </p>
         </div>
       </section>
+
 
       {/* Home Article */}
       {/* <article

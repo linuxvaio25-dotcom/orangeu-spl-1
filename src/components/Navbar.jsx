@@ -1,13 +1,100 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import './navbar.css';
 import { init as initNav, toggle as toggleNav } from './navbar';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+// const isHomePage = location.pathname === '/';
+
+//  const hasSeenHome =
+//   sessionStorage.getItem("hasSeenHome") === "true";
+
+// const Navbar = () => {
+//   // const [showNavbar, setShowNavbar] = useState(false);
+//   const [showNavbar, setShowNavbar] = useState(
+//   !isHomePage || hasSeenHome
+// );
+
+//   useEffect(() => {
+//     const trigger = ScrollTrigger.create({
+//       trigger: ".hero-section",
+//       start: "bottom top",
+//       onEnter: () => setShowNavbar(true),
+//       onLeaveBack: () => setShowNavbar(false),
+//     });
+
+//     return () => trigger.kill();
+//   }, []);
+
+//   const { isLoggedIn } = useAuth();
+//   const location = useLocation();
+//   const navigate = useNavigate();
+  
+//   const isHomePage = location.pathname === '/';
+
+//  const hasSeenHome =
+//   sessionStorage.getItem("hasSeenHome") === "true";
+
+// const Navbar = () => {
+//   // const [showNavbar, setShowNavbar] = useState(false);
+//   const [showNavbar, setShowNavbar] = useState(
+//   !isHomePage || hasSeenHome
+// );
 
 const Navbar = () => {
   const { isLoggedIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  const isHomePage = location.pathname === "/";
+
+  const [showNavbar, setShowNavbar] = useState(() => {
+    const hasSeenHome =
+      sessionStorage.getItem("hasSeenHome") === "true";
+
+    return !isHomePage || hasSeenHome;
+  });
+   
+// const Navbar = () => {
+//   const { isLoggedIn } = useAuth();
+//   const location = useLocation();
+//   const navigate = useNavigate();
+
+//   const isHomePage = location.pathname === '/';
+
+//   const hasSeenHome =
+//     sessionStorage.getItem("hasSeenHome") === "true";
+
+//   const [showNavbar, setShowNavbar] = useState(
+//     !isHomePage || hasSeenHome
+//   );
+
+  useEffect(() => {
+    const trigger = ScrollTrigger.create({
+      trigger: ".hero-section",
+      start: "bottom top",
+
+      onEnter: () => {
+        setShowNavbar(true);
+        sessionStorage.setItem("hasSeenHome", "true");
+      },
+
+      onLeaveBack: () => {
+        if (
+          sessionStorage.getItem("hasSeenHome") !== "true"
+        ) {
+          setShowNavbar(false);
+        }
+      },
+    });
+
+    return () => trigger.kill();
+  }, []);
+
 
   const handleFriendsClick = (e) => {
     if (!isLoggedIn) {
@@ -32,7 +119,17 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="topbar">
+    // <nav className="topbar">
+    // <nav
+    //   className={`topbar ${showNavbar ? "topbar-visible" : "topbar-hidden"
+    //     }`}
+    // >
+    <nav
+      className={`topbar ${isHomePage
+          ? (showNavbar ? "topbar-visible" : "topbar-hidden")
+          : "topbar-visible page-navbar"
+        }`}
+    >
       <div className="logo">
         <Link to="/">OrangeU</Link>
       </div>

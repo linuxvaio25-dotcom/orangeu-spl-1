@@ -15,7 +15,8 @@ gsap.registerPlugin(ScrollTrigger);
             scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top 70%",
-                once: true, // only plays once when it comes into view
+                //once: true, // only plays once when it comes into view
+                toggleActions: "play reverse play reverse", // play on enter, reverse on leave
             },
         });
 
