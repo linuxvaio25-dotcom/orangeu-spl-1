@@ -164,7 +164,7 @@ button:hover {
 }
 
 .section {
-  height: 100vh;
+  /* height: 100vh; */
   position: relative;
   display: flex;
   flex-direction: column;
@@ -186,17 +186,25 @@ button:hover {
   opacity: 0;
 }
 
-.cards-container {
+/* .cards-container {
   position: relative;
   height: 420px;
   width: 100%;
+} */
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* adjust spacing between cards */
+    flex-wrap: wrap; /* allows cards to wrap on smaller screens */
+    justify-content: center;
 }
 
-.card {
-  position: absolute;
+/* .card {
+  position: absolute; */
   /* width: 320px;
   height: 400px; */
-  width: 260px;
+  /* width: 260px;
   height: 380px;
   background: #1b1b1b;
   border-radius: 20px;
@@ -205,6 +213,10 @@ button:hover {
   left: 0;
   top: 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+} */
+
+.card {
+    flex: 0 0 auto; /* prevents cards from stretching */
 }
 
 .image-placeholder {
