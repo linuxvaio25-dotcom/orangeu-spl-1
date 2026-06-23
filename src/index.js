@@ -126,13 +126,16 @@ export default words;
 
 import oranges1 from './assets/oranges-1.jpg';
 import pineapple1 from './assets/pineapple-1.jpg';
+import oranges2 from './assets/oranges-2.jpg';
+import fruits2 from './assets/fruits-2.jpg';
+import fruits3 from './assets/fruits-3.jpg';
 
 export const cardImages1 = [
   oranges1,
   pineapple1,
-  oranges1,
-  oranges1,
-  oranges1,
+  oranges2,
+  fruits2,
+  fruits3,
 ];
 export const cardImages2 = [
   oranges1,
