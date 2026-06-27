@@ -79,14 +79,15 @@ export default Home; */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="relative orange-fade-zoom">
             <img
-              src="/red_orange-resize-2.png"
+              // src="/red_orange-resize-2.png"
+              src="/ou-logo-1.png"
               alt="Orange"
               className="z-20 block"
             />
 
-            <span className="u-appear absolute inset-0 flex items-center justify-center text-9xl md:text-9xl font-extrabold text-black pointer-events-none">
+            {/* <span className="u-appear absolute inset-0 flex items-center justify-center text-9xl md:text-9xl font-extrabold text-black pointer-events-none">
               U
-            </span>
+            </span> */}
 
             {/* <div className="animated-words absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-8 text-2xl text-black font-extrabold"> */}
             <div className="animated-words absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex text-2xl text-black font-extrabold">
@@ -100,12 +101,12 @@ export default Home; */}
         </div>
 
         <div className="relative z-10 flex flex-col items-center text-center">
-          <h1 className="text-5xl font-bold text-white mb-4">
+          {/* <h1 className="text-5xl font-bold text-white mb-4">
             Welcome to OrangeU
           </h1>
           <p className="text-xl text-white max-w-2xl">
             Explore the site using the navigation bar above.
-          </p>
+          </p> */}
         </div>
       </section>
 

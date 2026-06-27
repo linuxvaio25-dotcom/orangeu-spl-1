@@ -102,7 +102,8 @@ button:hover {
   height: auto;
   transform-origin: center center;
   will-change: transform, opacity;
-  animation: orangeFadeZoom 3s cubic-bezier(.22,.9,.26,1) forwards;
+  /* animation: orangeFadeZoom 3s cubic-bezier(.22,.9,.26,1) forwards; */
+  animation: orangeFadeZoom 3s cubic-bezier(.32,.7,.36,3) forwards;
 }
 
 @keyframes orangeFadeZoom {
@@ -129,12 +130,12 @@ button:hover {
 }
 
 /* U appear animation: fade-in only, delayed until orange finishes */
-.u-appear {
+/* .u-appear {
   opacity: 0;
-  animation: uAppear 1s ease-in forwards;
-  animation-delay: 3s; /* matches orange animation duration */
-  z-index: 30;
-}
+  animation: uAppear 1s ease-in forwards; */
+  /* animation-delay: 3s; matches orange animation duration */
+  /* z-index: 30;
+} */
 
 @keyframes uAppear {
   to {
@@ -238,7 +239,8 @@ button:hover {
 .card-image {
   width: 100%;
   height: 280px;
-  object-fit: cover;
+  /* object-fit: cover; */
+  object-fit: contain; /* ensures the entire image is visible */
   border-radius: 12px;
   margin-bottom: 15px;
 }
