@@ -90,7 +90,7 @@ export default Home; */}
             </span> */}
 
             {/* <div className="animated-words absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex space-x-8 text-2xl text-black font-extrabold"> */}
-            <div className="animated-words absolute -bottom-12 left-1/2 transform -translate-x-1/2 flex text-2xl text-black font-extrabold">
+            <div className="animated-words absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex text-2xl text-black font-extrabold">
               {words.map((w) => (
                 <span key={w} className="word">
                   {w}

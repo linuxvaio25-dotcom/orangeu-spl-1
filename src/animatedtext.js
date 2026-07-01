@@ -3,7 +3,7 @@ import { words } from './index';
 
 let animation = null;
 
-export function initAnimatedWords(selector = '.animated-words') {
+export function initAnimatedWords(selector = '.animated-words', delay = 3.0) {
   const el = document.querySelector(selector);
   if (!el) return;
 
@@ -11,7 +11,11 @@ export function initAnimatedWords(selector = '.animated-words') {
 
   if (animation && animation.revert) animation.revert();
 
-  animation = gsap.fromTo(
+  gsap.set(el, { opacity: 0 });
+
+  animation = gsap.timeline({ overwrite: true });
+  animation.to(el, { opacity: 1, duration: 0.25, delay });
+  animation.fromTo(
     split.words,
     { y: -80, opacity: 0, rotation: "random(-20, 20)" },
     {
@@ -22,7 +26,8 @@ export function initAnimatedWords(selector = '.animated-words') {
       ease: "power3.out",
       stagger: 0.2,
       overwrite: true
-    }
+    },
+    "<"
   );
 }
 
