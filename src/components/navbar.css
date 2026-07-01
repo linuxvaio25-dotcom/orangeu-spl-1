@@ -2,7 +2,9 @@
 
 :root {
   --green: #0ae448;
+  --green-dark: #0bb83c;
   --lt:    #abff84;
+  --lt-2:    #6cb64a;
   --black: #0e100f;
   --white: #fffce1;
 
@@ -39,7 +41,8 @@
   width: var(--bubble-size);
   height: var(--bubble-size);
   border-radius: 50%;
-  background: var(--green);
+  /* background: var(--green-dark); */
+  background: var(--lt-2);
   z-index: 300;
 
   /* GSAP scales this from 1 → 80 to fill the screen */
@@ -110,7 +113,8 @@
   font-weight: 700;
   letter-spacing: 0;
   text-transform: none;
-  background: var(--green);
+  /* background: var(--green); */
+  background: var(--lt);
 }
 
 .navbar-home .nav-close {
