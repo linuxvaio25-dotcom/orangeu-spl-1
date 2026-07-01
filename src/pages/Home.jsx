@@ -7,6 +7,11 @@ import ScrollSection from "../components/ScrollSection";
 const Home = () => {
   useEffect(() => { initAnimatedWords(); }, []);
 
+  //useEffect(() => { 
+    //initAnimatedWords();
+    //return () => clearAnimation(); // clean up when component unmounts
+//}, []);
+
   // const cards1 = Array.from({ length: 5 }, (_, i) => ({
   //   id: i,
   //   title: `Card ${i + 1}`,

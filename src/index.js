@@ -132,7 +132,7 @@ import fruits2 from './assets/fruits-2.jpg';
 import fruits3 from './assets/fruits-3.jpg';
 
 //cards2
-import cake1 from './assets/cake-1.jpg';
+import cake1 from './assets/cake-1a.jpg';
 import pouring1 from './assets/pouring-1.jpg';
 import icecream2 from './assets/icecream-2.jpg';
 import smoothies1 from './assets/smoothies-1.jpg';
