@@ -217,7 +217,11 @@ button:hover {
 } */
 
 .card {
-    flex: 0 0 auto; /* prevents cards from stretching */
+    flex: 0 0 auto;
+    width: min(200px, calc(100vw - 2rem));
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .image-placeholder {
@@ -239,10 +243,11 @@ button:hover {
 .card-image {
   width: 100%;
   height: 280px;
-  /* object-fit: cover; */
-  object-fit: contain; /* ensures the entire image is visible */
+  object-fit: cover;
+  object-position: center;
   border-radius: 12px;
   margin-bottom: 15px;
+  display: block;
 }
 
 .animated-words {

@@ -1,125 +1,200 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
 
-:root{--green:#0ae448;--lt:#abff84;--black:#0e100f;--white:#fffce1}
+:root {
+  --green: #0ae448;
+  --lt:    #abff84;
+  --black: #0e100f;
+  --white: #fffce1;
 
-*{box-sizing:border-box}
+  /* Position of the circle — change here to move it */
+  --bubble-top:   28px;
+  --bubble-right: 28px;
+  --bubble-size:  54px;
+}
 
-.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:20px 24px;font-family:Quicksand, sans-serif}
-.logo{font-weight:600;font-size:0.9rem;color:var(--white);z-index:310}
-.logo a{color:var(--white);text-decoration:none}
-.menu-button-group{display:flex;align-items:center;gap:0.75rem}
-.menu-label{color:var(--white);font-size:0.95rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
-.menu-toggle{width:44px;height:44px;border:none;background:rgba(255,255,255,0.1);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:310;position:relative;padding:0;transition:box-shadow 0.2s ease, background 0.2s ease;box-shadow:0 8px 18px rgba(0,0,0,0.16)}
-.menu-toggle:hover{background:rgba(255,255,255,0.18);box-shadow:0 0 0 2px rgba(255,255,255,0.65),0 8px 18px rgba(0,0,0,0.16)}
-.menu-toggle:focus-visible{outline:2px solid rgba(255,255,255,0.9);outline-offset:4px}
+* { box-sizing: border-box; }
 
-.nav{position:fixed;inset:0;z-index:200;padding:1rem;pointer-events:none;visibility:hidden;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem}
-.nav-bg{position:absolute;inset:0;background:rgba(0,0,0,0.45);opacity:0;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+/* ── Floating logo (top-left, no bar) ───────────────── */
+.site-logo {
+  position: fixed;
+  top: 28px;
+  left: 28px;
+  z-index: 400;
+  font-family: Quicksand, sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: opacity 0.4s ease;
+}
 
-/* original panel shape:
-.nav-panel{border:none;border-radius:10px}
-*/
-/* .nav-panel{border:none;border-radius:999px;overflow:hidden;width:min(100%,420px);max-width:420px;box-shadow:0 18px 35px rgba(0,0,0,0.12)} */
+.site-logo a { color: var(--white); text-decoration: none; }
 
-/*.nav-panel {
-   Option 1: Rounded panel shape
-  border-radius: 30px;
-  overflow: hidden;
-  
+.logo-hidden { opacity: 0; pointer-events: none; }
+.logo-visible { opacity: 1; }
 
-   Option 2: clip-path custom shape 
-  clip-path: inset(10px 10px 10px 10px round 30px);
-  width: min(100%, 420px);
-  max-width: 420px;
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+/* ── The expanding bubble circle ────────────────────── */
+.menu-bubble {
+  position: fixed;
+  top: var(--bubble-top);
+  right: var(--bubble-right);
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  border-radius: 50%;
+  background: var(--green);
+  z-index: 300;
 
+  /* GSAP scales this from 1 → 80 to fill the screen */
+  transform-origin: center center;
+  pointer-events: none; /* button sits on top handles clicks */
+  transition: opacity 0.4s ease;
+}
+
+.bubble-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.92);
+}
+
+.bubble-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* ── Toggle button — overlaps the bubble exactly ────── */
+.menu-toggle {
+  position: fixed;
+  top: var(--bubble-top);
+  right: var(--bubble-right);
+  width: var(--bubble-size);
+  height: var(--bubble-size);
   border: none;
   background: transparent;
-}*/
-
-
-/* Original mask-based implementation commented out for later testing:*/
-.nav-panel {
-  /*-webkit-mask-image: url('/orange-2.svg');
-  mask-image: url('/orange-2.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  mask-position: center;
--webkit-mask-position: center;*/
-
-  /* keep sizing, drop the border-radius since the PNG defines the shape */
-  /*width: min(100%, 420px);
-  max-width: 420px;
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);*/
-
-  /* remove these — the PNG takes over */
-  /*border: none;
-  border-radius: 0;
-  overflow: visible;*/
-}
-.nav-middle{
-   min-height: 500px;
-
-   padding: 40px 28px;
-
-   background-image: url('/fruits-4.jpg');
-   background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
-
-   color: var(--black);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-
-   z-index: 4;
-   box-shadow: 0 12px 24px rgba(0,0,0,0.10);
-
-   margin-top: 0;
-   margin-bottom: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  z-index: 400;
+  padding: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* .nav-middle{ */
-   /* min-height: 320px; /* make the panel taller */ 
-  /* padding: 40px 28px;  more space around links */
-  /* background-image: url('/fruits-4.jpg'); */ */
-  /* background: #e8e8e8 url('/orange-2.svg') center/contain no-repeat; */
-  /*background: url('/oranges-1.png') center/contain no-repeat center no-repeat;*/
-  /* background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat; */
-  /*position:relative;width:100%;background:#ff7e22;*/
-  /* background:linear-gradient(135deg,#0ae448 0%,#abff84 40%,#6fdd8b 70%,#0ae448 100%);color:var(--black);display:flex;flex-direction:column;justify-content:center;padding:30px 28px;z-index:4;min-height:240px;box-shadow:0 12px 24px rgba(0,0,0,0.10);margin-top:0;margin-bottom:0} */
-.nav-middle::before{content:"";position:absolute;top:-18px;left:50%;transform:translateX(-50%);width:18px;height:24px;background:#3f6d06;border-radius:0 0 50% 50%;box-shadow:0 4px 12px rgba(0,0,0,0.10)}
-.nav-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;flex:1;justify-content:center;align-items:center;padding:0;margin:0}
-.nav-item{overflow:hidden;width:auto;max-width:none}
-/*.nav-bottom{position:relative;height:140px;width:85%;max-width:340px;background:linear-gradient(135deg,#fde74c 0%,#f7e04b 40%,#f6d23c 70%,#f8cb42 100%);color:#2f2a12;display:flex;align-items:center;justify-content:center;padding:24px 28px;z-index:3;margin:20px auto 0;box-shadow:0 10px 22px rgba(0,0,0,0.10)}
-/* Alternate per-link panels styling
-.nav-panels{display:flex;flex-direction:column;gap:20px;align-items:center;padding:18px}
-.link-panel{width:90%;max-width:360px;border-radius:28px;padding:18px 20px;background:linear-gradient(135deg,#0ae448 0%,#abff84 100%);box-shadow:0 10px 22px rgba(0,0,0,0.06);display:flex;justify-content:center}
-.nav-link-panel{color:var(--black);font-weight:700;text-decoration:none;font-size:1.2rem}
-.link-panel .nav-link-panel:hover{color:var(--white)}
-*/
+.menu-toggle:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
 
-/* original nav-link shape:
-.nav-link{display:block;text-decoration:none;color:var(--black);padding:10px 0;font-size:clamp(1.5rem,4vw,1.8rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em}
-*/
-.nav-link{display:block;text-align:center;text-decoration:none;color:var(--black);padding:14px 18px;font-size:clamp(1.5rem,4vw,1.8rem);font-weight:600;line-height:1.1;letter-spacing:-0.03em;background:transparent;border-radius:0;margin-bottom:0;transition:color 0.2s ease}
-.nav-link:hover{color:var(--white)}
-.nav-link-current{color:rgba(0,0,0,0.6);cursor:default;pointer-events:none;}
-.nav-link-current:hover{color:rgba(0,0,0,0.6)}
-.nav-login{margin-top:auto;padding-top:20px;font-size:0.82rem;color:#7c7c6f;font-family:monospace}
-.nav-asset img{position:absolute;bottom:0;right:2rem;width:100px;height:auto}
+.navbar-home .menu-bubble,
+.navbar-home .menu-toggle {
+  top: 24px;
+  right: 24px;
+  left: auto;
+  bottom: auto;
+  margin-left: 0;
+}
 
-/* SVG bars */
-.bar-top,.bar-bot{stroke:var(--white)}
+.navbar-home .menu-bubble {
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  border-radius: 50%;
+}
 
-/* make panels visible when JS sets visibility */
-#nav[style*="visibility: visible"]{pointer-events:auto}
+.navbar-home .menu-toggle {
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  padding: 0;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  background: var(--green);
+}
 
-.page-navbar {
-  background: rgba(0,0,0,.15);
-  backdrop-filter: blur(10px);
+.navbar-home .nav-close {
+  top: 24px;
+  right: 24px;
+  left: auto;
+  bottom: auto;
+  margin-left: 0;
+}
+
+/* ── Full-screen nav content layer ──────────────────── */
+.nav-content {
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+/* ── Close button — same spot as the toggle ─────────── */
+.nav-close {
+  position: absolute;
+  top: var(--bubble-top);
+  right: var(--bubble-right);
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  border: none;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.nav-close:hover { background: rgba(0, 0, 0, 0.25); }
+
+/* ── Nav links ───────────────────────────────────────── */
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.nav-item { overflow: hidden; }
+
+.nav-link {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: var(--black);
+  padding: 10px 28px;
+  font-family: Quicksand, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover { color: var(--white); }
+
+.nav-link-current {
+  color: rgba(0, 0, 0, 0.35);
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-login {
+  position: absolute;
+  bottom: 32px;
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: rgba(0, 0, 0, 0.45);
 }

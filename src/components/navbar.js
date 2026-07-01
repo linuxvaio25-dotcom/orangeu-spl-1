@@ -1,112 +1,121 @@
-// Navbar GSAP logic (adapted from provided script)
 import gsap from 'gsap';
 
 let isOpen = false;
-let exitSpeed = 1.5;
-const erToggle = { checked: false };
 let tl;
-let enterEndTime = 0;
 
 export function init() {
   tl && tl.revert && tl.revert();
 
-  gsap.set('#nav', { visibility: 'hidden' });
-  gsap.set('.nav-bg', { opacity: 0 });
-  gsap.set('.nav-login', { opacity: 0, y: 8 });
+  // Start: bubble is a small circle, content hidden
+  gsap.set('.menu-bubble', { scale: 1, transformOrigin: 'center center' });
+  gsap.set('.nav-content', { visibility: 'hidden' });
+  gsap.set('.nav-item', { opacity: 0, y: 30 });
+  gsap.set('.nav-close', { opacity: 0, scale: 0, rotate: -90 });
+  gsap.set('.nav-login', { opacity: 0 });
+  gsap.set('.menu-toggle', { opacity: 1, pointerEvents: 'auto' });
 
-  tl = gsap
-    .timeline({ paused: true })
-    .set('#nav', { visibility: 'visible', pointerEvents: 'auto' })
+  tl = gsap.timeline({ paused: true })
 
-    .to(
-      '.nav-bg',
-      { opacity: 1, duration: 0.4, ease: 'power2.out' },
-      0
-    )
+    // --- OPEN ---
+    // Hide the toggle icon as bubble starts expanding
+    .to('.menu-toggle', {
+      opacity: 0,
+      duration: 0.15,
+      ease: 'none',
+    }, 0)
 
-    .fromTo(
-      '.nav-panel',
-      { x: '110%', y: 0, rotation: 0 },
-      { x: '0%', y: 0, duration: 0.6, ease: 'back.out', stagger: 0.1 },
-      0
-    )
+    // The bubble circle zooms to fill the screen
+    // scale(80) covers any viewport from top-right corner
+    .to('.menu-bubble', {
+      scale: 80,
+      duration: 0.7,
+      ease: 'power3.inOut',
+    }, 0)
 
-    .fromTo(
-      '.nav-item',
-      { opacity: 0, x: 80, rotation: 'random(-20, 20)' },
-      { opacity: 1, x: 0, rotation: 0, duration: 1.5, ease: 'power3.out', stagger: 0.2, overwrite: true },
-      0.1
-    )
+    // Reveal the nav content layer
+    .set('.nav-content', { visibility: 'visible' }, 0.35)
 
-    .fromTo(
-      '.bar-top',
-      { stroke: 'var(--white)', attr: { x1: 3, y1: 7, x2: 17, y2: 7 } },
-      { stroke: '#0e100f', attr: { x1: 5, y1: 5, x2: 15, y2: 15 }, duration: 0.35, ease: 'back.out(1.4)' },
-      0.06
-    )
+    // Close button spins in
+    .to('.nav-close', {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      duration: 0.35,
+      ease: 'back.out(1.7)',
+    }, 0.45)
 
-    .fromTo(
-      '.bar-bot',
-      { stroke: 'var(--white)', attr: { x1: 3, y1: 13, x2: 17, y2: 13 } },
-      { stroke: '#0e100f', attr: { x1: 15, y1: 5, x2: 5, y2: 15 }, duration: 0.35, ease: 'back.out(1.4)' },
-      0.06
-    )
+    // Links stagger up
+    .to('.nav-item', {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      ease: 'power3.out',
+      stagger: 0.08,
+    }, 0.45)
 
-    .to(
-      '.nav-login',
-      { opacity: 1, y: 0, duration: 0.3, ease: 'power3.out' },
-      0.4
-    )
+    .to('.nav-login', {
+      opacity: 1,
+      duration: 0.3,
+      ease: 'power2.out',
+    }, 0.65)
 
-    .addPause();
+    .addPause()
 
-  enterEndTime = tl.duration();
+    // --- CLOSE ---
+    .to('.nav-login', { opacity: 0, duration: 0.15 }, '>')
+    .to('.nav-item', {
+      opacity: 0,
+      y: -20,
+      duration: 0.3,
+      ease: 'power2.in',
+      stagger: { each: 0.05, from: 'end' },
+    }, '<')
+    .to('.nav-close', {
+      opacity: 0,
+      scale: 0,
+      rotate: 90,
+      duration: 0.2,
+      ease: 'power2.in',
+    }, '<')
 
-  tl
-    .to('.bar', { stroke: 'var(--white)', duration: 0.2 })
-    .to('.bar-top', { attr: { x1: 3, y1: 7, x2: 17, y2: 7 }, duration: 0.2, ease: 'power3.in' }, "<")
-    .to('.bar-bot', { attr: { x1: 3, y1: 13, x2: 17, y2: 13 }, duration: 0.2, ease: 'power3.in' }, "<")
-    .to('.nav-panel', { y: '110vh', rotation: 'random(-25, 25)', duration: 1, ease: 'power3.in', stagger: { from: 'end', each: 0.02 } }, "<")
-    .to('.nav-bg', { opacity: 0, duration: 0.3, ease: 'power2.in' }, "<0.1")
-    .set('#nav', { visibility: 'hidden', pointerEvents: 'none' });
+    // Bubble collapses back to small circle
+    .set('.nav-content', { visibility: 'hidden' }, '+=0.05')
+    .to('.menu-bubble', {
+      scale: 1,
+      duration: 0.65,
+      ease: 'power3.inOut',
+    }, '-=0.1')
+
+    // Toggle icon reappears
+    .to('.menu-toggle', {
+      opacity: 1,
+      pointerEvents: 'auto',
+      duration: 0.2,
+      ease: 'none',
+    }, '-=0.2');
 }
 
 export function toggle() {
+  if (!tl) return;
   isOpen = !isOpen;
+
   const btn = document.getElementById('menuToggle');
   if (btn) {
     btn.setAttribute('aria-expanded', isOpen);
     btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
   }
 
-  if (!tl) return;
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+  document.documentElement.style.overflow = isOpen ? 'hidden' : '';
 
-  if (isOpen) {
-    if (tl.time() >= enterEndTime) {
-      tl.timeScale(1).restart();
-    } else {
-      tl.timeScale(1).play();
-    }
-  } else {
-    if (tl.time() < enterEndTime) {
-      tl.timeScale(exitSpeed).reverse();
-    } else {
-      tl.timeScale(1).play();
-    }
-  }
+  isOpen ? tl.timeScale(1).play(0) : tl.timeScale(1.1).play();
 }
 
-// Initialize on import
 if (typeof window !== 'undefined') {
   window.addEventListener('load', () => {
-    try { init(); } catch (e) { /* ignore */ }
-    // attach escape key behavior
+    try { init(); } catch (e) {}
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) {
-        toggle();
-        const btn = document.getElementById('menuToggle');
-        btn && btn.focus();
-      }
+      if (e.key === 'Escape' && isOpen) toggle();
     });
   });
 }
