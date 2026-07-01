@@ -152,10 +152,6 @@ export const cardImages2 = [
   icecream2,
   smoothies1,
   wine1,
-  oranges1,
-  oranges1,
-  oranges1,
-  oranges1,
 ];
 export const cardImages3 = [
   oranges1,
