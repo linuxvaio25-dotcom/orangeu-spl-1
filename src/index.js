@@ -124,11 +124,20 @@ export default words;
 
 //export const words = ["Connect", "Learn", "Share"]; // your existing export
 
+//cards1
 import oranges1 from './assets/oranges-1.jpg';
 import pineapple1 from './assets/pineapple-1.jpg';
 import oranges2 from './assets/oranges-2.jpg';
 import fruits2 from './assets/fruits-2.jpg';
 import fruits3 from './assets/fruits-3.jpg';
+
+//cards2
+import cake1 from './assets/cake-1.jpg';
+import pouring1 from './assets/pouring-1.jpg';
+import icecream2 from './assets/icecream-2.jpg';
+import smoothies1 from './assets/smoothies-1.jpg';
+import wine1 from './assets/wine-1.jpg';
+
 
 export const cardImages1 = [
   oranges1,
@@ -138,7 +147,11 @@ export const cardImages1 = [
   fruits3,
 ];
 export const cardImages2 = [
-  oranges1,
+  cake1,
+  pouring1,
+  icecream2,
+  smoothies1,
+  wine1,
   oranges1,
   oranges1,
   oranges1,
