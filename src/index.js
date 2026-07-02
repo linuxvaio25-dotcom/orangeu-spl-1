@@ -133,10 +133,10 @@ import fruits3 from './assets/fruits-3.jpg';
 
 //cards2
 import cake1 from './assets/cake-1a.jpg';
-import pouring1 from './assets/pouring-1.jpg';
-import icecream2 from './assets/icecream-2.jpg';
-import smoothies1 from './assets/smoothies-1.jpg';
-import wine1 from './assets/wine-1.jpg';
+import pouring1 from './assets/pouring-1a.jpg';
+import icecream2 from './assets/icecream-2a.jpg';
+import smoothies1 from './assets/smoothies-1a.jpg';
+import wine1 from './assets/wine-1a.jpg';
 
 
 export const cardImages1 = [
