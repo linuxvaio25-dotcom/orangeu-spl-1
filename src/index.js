@@ -132,7 +132,7 @@ import fruits2 from './assets/fruits-2.jpg';
 import fruits3 from './assets/fruits-3.jpg';
 
 //cards2
-import cake1 from './assets/cake-1a.jpg';
+import cake1 from './assets/cake-1.avif';
 import pouring1 from './assets/pouring-1a.jpg';
 import icecream2 from './assets/icecream-2a.jpg';
 import smoothies1 from './assets/smoothies-1a.jpg';
@@ -141,17 +141,34 @@ import wine1 from './assets/wine-1a.jpg';
 
 export const cardImages1 = [
   oranges1,
-  pineapple1,
-  oranges2,
-  fruits2,
-  fruits3,
+  oranges1,
+  oranges1,
+  oranges1,
+  oranges1,
+
+  // pineapple1,
+  // oranges2,
+  // fruits2,
+  // fruits3,
 ];
 export const cardImages2 = [
-  cake1,
-  pouring1,
-  icecream2,
-  smoothies1,
-  wine1,
+cake1,
+cake1,
+pouring1,
+cake1,
+cake1,
+
+  // oranges1,
+  // oranges1,
+  // oranges1,
+  // oranges1,
+  // oranges1,
+  
+  // cake1,
+  // pouring1,
+  // icecream2,
+  // smoothies1,
+  // wine1,
 ];
 export const cardImages3 = [
   oranges1,
