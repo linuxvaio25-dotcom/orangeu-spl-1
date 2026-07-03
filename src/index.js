@@ -126,25 +126,26 @@ export default words;
 
 //cards1
 import oranges1 from './assets/oranges-1.jpg';
-import pineapple1 from './assets/pineapple-1.jpg';
-import oranges2 from './assets/oranges-2.jpg';
-import fruits2 from './assets/fruits-2.jpg';
-import fruits3 from './assets/fruits-3.jpg';
+import oranges3 from './assets/oranges-3b.jpg';
+import pineapple1 from './assets/pineapple-2b.jpg';
+import lemons2 from './assets/lemons-2b.jpg';
+import fruits2 from './assets/fruits-2b.jpg';
+import fruits3 from './assets/fruits-3b.jpg';
 
 //cards2
 import cake1 from './assets/cake-1b.jpg';
 import pouring1 from './assets/pouring-1b.jpg';
-import icecream2 from './assets/icecream-2a.jpg';
-import smoothies1 from './assets/smoothies-1a.jpg';
-import wine1 from './assets/wine-1a.jpg';
+import icecream2 from './assets/icecream-2b.jpg';
+import smoothies1 from './assets/smoothies-1b.jpg';
+import wine1 from './assets/wine-1b.jpg';
 
 
 export const cardImages1 = [
-  oranges1,
-  oranges1,
-  oranges1,
-  oranges1,
-  oranges1,
+  oranges3,
+  pineapple1,
+  lemons2,
+  fruits2,
+  fruits3,
 
   // pineapple1,
   // oranges2,
@@ -153,10 +154,10 @@ export const cardImages1 = [
 ];
 export const cardImages2 = [
 cake1,
-cake1,
+icecream2,
 pouring1,
-cake1,
-cake1,
+smoothies1,
+wine1,
 
   // oranges1,
   // oranges1,
