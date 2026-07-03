@@ -86,7 +86,7 @@ useEffect(() => {
 
     cardsRef.current = []; // reset before each render
     //const cardsRef = useRef([]);
-    return (
+ return (
         <section className="section" ref={sectionRef}>
             <h1
                 className="section-title"
