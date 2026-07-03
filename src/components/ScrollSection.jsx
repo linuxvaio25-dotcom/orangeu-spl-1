@@ -10,15 +10,26 @@ const ScrollSection = ({ title, cards, direction, titleAlign }) => {
     const titleRef = useRef(null);
     const cardsRef = useRef([]);
 
-    useEffect(() => {
+    //useEffect(() => {
+        //const tl = gsap.timeline({
+            //scrollTrigger: {
+                //trigger: sectionRef.current,
+                //start: "top 70%",
+                //once: true, // only plays once when it comes into view
+                //toggleActions: "play reverse play reverse", // play on enter, reverse on leave
+                //toggleActions: "play none none reverse"
+            //},
+        //});
+
+useEffect(() => {
+    const ctx = gsap.context(() => {
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: sectionRef.current,
                 start: "top 70%",
-                //once: true, // only plays once when it comes into view
-                //toggleActions: "play reverse play reverse", // play on enter, reverse on leave
-                toggleActions: "play none none reverse"
-            },
+                toggleActions: "play none none reverse",
+            }
         });
 
         // Title fades in
@@ -35,7 +46,7 @@ const ScrollSection = ({ title, cards, direction, titleAlign }) => {
                 ease: "power3.out",
             }
         );
-
+       
         // Cards fade/slide in after title
         //const startX = direction === "left" ? -800 : 800;
         const startX = direction === "left" ? -400 : 400; // instead of ±800
@@ -60,14 +71,21 @@ const ScrollSection = ({ title, cards, direction, titleAlign }) => {
             );
         });
 
-        return () => {
+     }, sectionRef
+        );
+
+        //return () => {
             //tl.scrollTrigger?.kill();
-            tl.kill();
-            ScrollTrigger.getAll().forEach(st => st.kill());
-        };
+            //tl.kill();
+            //ScrollTrigger.getAll().forEach(st => st.kill());
+        //};
+
+    return () => ctx.revert(); // cleanup gsap context on unmount
     }, [direction]);
 
+
     cardsRef.current = []; // reset before each render
+    //const cardsRef = useRef([]);
     return (
         <section className="section" ref={sectionRef}>
             <h1
@@ -92,15 +110,20 @@ const ScrollSection = ({ title, cards, direction, titleAlign }) => {
                             src={card.image}
                             alt={card.title}
                             className="card-image"
-                            loading="lazy" // lazy load images for performance
+                           // loading="lazy" // lazy load images for performance
                         />
                         <h3>{card.title}</h3>
                     </div>
+                    
                 ))}
             </div>
         </section>
+
+        
     );
 };
+
+
 
 export default ScrollSection;
 
