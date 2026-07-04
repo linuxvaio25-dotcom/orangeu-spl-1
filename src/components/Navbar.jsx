@@ -60,9 +60,9 @@ const Navbar = () => {
   return (
     <div className={isHomePage ? 'navbar-home' : ''}>
       {/* Floating logo — top left, independent of any bar */}
-      <div className={`site-logo ${showNavbar ? 'logo-visible' : 'logo-hidden'}`}>
+      {/* <div className={`site-logo ${showNavbar ? 'logo-visible' : 'logo-hidden'}`}>
         <Link to="/">OrangeU</Link>
-      </div>
+      </div> */}
 
       {/* The circle that expands — sits near the transition into the first section on home */}
       <div
