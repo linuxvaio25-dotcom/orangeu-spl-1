@@ -110,7 +110,7 @@ useEffect(() => {
                             src={card.image}
                             alt={card.title}
                             className="card-image"
-                           // loading="lazy" // lazy load images for performance
+                           loading="lazy" // lazy load images for performance
                         />
                         <h3>{card.title}</h3>
                     </div>
