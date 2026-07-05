@@ -28,7 +28,7 @@ import ProductTile from "./ProductTile";
 export default function ProductGrid({
   category,
   onBack,
-  onSelect,
+  onSelectProduct,
 }) {
   return (
     <div
@@ -89,9 +89,12 @@ export default function ProductGrid({
         {category.items.map((item, index) => (
           <ProductTile
             key={item.label}
+            // item={item}
+            // index={index}
+            // onClick={() => onSelect(item)}
             item={item}
             index={index}
-            onClick={() => onSelect(item)}
+            onClick={() => onSelectProduct(item)}
           />
         ))}
       </div>

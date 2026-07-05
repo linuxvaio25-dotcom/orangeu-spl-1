@@ -56,39 +56,57 @@ export default function Fruits() {
           </>
         )}
 
-        {activeCategory && !selectedProduct && (
+        {/* {activeCategory && !selectedProduct && ( */}
+        {activeCategory && (
+//           <div
+//   className={`product-grid-wrapper ${
+//     selectedProduct ? "product-grid-blurred" : ""
+//   }`}
+// >
+<>
+            <ProductGrid
+              category={activeCategory}
+              onBack={() => setActiveCategory(null)}
+              onSelectProduct={setSelectedProduct}
+            // category={activeCategory}
+            // onSelectProduct={setSelectedProduct}
+            // selectedProduct={selectedProduct}
+            // onBack={goBack}
+            />
 
-          <ProductGrid
-            category={activeCategory}
-            onBack={goBack}
-            onSelect={setSelectedProduct}
-          />
+            {/* )} */}
+            
 
+            {selectedProduct && (
+
+              <ProductDetail
+                product={selectedProduct}
+                category={activeCategory}
+                onBack={() => setSelectedProduct(null)}
+                //addToCart={addToCart}
+                // onAddToCart={(item) => {
+                //   setCart([...cart, item]);
+                // }}
+                onAddToCart={(item) => setCart([...cart, item])}
+              />
+
+            )}
+          {/* </div> */}
+          </>
         )}
 
-        {selectedProduct && (
+        {cart.length > 0 && (
 
-          <ProductDetail
-            product={selectedProduct}
-            category={activeCategory}
-            onBack={() => setSelectedProduct(null)}
-            addToCart={addToCart}
-          />
+          <div className="fixed right-8 top-8 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl">
+
+            🛒 {cart.length}
+
+          </div>
 
         )}
 
       </div>
-
-      {cart.length > 0 && (
-
-        <div className="fixed right-8 top-8 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl">
-
-          🛒 {cart.length}
-
-        </div>
-
-      )}
-
+      );
     </div>
-  );
-}
+  )
+};

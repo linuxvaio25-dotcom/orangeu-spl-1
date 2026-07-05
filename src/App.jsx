@@ -9,6 +9,7 @@ import Friends from './pages/Friends';
 import ContactUs from './pages/ContactUs';
 import SignInSignUp from './pages/SignInSignUp';
 import './App.css';
+import './styles/fruits.css';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
