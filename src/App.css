@@ -183,6 +183,7 @@ button:hover {
   background-position: center center;
   background-attachment: fixed;
   background-repeat: no-repeat;
+  /* opacity: 0.15; */
 }
 
 .app {

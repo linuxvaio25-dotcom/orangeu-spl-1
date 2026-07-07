@@ -123,7 +123,7 @@ export const fruitsections = [
 
     color: "from-red-400 to-orange-400 to-yellow-300",
 
-    video: "/fruits-1.mp4",
+    video: "/videos/fruits-1.mp4",
 
     description: "Fresh fruit picked daily.",
 
@@ -160,7 +160,7 @@ export const fruitsections = [
 
     color: "from-yellow-400 via-orange-400 to-red-400",
 
-    video: "/juice-1.mp4",
+    video: "/videos/juice-1.mp4",
 
     description:
       "Cold pressed juices made from real fruit.",
@@ -175,7 +175,7 @@ export const fruitsections = [
 
     color: "from-pink-500 via-purple-400 to-indigo-400",
 
-    video: "/juice-1.mp4",
+    video: "/videos/smoothie-1.mp4",
 
     description:
       'Creamy frozen fruit blends with yogurt, berries, and tropical flavors.',
@@ -189,7 +189,7 @@ export const fruitsections = [
 
     color: "from-emerald-500 via-lime-400 to-yellow-400",
 
-    video: "/exotics-1.mp4",
+    video: "/videos/juice-1.mp4",
 
     description:
       "Tropical fruits from around the world.",
@@ -203,7 +203,7 @@ export const fruitsections = [
 
     color: "from-amber-700 via-orange-500 to-yellow-300",
 
-    video: "/juice-1.mp4",
+    video: "/videos/juice-1.mp4",
 
     description:
       "Cold pressed juices made from real fruit.",

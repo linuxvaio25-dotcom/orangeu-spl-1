@@ -29,7 +29,8 @@ export default function Fruits() {
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
 
-      <AnimatedBackground category={activeCategory?.title} />
+      {/* <AnimatedBackground category={activeCategory?.title} /> */}
+      <AnimatedBackground category={activeCategory} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-8 py-12">
 
