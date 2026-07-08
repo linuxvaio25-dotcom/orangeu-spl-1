@@ -23,7 +23,13 @@
 
 // export default ProductDetail;
 
-import React from "react";
+// import React from "react";
+import React, { useState, useEffect } from "react";
+
+// import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { spring, duration, ease } from "../../utils/motion";
+
 
 const ProductDetail = ({
   product,
@@ -31,6 +37,32 @@ const ProductDetail = ({
   onBack,
   onAddToCart,
 }) => {
+
+  const [added, setAdded] = useState(false);
+
+  const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    if (!added) return;
+
+    const timer = setTimeout(() => {
+      setAdded(false);
+    }, 800);
+
+    return () => clearTimeout(timer);
+  }, [added]);
+
+  const handleAddToCart = () => {
+    // onAddToCart(product);
+    onAddToCart(product, quantity);
+    setAdded(true);
+    setQuantity(1);
+
+    // setTimeout(() => {
+    //   setAdded(false);
+    // }, 800);
+  };
+
   if (!product) return null;
 
   return (
@@ -88,12 +120,111 @@ const ProductDetail = ({
 
         {/* Quantity selector goes here later */}
 
-        <button
+        {/* <button
           className="add-basket-btn"
           onClick={() => onAddToCart(product)}
         >
           Add to Basket
-        </button>
+        </button> */}
+
+        <div className="quantity-selector">
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={spring.button}
+            onClick={() =>
+              setQuantity((q) => Math.max(1, q - 1))
+            }
+          >
+            −
+          </motion.button>
+
+          <motion.span
+            key={quantity}
+            initial={{ opacity: 0.6, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={spring.soft}
+            className="quantity-value"
+          >
+            {quantity}
+          </motion.span>
+
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={spring.button}
+            onClick={() =>
+              setQuantity((q) => q + 1)
+            }
+          >
+            +
+          </motion.button>
+        </div>
+
+        <motion.button
+          className="add-basket-btn"
+          whileHover={{
+            scale: 1.02,
+            y: -2,
+          }}
+          whileTap={{
+            scale: 0.97,
+          }}
+          transition={spring.button}
+          // onClick={() => onAddToCart(product)}
+          onClick={handleAddToCart}
+        >
+          <AnimatePresence mode="wait">
+            {/* <motion.span
+              key={added ? "added" : "default"}
+              initial={{
+                opacity: 0,
+                y: 6,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: -6,
+              }}
+              transition={{
+                duration: 0.18,
+              }}
+            >
+              {added ? "✓ Added" : "Add to Basket"}
+            </motion.span> */}
+            <motion.span
+              key={added ? "added" : "default"}
+              initial={{
+                opacity: 0,
+                y: 8,
+                scale: 0.97,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                y: -8,
+                scale: 0.97,
+              }}
+              // transition={{
+              //   duration: 0.28,
+              //   ease: [0.22, 1, 0.36, 1], // or ease.smooth from motion.js
+              // }}
+              transition={{
+                duration: duration.normal,
+                ease: ease.smooth,
+              }}
+            >
+              {added ? "✓ Added" : "Add to Basket"}
+            </motion.span>
+          </AnimatePresence>
+        </motion.button>
 
       </div>
 

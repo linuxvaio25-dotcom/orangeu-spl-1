@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { fruitsections } from "../index";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
+import { fruitsections } from "../index";
 import AnimatedBackground from "../components/fruits/AnimatedBackground";
 import CategoryGrid from "../components/fruits/CategoryGrid";
 import ProductGrid from "../components/fruits/ProductGrid";
@@ -12,6 +13,7 @@ export default function Fruits() {
   const [cart, setCart] = useState([]);
 
   const addToCart = (product, quantity) => {
+    //const addToCart = (product, 4) => {
     setCart((current) => [
       ...current,
       {
@@ -21,6 +23,9 @@ export default function Fruits() {
     ]);
   };
 
+  const isBrowsingProducts = activeCategory !== null;
+  const isViewingProduct = selectedProduct !== null;
+
   // const goBack = () => {
   //   setSelectedProduct(null);
   //   setActiveCategory(null);
@@ -29,8 +34,6 @@ export default function Fruits() {
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
 
-      {/* <AnimatedBackground category={activeCategory?.title} /> */}
-      <AnimatedBackground category={activeCategory} />
 
       <div className="relative z-10 mx-auto max-w-7xl px-8 py-12">
 
@@ -64,7 +67,6 @@ export default function Fruits() {
               className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
                 }`}
             >
-              {/* <> */}
               <ProductGrid
                 category={activeCategory}
                 onBack={() => setActiveCategory(null)}
@@ -80,20 +82,35 @@ export default function Fruits() {
                 product={selectedProduct}
                 category={activeCategory}
                 onBack={() => setSelectedProduct(null)}
-                onAddToCart={(item) => setCart([...cart, item])}
+                // onAddToCart={(item) => setCart([...cart, item])}
+                onAddToCart={addToCart}
               />
             )}
           </>
         )}
         {cart.length > 0 && (
-
-          <div className="fixed right-8 top-8 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl">
-
-            🛒 {cart.length}
-
-          </div>
-
-        )}
+  <motion.div
+    key={cart.length}
+    initial={{
+      scale: 0.9,
+      y: -6,
+      opacity: 0.6,
+    }}
+    animate={{
+      scale: 1,
+      y: 0,
+      opacity: 1,
+    }}
+    transition={{
+      type: "spring",
+      stiffness: 400,
+      damping: 24,
+    }}
+    className="fixed right-8 top-24 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl"
+  >
+    🛒 {cart.length}
+  </motion.div>
+)}
       </div>
     </div>
   );
