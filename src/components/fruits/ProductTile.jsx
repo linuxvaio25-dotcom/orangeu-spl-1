@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function ProductTile({
     item,
     onClick,
@@ -6,7 +8,9 @@ export default function ProductTile({
     const large = index % 3 === 1;
 
     return (
-        <button
+        // <button
+        <motion.button
+            layoutId={`card-${item.label}`}
             onClick={onClick}
             className={`
         group
@@ -39,17 +43,20 @@ export default function ProductTile({
 
             <div className="p-8 h-full flex flex-col">
 
-                <div
-                    className="
-            text-7xl
-            transition-transform
-            duration-500
-            group-hover:scale-110
-            group-hover:rotate-6
-          "
+                <motion.div
+                    layoutId={`emoji-${item.label}`}
+                    className="w-28
+        h-28
+        flex
+        items-center
+        justify-center
+        text-7xl
+        shrink-0"
                 >
+                    {/* <div className="group-hover:scale-110 transition-transform"> */}
                     {item.emoji}
-                </div>
+                    {/* </div> */}
+                </motion.div>
 
                 <div className="flex-grow" />
 
@@ -89,6 +96,7 @@ export default function ProductTile({
 
             </div>
 
-        </button>
+            {/* </button> */}
+        </motion.button>
     );
 }

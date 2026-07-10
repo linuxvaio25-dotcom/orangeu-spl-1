@@ -66,7 +66,11 @@ const ProductDetail = ({
   if (!product) return null;
 
   return (
-    <section className="product-detail">
+    // <section className="product-detail">
+    <motion.section
+      layoutId={`card-${product.label}`}
+      className="product-detail"
+    >
 
       <button
         className="detail-back-btn"
@@ -77,9 +81,12 @@ const ProductDetail = ({
 
       <div className="product-detail-hero">
 
-        <div className="product-detail-emoji">
+        <motion.div
+          layoutId={`emoji-${product.label}`}
+          className="product-detail-emoji"
+        >
           {product.emoji}
-        </div>
+        </motion.div>
 
         <div className="product-detail-info">
 
@@ -228,7 +235,8 @@ const ProductDetail = ({
 
       </div>
 
-    </section>
+      {/* // </section> */}
+    </motion.section >
   );
 };
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
 
 import { fruitsections } from "../index";
 import AnimatedBackground from "../components/fruits/AnimatedBackground";
@@ -62,8 +62,9 @@ export default function Fruits() {
         )}
 
         {/* {activeCategory && !selectedProduct && ( */}
+
         {activeCategory && (
-          <>
+          <LayoutGroup>
             <div
               className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
                 }`}
@@ -72,46 +73,44 @@ export default function Fruits() {
                 category={activeCategory}
                 onBack={() => setActiveCategory(null)}
                 onSelectProduct={setSelectedProduct}
-              // category={activeCategory}
-              // onSelectProduct={setSelectedProduct}
-              // selectedProduct={selectedProduct}
-              // onBack={goBack}
               />
             </div>
-            {selectedProduct && (
-              <ProductDetail
-                product={selectedProduct}
-                category={activeCategory}
-                onBack={() => setSelectedProduct(null)}
-                // onAddToCart={(item) => setCart([...cart, item])}
-                onAddToCart={addToCart}
-              />
-            )}
-          </>
+
+            <AnimatePresence mode="wait">
+              {selectedProduct && (
+                <ProductDetail
+                  product={selectedProduct}
+                  category={activeCategory}
+                  onBack={() => setSelectedProduct(null)}
+                  onAddToCart={addToCart}
+                />
+              )}
+            </AnimatePresence>
+          </LayoutGroup>
         )}
         {cart.length > 0 && (
-  <motion.div
-    key={cart.length}
-    initial={{
-      scale: 0.9,
-      y: -6,
-      opacity: 0.6,
-    }}
-    animate={{
-      scale: 1,
-      y: 0,
-      opacity: 1,
-    }}
-    transition={{
-      type: "spring",
-      stiffness: 400,
-      damping: 24,
-    }}
-    className="fixed right-8 top-24 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl"
-  >
-    🛒 {cart.length}
-  </motion.div>
-)}
+          <motion.div
+            key={cart.length}
+            initial={{
+              scale: 0.9,
+              y: -6,
+              opacity: 0.6,
+            }}
+            animate={{
+              scale: 1,
+              y: 0,
+              opacity: 1,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 24,
+            }}
+            className="fixed right-8 top-24 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl"
+          >
+            🛒 {cart.length}
+          </motion.div>
+        )}
       </div>
     </div>
   );
