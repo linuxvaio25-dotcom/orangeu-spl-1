@@ -81,11 +81,25 @@ const ProductDetail = ({
 
       <div className="product-detail-hero">
 
-        <motion.div
+        {/* <motion.div
           layoutId={`emoji-${product.label}`}
           className="product-detail-emoji"
-        >
-          {product.emoji}
+        > */}
+        {/* <motion.div
+          layoutId={`emoji-${product.label}`}
+          className="emoji-wrapper"
+          transition={{
+            layout: {
+              type: "spring",
+              stiffness: 500,
+              damping: 40,
+            },
+          }}
+        > */}
+        <motion.div className="emoji-wrapper">
+          <div className="emoji-glyph">
+            {product.emoji}
+          </div>
         </motion.div>
 
         <div className="product-detail-info">

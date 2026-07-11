@@ -27,8 +27,7 @@ export default function ProductTile({
 
         text-left
 
-        transition-all
-        duration-500
+        transition-colors
 
         hover:-translate-y-2
         hover:scale-[1.02]
@@ -43,7 +42,7 @@ export default function ProductTile({
 
             <div className="p-8 h-full flex flex-col">
 
-                <motion.div
+                {/* <motion.div
                     layoutId={`emoji-${item.label}`}
                     className="w-28
         h-28
@@ -52,9 +51,23 @@ export default function ProductTile({
         justify-center
         text-7xl
         shrink-0"
-                >
+                > */}
+                {/* <motion.div
+                    layoutId={`emoji-${item.label}`}
+                    className="emoji-wrapper"
+                    transition={{
+                        layout: {
+                            type: "spring",
+                            stiffness: 500,
+                            damping: 40,
+                        },
+                    }}
+                > */}
+                <motion.div className="emoji-wrapper">
                     {/* <div className="group-hover:scale-110 transition-transform"> */}
-                    {item.emoji}
+                    <div className="emoji-glyph">
+                        {item.emoji}
+                    </div>
                     {/* </div> */}
                 </motion.div>
 
