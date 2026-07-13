@@ -73,12 +73,16 @@ export default function ProductTile({
 
                 <div className="flex-grow" />
 
-                <h2 className="text-3xl font-black text-white">
+                <motion.h2
+                    layoutId={`title-${item.label}`}
+                    className="text-3xl font-black text-white"
+                >
                     {item.label}
+                    
                     <span className="inline-block mt-2 rounded-full bg-green-500/20 px-3 py-1 text-xs font-semibold text-green-100">
                         Fresh Today
                     </span>
-                </h2>
+                </motion.h2>
 
                 <p className="mt-3 text-white/70 line-clamp-3">
                     {item.description}

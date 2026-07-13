@@ -104,7 +104,11 @@ const ProductDetail = ({
 
         <div className="product-detail-info">
 
-          <h2>{product.label}</h2>
+          <motion.h2
+            layoutId={`title-${product.label}`}
+          >
+            {product.label}
+          </motion.h2>
 
           <p className="detail-price">
             ${product.price}
