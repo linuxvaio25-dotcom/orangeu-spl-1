@@ -128,27 +128,41 @@ export const fruitsections = [
     description: "Fresh fruit picked daily.",
 
     items: [
-     {
-    label: "Apple",
-    emoji: "🍎",
-    price: 0.99,
-    description:
-      "Crisp, sweet apple slices perfect for snacking."
-  },
-  {
-    label: "Banana",
-    emoji: "🍌",
-    price: 0.69,
-    description:
-      "Soft and creamy banana."
-  },
-  {
-    label: "Orange",
-    emoji: "🍊",
-    price: 1.19,
-    description:
-      "Juicy orange full of vitamin C."
-  }
+      {
+        label: "Apple",
+        emoji: "🍎",
+        price: 0.99,
+        description:
+          "Crisp, sweet apple slices perfect for snacking."
+      },
+      {
+        label: "Banana",
+        emoji: "🍌",
+        price: 0.69,
+        description:
+          "Soft and creamy banana."
+      },
+      {
+        label: "Orange",
+        emoji: "🍊",
+        price: 1.19,
+        description:
+          "Juicy orange full of vitamin C."
+      },
+      {
+        label: "Grapes",
+        emoji: "🍇",
+        price: 1.00,
+        description:
+          "Juicy grapes full of natural sweetness."
+      },
+      {
+        label: 'Blueberry',
+        emoji: '🫐',
+        price: 2.99,
+        description:
+          "Tiny bursts of berry flavor with antioxidants, perfect for topping yogurt or pancakes.",
+      },
     ]
   },
   {
@@ -165,13 +179,49 @@ export const fruitsections = [
     description:
       "Cold pressed juices made from real fruit.",
 
-    items: []
+    items: [
+      {
+        label: "Fresh Orange Juice",
+        emoji: "🍊",
+        price: 3.49,
+        description:
+          "Bright and zesty orange juice with natural sweetness for a refreshing start to your day.",
+      },
+      {
+        label: 'Apple Juice',
+        emoji: '🍎',
+        price: 3.29,
+        description:
+          "Smooth apple juice with crisp orchard flavor, great for a light, fruity drink.",
+      },
+      {
+        label: 'Berry Blast',
+        emoji: '🍓',
+        price: 3.99,
+        description:
+          "A mixed berry juice full of sweet and tart flavors, made from strawberries, raspberries, and blueberries.",
+      },
+      {
+        label: 'Green Detox',
+        emoji: '🥬',
+        price: 4.29,
+        description:
+          "A fresh green juice blend with spinach, cucumber, and apple for a cleansing boost.",
+      },
+      {
+        label: 'Mango Tango',
+        emoji: '🥭',
+        price: 3.89,
+        description:
+          "Sweet tropical mango juice that feels like a mini-vacation in every sip.",
+      },
+    ]
   },
   {
     title: "Smoothies",
 
     // emoji: "🍹"
-    emoji: "🍓",
+    emoji: "🍓🍍",
 
     color: "from-pink-500 via-purple-400 to-indigo-400",
 
@@ -180,7 +230,43 @@ export const fruitsections = [
     description:
       'Creamy frozen fruit blends with yogurt, berries, and tropical flavors.',
 
-    items: []
+    items: [
+      {
+        label: 'Strawberry Banana',
+        emoji: '🍓🍌',
+        price: 5.29,
+        description:
+          "A classic smoothie with strawberries and banana for a creamy, balanced flavor.",
+      },
+      {
+        label: 'Blueberry Bliss',
+        emoji: '🫐',
+        price: 5.49,
+        description:
+          "A blueberry-forward smoothie with a smooth, sweet-tart taste and a velvety texture.",
+      },
+      {
+        label: 'Tropical Mango',
+        emoji: '🥭',
+        price: 5.79,
+        description:
+          "A tropical smoothie packed with mango, pineapple, and coconut for a vacation-style treat.",
+      },
+      {
+        label: 'Green Goddess',
+        emoji: '🥬',
+        price: 5.99,
+        description:
+          "A nutrient-rich green smoothie with spinach, banana, and avocado for a creamy, healthy boost.",
+      },
+      {
+        label: 'Berry Protein',
+        emoji: '🍇',
+        price: 6.29,
+        description:
+          "A protein-packed smoothie with mixed berries and a creamy finish for workout recovery.",
+      },
+    ]
   },
   {
     title: "Exotics",
@@ -194,12 +280,28 @@ export const fruitsections = [
     description:
       "Tropical fruits from around the world.",
 
-    items: []
+    items: [
+      {
+        label: 'Dragon Fruit',
+        emoji: '🐉',
+        price: 4.99,
+        description:
+          "Exotic dragon fruit with a unique flavor and vibrant color.",
+      },
+      {
+        label: 'Passion Fruit',
+        emoji: '🥭',
+        price: 4.99,
+        description:
+          "Tropical passion fruit with a sweet and tangy flavor.",
+      }
+    ]
   },
   {
     title: "Bakery",
 
-    emoji: "🥐",
+    // emoji: "🥐",
+    emoji: "🍰",
 
     color: "from-amber-700 via-orange-500 to-yellow-300",
 
@@ -208,7 +310,37 @@ export const fruitsections = [
     description:
       "Cold pressed juices made from real fruit.",
 
-    items: []
+    items: [
+      {
+        label: 'Blueberry Cake',
+        emoji: '🫐',
+        price: 13.99,
+        description:
+          "Tiny bursts of berry flavor with antioxidants, .",
+      },
+    ]
+  },
+  {
+    title: "Spirits",
+
+    emoji: "🥂",
+
+    color: "from-rose-700 via-red-500 to-orange-300",
+
+    video: "/videos/juice-1.mp4",
+
+    description:
+      "Cold pressed juices made from real fruit.",
+
+    items: [
+      {
+        label: 'Blueberry Flavored Wine',
+        emoji: '🫐',
+        price: 23.99,
+        description:
+          "Tiny bursts of berry flavor with antioxidants, .",
+      },
+    ]
   }
 ];
 

@@ -96,7 +96,15 @@ const ProductDetail = ({
             },
           }}
         > */}
-        <motion.div className="emoji-wrapper">
+        {/* <motion.div className="emoji-wrapper">
+          <div className="emoji-glyph">
+            {product.emoji}
+          </div>
+        </motion.div> */}
+        <motion.div
+          layoutId={`emoji-${product.label}`}
+          className="emoji-wrapper"
+        >
           <div className="emoji-glyph">
             {product.emoji}
           </div>
@@ -104,15 +112,27 @@ const ProductDetail = ({
 
         <div className="product-detail-info">
 
-          <motion.h2
+          {/* <motion.h2
             layoutId={`title-${product.label}`}
           >
             {product.label}
-          </motion.h2>
+          </motion.h2> */}
 
-          <p className="detail-price">
+          <h2>
+            <motion.span layoutId={`title-${product.label}`}>
+              {product.label}
+            </motion.span>
+          </h2>
+
+          {/* <p className="detail-price">
             ${product.price}
-          </p>
+          </p> */}
+          <motion.p
+            layoutId={`price-${product.label}`}
+            className="text-3xl font-bold text-white"
+          >
+            ${product.price}
+          </motion.p>
 
           <p className="detail-description">
             {product.description}

@@ -63,26 +63,44 @@ export default function ProductTile({
                         },
                     }}
                 > */}
-                <motion.div className="emoji-wrapper">
-                    {/* <div className="group-hover:scale-110 transition-transform"> */}
+                {/* <motion.div className="emoji-wrapper">
+                    <div className="group-hover:scale-110 transition-transform">
                     <div className="emoji-glyph">
                         {item.emoji}
                     </div>
-                    {/* </div> */}
+                    </div>
+                </motion.div> */}
+                <motion.div
+                    layoutId={`emoji-${item.label}`}
+                    className="emoji-wrapper"
+                >
+                    <div className="emoji-glyph">
+                        {item.emoji}
+                    </div>
                 </motion.div>
 
                 <div className="flex-grow" />
 
-                <motion.h2
+                {/* <motion.h2
                     layoutId={`title-${item.label}`}
                     className="text-3xl font-black text-white"
                 >
                     {item.label}
-                    
+
                     <span className="inline-block mt-2 rounded-full bg-green-500/20 px-3 py-1 text-xs font-semibold text-green-100">
                         Fresh Today
                     </span>
-                </motion.h2>
+                </motion.h2> */}
+
+                <h2 className="text-3xl font-black text-white">
+                    <motion.span layoutId={`title-${item.label}`}>
+                        {item.label}
+                    </motion.span>
+
+                    <span className="inline-block mt-2 rounded-full ...">
+                        Fresh Today
+                    </span>
+                </h2>
 
                 <p className="mt-3 text-white/70 line-clamp-3">
                     {item.description}
@@ -90,9 +108,16 @@ export default function ProductTile({
 
                 <div className="mt-8 flex items-center justify-between">
 
-                    <span className="text-3xl font-bold text-white">
+                    {/* <span className="text-3xl font-bold text-white">
                         ${item.price.toFixed(2)}
-                    </span>
+                    </span> */}
+
+                    <motion.span
+                        layoutId={`price-${item.label}`}
+                        className="text-3xl font-bold text-white"
+                    >
+                        ${item.price.toFixed(2)}
+                    </motion.span>
 
                     <span
                         className="
