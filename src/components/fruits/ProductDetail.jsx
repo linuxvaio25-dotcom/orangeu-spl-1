@@ -101,14 +101,27 @@ const ProductDetail = ({
             {product.emoji}
           </div>
         </motion.div> */}
-        <motion.div
+        {/* <motion.div
           layoutId={`emoji-${product.label}`}
           className="emoji-wrapper"
         >
           <div className="emoji-glyph">
             {product.emoji}
           </div>
-        </motion.div>
+        </motion.div> */}
+
+{/* // Prevent emoji glyph stretching during shared layout transition.
+// Text-based emoji don't interpolate size cleanly, so animate position only. */}
+        <div className="emoji-wrapper">
+          <motion.div 
+          layoutId={`emoji-${product.label}`}
+          layout="position"
+          >
+            <div className="emoji-glyph">
+              {product.emoji}
+            </div>
+          </motion.div>
+        </div>
 
         <div className="product-detail-info">
 
