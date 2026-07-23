@@ -86,6 +86,7 @@ export default Home; */}
             <img
               // src="/red_orange-resize-2.png"
               src="/ou-logo-1.png"
+              // src="/oU_logo-2.png"
               alt="Orange"
               className="z-20 block"
             />

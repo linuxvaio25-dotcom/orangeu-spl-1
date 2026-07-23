@@ -11,6 +11,9 @@ export default function ProductTile({
         // <button
         <motion.button
             layoutId={`card-${item.label}`}
+            // transition={{
+            //     layout: spring.card,
+            // }}
             onClick={onClick}
             className={`
         group
@@ -79,12 +82,12 @@ export default function ProductTile({
                     </div>
                 </motion.div> */}
 
-{/* // Prevent emoji glyph stretching during shared layout transition.
+                {/* // Prevent emoji glyph stretching during shared layout transition.
 // Text-based emoji don't interpolate size cleanly, so animate position only. */}
                 <div className="emoji-wrapper">
-                    <motion.div 
-                    layoutId={`emoji-${item.label}`}
-                    layout="position"
+                    <motion.div
+                        layoutId={`emoji-${item.label}`}
+                        layout="position"
                     >
                         <div className="emoji-glyph">
                             {item.emoji}

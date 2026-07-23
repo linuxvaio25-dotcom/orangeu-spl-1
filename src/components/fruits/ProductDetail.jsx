@@ -69,6 +69,9 @@ const ProductDetail = ({
     // <section className="product-detail">
     <motion.section
       layoutId={`card-${product.label}`}
+      // transition={{
+      //   layout: spring.card,
+      // }}
       className="product-detail"
     >
 
@@ -110,12 +113,12 @@ const ProductDetail = ({
           </div>
         </motion.div> */}
 
-{/* // Prevent emoji glyph stretching during shared layout transition.
+        {/* // Prevent emoji glyph stretching during shared layout transition.
 // Text-based emoji don't interpolate size cleanly, so animate position only. */}
         <div className="emoji-wrapper">
-          <motion.div 
-          layoutId={`emoji-${product.label}`}
-          layout="position"
+          <motion.div
+            layoutId={`emoji-${product.label}`}
+            layout="position"
           >
             <div className="emoji-glyph">
               {product.emoji}

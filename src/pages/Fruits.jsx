@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
 
+import { spring } from "../utils/motion";
+
 import { fruitsections } from "../index";
 import AnimatedBackground from "../components/fruits/AnimatedBackground";
 import CategoryGrid from "../components/fruits/CategoryGrid";
@@ -11,16 +13,63 @@ export default function Fruits() {
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cart, setCart] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+
+  // const addToCart = (product, quantity) => {
+  //   //const addToCart = (product, 4) => {
+  //   setCart((current) => [
+  //     ...current,
+  //     {
+  //       ...product,
+  //       quantity,
+  //     },
+  //   ]);
+  // };
 
   const addToCart = (product, quantity) => {
-    //const addToCart = (product, 4) => {
-    setCart((current) => [
-      ...current,
-      {
-        ...product,
-        quantity,
-      },
-    ]);
+    setCart((current) => {
+      const existing = current.find(
+        (item) => item.label === product.label
+      );
+
+      if (existing) {
+        return current.map((item) =>
+          item.label === product.label
+            ? {
+              ...item,
+              quantity: item.quantity + quantity,
+            }
+            : item
+        );
+      }
+
+      return [
+        ...current,
+        {
+          ...product,
+          quantity,
+        },
+      ];
+    });
+  };
+
+  const updateQuantity = (label, quantity) => {
+    setCart((current) =>
+      current.map((item) =>
+        item.label === label
+          ? {
+            ...item,
+            quantity,
+          }
+          : item
+      )
+    );
+  };
+
+  const removeFromCart = (label) => {
+    setCart((current) =>
+      current.filter((item) => item.label !== label)
+    );
   };
 
   const isBrowsingProducts = activeCategory !== null;
@@ -30,6 +79,11 @@ export default function Fruits() {
   //   setSelectedProduct(null);
   //   setActiveCategory(null);
   // };
+
+  const cartItemCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
@@ -88,7 +142,7 @@ export default function Fruits() {
             </AnimatePresence>
           </LayoutGroup>
         )}
-        {cart.length > 0 && (
+        {/* {cart.length > 0 && (
           <motion.div
             key={cart.length}
             initial={{
@@ -109,8 +163,50 @@ export default function Fruits() {
             className="fixed right-8 top-24 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl"
           >
             🛒 {cart.length}
+            🛒 {cartItemCount}
           </motion.div>
+        )} */}
+
+        {cartItemCount > 0 && (
+          <motion.button
+            onClick={() => setIsCartOpen(true)}
+            key={cartItemCount}
+            initial={{
+              scale: 0.8,
+              opacity: 0,
+            }}
+            animate={{
+              scale: 1,
+              opacity: 1,
+            }}
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{
+              scale: 0.95,
+            }}
+            transition={spring.button}
+            className="
+      fixed
+      right-8
+      top-24
+      z-50
+      rounded-full
+      bg-white/80
+      backdrop-blur-xl
+      px-5
+      py-3
+      shadow-xl
+      text-lg
+    "
+          >
+            🛒 {cartItemCount}
+          </motion.button>
         )}
+
+        <pre className="fixed bottom-4 left-4 z-50 rounded-lg bg-black/70 p-4 text-xs text-white">
+          {JSON.stringify(cart, null, 2)}
+        </pre>
       </div>
     </div>
   );
