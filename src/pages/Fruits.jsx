@@ -8,6 +8,7 @@ import AnimatedBackground from "../components/fruits/AnimatedBackground";
 import CategoryGrid from "../components/fruits/CategoryGrid";
 import ProductGrid from "../components/fruits/ProductGrid";
 import ProductDetail from "../components/fruits/ProductDetail";
+import CartDrawer from "../components/fruits/CartDrawer";
 
 export default function Fruits() {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -84,6 +85,8 @@ export default function Fruits() {
     (total, item) => total + item.quantity,
     0
   );
+
+console.log("isCartOpen:", isCartOpen);
 
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
@@ -170,6 +173,12 @@ export default function Fruits() {
         {cartItemCount > 0 && (
           <motion.button
             onClick={() => setIsCartOpen(true)}
+  //         <motion.button
+  // onClick={() => {
+  //   console.log("Opening cart");
+  //   setIsCartOpen(true);
+  // }}
+
             key={cartItemCount}
             initial={{
               scale: 0.8,
@@ -199,10 +208,28 @@ export default function Fruits() {
       shadow-xl
       text-lg
     "
+//     className="
+// fixed
+// top-4
+// left-4
+// z-[9999]
+// bg-red-500
+// text-white
+// p-6
+// "
           >
             🛒 {cartItemCount}
           </motion.button>
         )}
+
+        <AnimatePresence>
+          {isCartOpen && (
+            <CartDrawer
+              onClose={() => setIsCartOpen(false)}
+              cart={cart}
+            />
+          )}
+        </AnimatePresence>
 
         <pre className="fixed bottom-4 left-4 z-50 rounded-lg bg-black/70 p-4 text-xs text-white">
           {JSON.stringify(cart, null, 2)}
