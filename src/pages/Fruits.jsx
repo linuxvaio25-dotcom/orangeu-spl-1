@@ -86,7 +86,7 @@ export default function Fruits() {
     0
   );
 
-console.log("isCartOpen:", isCartOpen);
+  console.log("isCartOpen:", isCartOpen);
 
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
@@ -173,11 +173,11 @@ console.log("isCartOpen:", isCartOpen);
         {cartItemCount > 0 && (
           <motion.button
             onClick={() => setIsCartOpen(true)}
-  //         <motion.button
-  // onClick={() => {
-  //   console.log("Opening cart");
-  //   setIsCartOpen(true);
-  // }}
+            //         <motion.button
+            // onClick={() => {
+            //   console.log("Opening cart");
+            //   setIsCartOpen(true);
+            // }}
 
             key={cartItemCount}
             initial={{
@@ -196,27 +196,27 @@ console.log("isCartOpen:", isCartOpen);
             }}
             transition={spring.button}
             className="
-      fixed
-      right-8
-      top-24
-      z-50
-      rounded-full
-      bg-white/80
-      backdrop-blur-xl
-      px-5
-      py-3
-      shadow-xl
-      text-lg
-    "
-//     className="
-// fixed
-// top-4
-// left-4
-// z-[9999]
-// bg-red-500
-// text-white
-// p-6
-// "
+              fixed
+              right-8
+              top-24
+              z-50
+              rounded-full
+              bg-white/80
+              backdrop-blur-xl
+              px-5
+              py-3
+              shadow-xl
+              text-lg
+            "
+          //     className="
+          // fixed
+          // top-4
+          // left-4
+          // z-[9999]
+          // bg-red-500
+          // text-white
+          // p-6
+          // "
           >
             🛒 {cartItemCount}
           </motion.button>
@@ -224,9 +224,15 @@ console.log("isCartOpen:", isCartOpen);
 
         <AnimatePresence>
           {isCartOpen && (
+            // <CartDrawer
+            //   onClose={() => setIsCartOpen(false)}
+            //   cart={cart}
+            // />
             <CartDrawer
-              onClose={() => setIsCartOpen(false)}
               cart={cart}
+              onClose={() => setIsCartOpen(false)}
+              onUpdateQuantity={updateQuantity}
+              onRemove={removeFromCart}
             />
           )}
         </AnimatePresence>

@@ -1,8 +1,14 @@
 import { motion } from "framer-motion";
 
+// export default function CartDrawer({
+//     cart,
+//     onClose,
+// }) {
 export default function CartDrawer({
     cart,
     onClose,
+    onUpdateQuantity,
+    onRemove,
 }) {
     console.log(cart);
     return (
@@ -16,20 +22,34 @@ export default function CartDrawer({
             />
 
             <motion.aside
+                // className="
+                //     fixed
+                //     right-0
+                //     top-0
+                //     z-50
+                //     h-screen
+                //     w-[420px]
+                //     bg-white/20
+                //     backdrop-blur-2xl
+                //     border-l
+                //     border-white/20
+                //     shadow-2xl
+                //     p-8
+                // "
                 className="
-          fixed
-          right-0
-          top-0
-          z-50
-          h-screen
-          w-[420px]
-          bg-white/20
-          backdrop-blur-2xl
-          border-l
-          border-white/20
-          shadow-2xl
-          p-8
-        "
+                    fixed
+                    right-0
+                    top-0
+                    z-50
+                    h-screen
+                    w-[420px]
+                    bg-white/15
+                    backdrop-blur-xl
+                    border-l
+                    border-white/20
+                    shadow-2xl
+                    p-8
+                "
                 initial={{
                     x: "100%",
                 }}
@@ -53,8 +73,12 @@ export default function CartDrawer({
           {cart.length} products
         </p> */}
 
-                <div className="mt-8 space-y-4">
-                {/* <div className="mt-8 space-y-4 text-white">
+                {/* <div className="mt-32 space-y-4"> */}
+                <div
+                    style={{ marginTop: "100px" }}
+                    className="space-y-6"
+                >
+                    {/* <div className="mt-8 space-y-4 text-white">
     {JSON.stringify(cart)} */}
                     {cart.map((item) => (
                         <motion.div
@@ -72,12 +96,12 @@ export default function CartDrawer({
                                 y: -16,
                             }}
                             className="
-        rounded-2xl
-        bg-white/10
-        border
-        border-white/15
-        p-4
-      "
+                                rounded-2xl
+                                bg-white/10
+                                border
+                                border-white/15
+                                p-4
+                            "
                         >
                             <div className="flex items-center justify-between">
 
@@ -100,10 +124,40 @@ export default function CartDrawer({
                                     </div>
 
                                 </div>
+                                <div className="flex items-center gap-3">
 
-                                <div className="text-white font-semibold">
-                                    × {item.quantity}
+                                    <button
+                                        className="rounded-full bg-white/10 px-3 py-1 text-white"
+                                        onClick={() =>
+                                            onUpdateQuantity(
+                                                item.label,
+                                                Math.max(1, item.quantity - 1)
+                                            )
+                                        }
+                                    >
+                                        −
+                                    </button>
+
+                                    <span className="text-white font-semibold w-6 text-center">
+                                        {item.quantity}
+                                    </span>
+
+                                    <button
+                                        className="rounded-full bg-white/10 px-3 py-1 text-white"
+                                        onClick={() =>
+                                            onUpdateQuantity(
+                                                item.label,
+                                                item.quantity + 1
+                                            )
+                                        }
+                                    >
+                                        +
+                                    </button>
+
                                 </div>
+                                {/* <div className="text-white font-semibold">
+                                    × {item.quantity}
+                                </div> */}
 
                             </div>
                         </motion.div>
