@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { spring } from "../../utils/motion";
 
 // export default function CartDrawer({
 //     cart,
@@ -81,6 +82,107 @@ export default function CartDrawer({
                     {/* <div className="mt-8 space-y-4 text-white">
     {JSON.stringify(cart)} */}
                     {cart.map((item) => (
+                        //                     <motion.div
+                        //                         key={item.label}
+                        //                         initial={{
+                        //                             opacity: 0,
+                        //                             y: 16,
+                        //                         }}
+                        //                         animate={{
+                        //                             opacity: 1,
+                        //                             y: 0,
+                        //                         }}
+                        //                         exit={{
+                        //                             opacity: 0,
+                        //                             y: -16,
+                        //                         }}
+                        //                         className="
+                        //                             rounded-2xl
+                        //                             bg-white/10
+                        //                             border
+                        //                             border-white/15
+                        //                             p-4
+                        //                         "
+                        //                     >
+                        //                         <div className="flex items-center justify-between">
+
+                        //                             <div className="flex items-center gap-4">
+
+                        //                                 <div className="text-4xl">
+                        //                                     {item.emoji}
+                        //                                 </div>
+
+                        //                                 <div>
+
+                        //                                     <h3 className="font-semibold text-white">
+                        //                                         {item.label}
+                        //                                     </h3>
+
+                        //                                     <p className="text-sm text-white/70">
+                        //                                         ${item.price}
+                        //                                     </p>
+
+                        //                                 </div>
+
+                        //                             </div>
+                        //                             <div className="flex items-center gap-3">
+
+                        //                                 <button
+                        //                                     className="rounded-full bg-white/10 px-3 py-1 text-white"
+                        //                                     onClick={() =>
+                        //                                         onUpdateQuantity(
+                        //                                             item.label,
+                        //                                             Math.max(1, item.quantity - 1)
+                        //                                         )
+                        //                                     }
+                        //                                 >
+                        //                                     −
+                        //                                 </button>
+
+                        //                                 <span className="text-white font-semibold w-6 text-center">
+                        //                                     {item.quantity}
+                        //                                 </span>
+
+                        //                                 <button
+                        //                                     className="rounded-full bg-white/10 px-3 py-1 text-white"
+                        //                                     onClick={() =>
+                        //                                         onUpdateQuantity(
+                        //                                             item.label,
+                        //                                             item.quantity + 1
+                        //                                         )
+                        //                                     }
+                        //                                 >
+                        //                                     +
+                        //                                 </button>
+
+
+
+                        //                             </div>
+                        //                             <motion.button
+                        //                                 whileHover={{
+                        //                                     scale: 1.03,
+                        //                                 }}
+                        //                                 whileTap={{
+                        //                                     scale: 0.97,
+                        //                                 }}
+                        //                                 transition={spring.button}
+                        //                                 onClick={() => onRemove(item.label)}
+                        //                                 className="
+                        //     mt-4
+                        //     text-sm
+                        //     text-red-300
+                        //     hover:text-red-200
+                        // "
+                        //                             >
+                        //                                 Remove
+                        //                             </motion.button>
+                        //                             {/* <div className="text-white font-semibold">
+                        //                                 × {item.quantity}
+                        //                             </div> */}
+
+                        //                         </div>
+                        //                     </motion.div>
+
                         <motion.div
                             key={item.label}
                             initial={{
@@ -96,18 +198,20 @@ export default function CartDrawer({
                                 y: -16,
                             }}
                             className="
-                                rounded-2xl
-                                bg-white/10
-                                border
-                                border-white/15
-                                p-4
-                            "
+        rounded-2xl
+        bg-white/10
+        border
+        border-white/15
+        p-5
+    "
                         >
-                            <div className="flex items-center justify-between">
+                            {/* Top Row */}
 
-                                <div className="flex items-center gap-4">
+                            <div className="flex items-center justify-between gap-8" style={{ paddingBottom: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
 
-                                    <div className="text-4xl">
+                                <div className="flex items-center gap-6">
+
+                                    <div className="text-4xl leading-none">
                                         {item.emoji}
                                     </div>
 
@@ -117,50 +221,51 @@ export default function CartDrawer({
                                             {item.label}
                                         </h3>
 
-                                        <p className="text-sm text-white/70">
-                                            ${item.price}
-                                        </p>
-
                                     </div>
 
                                 </div>
-                                <div className="flex items-center gap-3">
 
-                                    <button
-                                        className="rounded-full bg-white/10 px-3 py-1 text-white"
-                                        onClick={() =>
-                                            onUpdateQuantity(
-                                                item.label,
-                                                Math.max(1, item.quantity - 1)
-                                            )
-                                        }
-                                    >
-                                        −
-                                    </button>
+                                <p className="font-semibold text-white">
+                                    ${item.price}
+                                </p>
 
-                                    <span className="text-white font-semibold w-6 text-center">
+                            </div>
+
+                            {/* Bottom Row */}
+
+                            <div className="flex flex-col items-start gap-4" style={{ marginTop: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
+
+                                <div className="flex items-center gap-3 rounded-full bg-white/10 px-3 py-2">
+
+                                    <motion.button className="px-1 text-white/80">-</motion.button>
+
+                                    <span className="min-w-6 text-center text-white">
                                         {item.quantity}
                                     </span>
 
-                                    <button
-                                        className="rounded-full bg-white/10 px-3 py-1 text-white"
-                                        onClick={() =>
-                                            onUpdateQuantity(
-                                                item.label,
-                                                item.quantity + 1
-                                            )
-                                        }
-                                    >
-                                        +
-                                    </button>
+                                    <motion.button className="px-1 text-white/80">+</motion.button>
 
                                 </div>
-                                {/* <div className="text-white font-semibold">
-                                    × {item.quantity}
-                                </div> */}
+
+                                <motion.button
+                                    whileHover={{
+                                        scale: 1.03,
+                                    }}
+                                    whileTap={{
+                                        scale: 0.97,
+                                    }}
+                                    transition={spring.button}
+                                    onClick={() => onRemove(item.label)}
+                                    className="text-sm text-red-300 hover:text-red-200"
+                                >
+                                    Remove
+                                </motion.button>
 
                             </div>
+
                         </motion.div>
+
+
                     ))}
                 </div>
             </motion.aside>
