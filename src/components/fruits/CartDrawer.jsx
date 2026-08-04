@@ -43,7 +43,7 @@ export default function CartDrawer({
                     top-0
                     z-50
                     h-screen
-                    w-[420px]
+                    w-[460px]
                     bg-white/15
                     backdrop-blur-xl
                     border-l
@@ -233,9 +233,17 @@ export default function CartDrawer({
 
                             {/* Bottom Row */}
 
-                            <div className="flex flex-col items-start gap-4" style={{ marginTop: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
+                            {/* <div className="flex flex-col items-start gap-4" style={{ marginTop: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}> */}
+                            <div
+                                className="flex items-center justify-between"
+                                style={{
+                                    marginTop: "16px",
+                                    paddingLeft: "0.5rem",
+                                    paddingRight: "0.5rem",
+                                }}
+                            >
 
-                                <div className="flex items-center gap-3 rounded-full bg-white/10 px-3 py-2">
+                                <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
 
                                     <motion.button className="px-1 text-white/80">-</motion.button>
 
@@ -247,7 +255,7 @@ export default function CartDrawer({
 
                                 </div>
 
-                                <motion.button
+                                {/* <motion.button
                                     whileHover={{
                                         scale: 1.03,
                                     }}
@@ -257,6 +265,26 @@ export default function CartDrawer({
                                     transition={spring.button}
                                     onClick={() => onRemove(item.label)}
                                     className="text-sm text-red-300 hover:text-red-200"
+                                >
+                                    Remove
+                                </motion.button> */}
+
+                                  <motion.button
+                                    whileHover={{
+                                        scale: 1.03,
+                                    }}
+                                    whileTap={{
+                                        scale: 0.97,
+                                    }}
+                                    transition={spring.button}
+                                    onClick={() => onRemove(item.label)}
+                                    className="
+                                    text-sm
+                                    font-medium
+                                    text-white/60
+                                    hover:text-red-300
+                                    transition-colors
+"
                                 >
                                     Remove
                                 </motion.button>
