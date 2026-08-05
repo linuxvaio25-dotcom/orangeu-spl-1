@@ -7,6 +7,8 @@ import { spring } from "../../utils/motion";
 // }) {
 export default function CartDrawer({
     cart,
+    subtotal,
+    cartItemCount,
     onClose,
     onUpdateQuantity,
     onRemove,
@@ -50,6 +52,9 @@ export default function CartDrawer({
                     border-white/20
                     shadow-2xl
                     p-8
+
+                    flex
+                    flex-col
                 "
                 initial={{
                     x: "100%",
@@ -70,6 +75,10 @@ export default function CartDrawer({
                     Your Basket
                 </h2>
 
+                <p className="mt-2 text-sm text-white/70">
+                    {cartItemCount} {cartItemCount === 1 ? "item" : "items"}
+                </p>
+
                 {/* <p className="mt-4 text-white/80">
           {cart.length} products
         </p> */}
@@ -77,7 +86,7 @@ export default function CartDrawer({
                 {/* <div className="mt-32 space-y-4"> */}
                 <div
                     style={{ marginTop: "100px" }}
-                    className="space-y-6"
+                    className="flex-1 space-y-6 overflow-y-auto"
                 >
                     {/* <div className="mt-8 space-y-4 text-white">
     {JSON.stringify(cart)} */}
@@ -198,12 +207,12 @@ export default function CartDrawer({
                                 y: -16,
                             }}
                             className="
-        rounded-2xl
-        bg-white/10
-        border
-        border-white/15
-        p-5
-    "
+                                rounded-2xl
+                                bg-white/10
+                                border
+                                border-white/15
+                                p-5
+                            "
                         >
                             {/* Top Row */}
 
@@ -245,13 +254,31 @@ export default function CartDrawer({
 
                                 <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
 
-                                    <motion.button className="px-1 text-white/80">-</motion.button>
+                                    <motion.button whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={spring.button}
+                                        className="px-1 text-white/80"
+                                        onClick={() =>
+                                            onUpdateQuantity(
+                                                item.label,
+                                                Math.max(1, item.quantity - 1)
+                                            )
+                                        }>-</motion.button>
 
                                     <span className="min-w-6 text-center text-white">
                                         {item.quantity}
                                     </span>
 
-                                    <motion.button className="px-1 text-white/80">+</motion.button>
+                                    <motion.button whileHover={{ scale: 1.05 }}
+                                        whileTap={{ scale: 0.95 }}
+                                        transition={spring.button}
+                                        className="px-1 text-white/80"
+                                        onClick={() =>
+                                            onUpdateQuantity(
+                                                item.label,
+                                                item.quantity + 1
+                                            )
+                                        }>+</motion.button>
 
                                 </div>
 
@@ -269,7 +296,7 @@ export default function CartDrawer({
                                     Remove
                                 </motion.button> */}
 
-                                  <motion.button
+                                <motion.button
                                     whileHover={{
                                         scale: 1.03,
                                     }}
@@ -296,6 +323,47 @@ export default function CartDrawer({
 
                     ))}
                 </div>
+
+                <div
+                    className="mt-8 border-t border-white/15 pt-6"
+                >
+                    <div className="flex items-center justify-between">
+
+                        <span className="text-lg text-white/70">
+                            Subtotal
+                        </span>
+
+                        <span className="text-2xl font-bold text-white">
+                            ${subtotal.toFixed(2)}
+                        </span>
+
+                    </div>
+                </div>
+
+                <motion.button
+                    whileHover={{
+                        scale: 1.02,
+                        y: -2,
+                    }}
+                    whileTap={{
+                        scale: 0.98,
+                    }}
+                    transition={spring.button}
+                    className="
+                        mt-6
+                        w-full
+                        rounded-2xl
+                        bg-white
+                        py-4
+                        text-lg
+                        font-semibold
+                        text-gray-900
+                        shadow-lg
+                    "
+                >
+                    Checkout
+                </motion.button>
+
             </motion.aside>
         </>
     );

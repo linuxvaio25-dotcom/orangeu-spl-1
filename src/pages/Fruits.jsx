@@ -88,6 +88,11 @@ export default function Fruits() {
 
   console.log("isCartOpen:", isCartOpen);
 
+  const subtotal = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
 
@@ -230,6 +235,8 @@ export default function Fruits() {
             // />
             <CartDrawer
               cart={cart}
+              subtotal={subtotal}
+              cartItemCount={cartItemCount}
               onClose={() => setIsCartOpen(false)}
               onUpdateQuantity={updateQuantity}
               onRemove={removeFromCart}
@@ -237,9 +244,9 @@ export default function Fruits() {
           )}
         </AnimatePresence>
 
-        <pre className="fixed bottom-4 left-4 z-50 rounded-lg bg-black/70 p-4 text-xs text-white">
+        {/* <pre className="fixed bottom-4 left-4 z-50 rounded-lg bg-black/70 p-4 text-xs text-white">
           {JSON.stringify(cart, null, 2)}
-        </pre>
+        </pre> */}
       </div>
     </div>
   );
