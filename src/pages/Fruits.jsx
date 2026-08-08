@@ -10,11 +10,11 @@ import ProductGrid from "../components/fruits/ProductGrid";
 import ProductDetail from "../components/fruits/ProductDetail";
 import CartDrawer from "../components/fruits/CartDrawer";
 
-export default function Fruits() {
+export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden }) {
   const [activeCategory, setActiveCategory] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [cart, setCart] = useState([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  // const [isCartOpen, setIsCartOpen] = useState(false);
 
   // const addToCart = (product, quantity) => {
   //   //const addToCart = (product, 4) => {
@@ -177,7 +177,10 @@ export default function Fruits() {
 
         {cartItemCount > 0 && (
           <motion.button
-            onClick={() => setIsCartOpen(true)}
+            onClick={() => {
+              setIsCartMenuHidden(true);
+              setIsCartOpen(true);
+            }}
             //         <motion.button
             // onClick={() => {
             //   console.log("Opening cart");
@@ -227,7 +230,10 @@ export default function Fruits() {
           </motion.button>
         )}
 
-        <AnimatePresence>
+        {/* <AnimatePresence> */}
+        <AnimatePresence
+          onExitComplete={() => setIsCartMenuHidden(false)}
+        >
           {isCartOpen && (
             // <CartDrawer
             //   onClose={() => setIsCartOpen(false)}

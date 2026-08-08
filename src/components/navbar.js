@@ -111,11 +111,11 @@ export function toggle() {
   isOpen ? tl.timeScale(1).play(0) : tl.timeScale(1.1).play();
 }
 
-if (typeof window !== 'undefined') {
-  window.addEventListener('load', () => {
-    try { init(); } catch (e) {}
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && isOpen) toggle();
-    });
-  });
-}
+// if (typeof window !== 'undefined') {
+//   window.addEventListener('load', () => {
+//     try { init(); } catch (e) {}
+//     document.addEventListener('keydown', (e) => {
+//       if (e.key === 'Escape' && isOpen) toggle();
+//     });
+//   });
+// }

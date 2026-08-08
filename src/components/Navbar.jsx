@@ -8,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Navbar = () => {
+const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
   const { isLoggedIn } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -49,11 +49,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { label: 'Home',            path: '/' },
-    { label: 'About',           path: '/about' },
-    { label: 'Fruits',          path: '/fruits' },
-    { label: 'Friends',         path: '/friends', onClick: handleFriendsClick },
-    { label: 'Contact Us',      path: '/contact' },
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Fruits', path: '/fruits' },
+    { label: 'Friends', path: '/friends', onClick: handleFriendsClick },
+    { label: 'Contact Us', path: '/contact' },
     { label: 'Sign In/Sign Up', path: '/signin' },
   ];
 
@@ -65,9 +65,22 @@ const Navbar = () => {
       </div> */}
 
       {/* The circle that expands — sits near the transition into the first section on home */}
+      {/* {!isCartOpen && (
+        <> */}
       <div
         className={`menu-bubble ${showNavbar ? 'bubble-visible' : 'bubble-hidden'}`}
+        // style={{
+        //   opacity: isCartOpen ? 0 : 1,
+        //   pointerEvents: isCartOpen ? "none" : "auto",
+        //   transition: "opacity 0.25s ease",
+        // }}
+        style={{
+          opacity: isCartOpen || isCartMenuHidden ? 0 : 1,
+          pointerEvents: isCartOpen || isCartMenuHidden ? "none" : "auto",
+          transition: "opacity 0.25s ease",
+        }}
       />
+
 
       {/* Toggle button — sits on top of bubble, same position */}
       <button
@@ -76,9 +89,21 @@ const Navbar = () => {
         aria-label="Open menu"
         className={`menu-toggle ${showNavbar ? 'bubble-visible' : 'bubble-hidden'}`}
         onClick={toggleNav}
+        // style={{
+        //   opacity: isCartOpen ? 0 : 1,
+        //   pointerEvents: isCartOpen ? "none" : "auto",
+        //   transition: "opacity 0.25s ease",
+        // }}
+        style={{
+          opacity: isCartOpen || isCartMenuHidden ? 0 : 1,
+          pointerEvents: isCartOpen || isCartMenuHidden ? "none" : "auto",
+          transition: "opacity 0.25s ease",
+        }}
       >
         {showNavbar ? 'MENU' : null}
       </button>
+      {/* </>
+      )} */}
 
       {/* Full-screen nav content — revealed as bubble expands */}
       <div className="nav-content">

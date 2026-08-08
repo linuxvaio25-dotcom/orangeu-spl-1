@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { spring } from "../../utils/motion";
+import { AnimatePresence } from "framer-motion";
 
 // export default function CartDrawer({
 //     cart,
@@ -71,12 +72,33 @@ export default function CartDrawer({
                     damping: 32,
                 }}
             >
-                <h2 className="text-3xl font-bold text-white">
+
+                {/* <div className="p-8">
+
+    <div className="pb-20">
+
+        <h2 className="text-5xl font-bold text-white">
+            Your Basket
+        </h2>
+
+        <p className="text-white/70" style={{ marginTop: "20px" }}>
+            {cart.length} items
+        </p>
+
+    </div> */}
+
+                <h2 className="text-3xl font-bold text-white"
+                    style={{ marginTop: "40px" }}
+                >
                     Your Basket
                 </h2>
 
-                <p className="mt-2 text-sm text-white/70">
+                {/* <p className="mt-2 text-sm text-white/70">
                     {cartItemCount} {cartItemCount === 1 ? "item" : "items"}
+                </p> */}
+
+                <p className="text-white/70">
+                    {cart.length} items
                 </p>
 
                 {/* <p className="mt-4 text-white/80">
@@ -84,205 +106,142 @@ export default function CartDrawer({
         </p> */}
 
                 {/* <div className="mt-32 space-y-4"> */}
-                <div
-                    style={{ marginTop: "100px" }}
-                    className="flex-1 space-y-6 overflow-y-auto"
-                >
-                    {/* <div className="mt-8 space-y-4 text-white">
-    {JSON.stringify(cart)} */}
-                    {cart.map((item) => (
-                        //                     <motion.div
-                        //                         key={item.label}
-                        //                         initial={{
-                        //                             opacity: 0,
-                        //                             y: 16,
-                        //                         }}
-                        //                         animate={{
-                        //                             opacity: 1,
-                        //                             y: 0,
-                        //                         }}
-                        //                         exit={{
-                        //                             opacity: 0,
-                        //                             y: -16,
-                        //                         }}
-                        //                         className="
-                        //                             rounded-2xl
-                        //                             bg-white/10
-                        //                             border
-                        //                             border-white/15
-                        //                             p-4
-                        //                         "
-                        //                     >
-                        //                         <div className="flex items-center justify-between">
 
-                        //                             <div className="flex items-center gap-4">
+                <div className="flex-1 overflow-y-auto">
 
-                        //                                 <div className="text-4xl">
-                        //                                     {item.emoji}
-                        //                                 </div>
+                    {cart.length === 0 ? (
 
-                        //                                 <div>
-
-                        //                                     <h3 className="font-semibold text-white">
-                        //                                         {item.label}
-                        //                                     </h3>
-
-                        //                                     <p className="text-sm text-white/70">
-                        //                                         ${item.price}
-                        //                                     </p>
-
-                        //                                 </div>
-
-                        //                             </div>
-                        //                             <div className="flex items-center gap-3">
-
-                        //                                 <button
-                        //                                     className="rounded-full bg-white/10 px-3 py-1 text-white"
-                        //                                     onClick={() =>
-                        //                                         onUpdateQuantity(
-                        //                                             item.label,
-                        //                                             Math.max(1, item.quantity - 1)
-                        //                                         )
-                        //                                     }
-                        //                                 >
-                        //                                     −
-                        //                                 </button>
-
-                        //                                 <span className="text-white font-semibold w-6 text-center">
-                        //                                     {item.quantity}
-                        //                                 </span>
-
-                        //                                 <button
-                        //                                     className="rounded-full bg-white/10 px-3 py-1 text-white"
-                        //                                     onClick={() =>
-                        //                                         onUpdateQuantity(
-                        //                                             item.label,
-                        //                                             item.quantity + 1
-                        //                                         )
-                        //                                     }
-                        //                                 >
-                        //                                     +
-                        //                                 </button>
-
-
-
-                        //                             </div>
-                        //                             <motion.button
-                        //                                 whileHover={{
-                        //                                     scale: 1.03,
-                        //                                 }}
-                        //                                 whileTap={{
-                        //                                     scale: 0.97,
-                        //                                 }}
-                        //                                 transition={spring.button}
-                        //                                 onClick={() => onRemove(item.label)}
-                        //                                 className="
-                        //     mt-4
-                        //     text-sm
-                        //     text-red-300
-                        //     hover:text-red-200
-                        // "
-                        //                             >
-                        //                                 Remove
-                        //                             </motion.button>
-                        //                             {/* <div className="text-white font-semibold">
-                        //                                 × {item.quantity}
-                        //                             </div> */}
-
-                        //                         </div>
-                        //                     </motion.div>
-
-                        <motion.div
-                            key={item.label}
-                            initial={{
-                                opacity: 0,
-                                y: 16,
-                            }}
-                            animate={{
-                                opacity: 1,
-                                y: 0,
-                            }}
-                            exit={{
-                                opacity: 0,
-                                y: -16,
-                            }}
+                        <div
                             className="
+                flex
+                h-full
+                flex-col
+                items-center
+                justify-center
+                text-center
+            "
+                        >
+
+                            <div className="text-7xl">
+                                🛒
+                            </div>
+
+                            <h3 className="mt-6 text-2xl font-semibold text-white">
+                                Your basket is empty
+                            </h3>
+
+                            <p className="mt-3 max-w-xs text-white/70">
+                                Start adding delicious fruit to build your order.
+                            </p>
+
+                        </div>
+
+                    ) : (
+                        <AnimatePresence mode="popLayout">
+                            {/* <div
+                                style={{ marginTop: "100px" }}
+                                className="flex-1 space-y-6 overflow-y-auto"
+                            > */}
+                            {/* <div
+                                style={{ marginTop: "80px" }}
+                            > */}
+                            {/* <div className="mt-8 space-y-4 text-white">
+    {JSON.stringify(cart)} */}
+                            {cart.map((item) => (
+
+
+                                <motion.div
+                                    layout
+                                    key={item.label}
+                                    initial={{
+                                        opacity: 0,
+                                        y: 16,
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0,
+                                    }}
+                                    exit={{
+                                        opacity: 0,
+                                        y: -16,
+                                    }}
+                                    className="
                                 rounded-2xl
                                 bg-white/10
                                 border
                                 border-white/15
                                 p-5
                             "
-                        >
-                            {/* Top Row */}
+                                >
+                                    {/* Top Row */}
 
-                            <div className="flex items-center justify-between gap-8" style={{ paddingBottom: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
+                                    <div className="flex items-center justify-between gap-8" style={{ paddingBottom: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}>
 
-                                <div className="flex items-center gap-6">
+                                        <div className="flex items-center gap-6">
 
-                                    <div className="text-4xl leading-none">
-                                        {item.emoji}
+                                            <div className="text-4xl leading-none">
+                                                {item.emoji}
+                                            </div>
+
+                                            <div>
+
+                                                <h3 className="font-semibold text-white">
+                                                    {item.label}
+                                                </h3>
+
+                                            </div>
+
+                                        </div>
+
+                                        <p className="font-semibold text-white">
+                                            ${item.price}
+                                        </p>
+
                                     </div>
 
-                                    <div>
+                                    {/* Bottom Row */}
 
-                                        <h3 className="font-semibold text-white">
-                                            {item.label}
-                                        </h3>
+                                    {/* <div className="flex flex-col items-start gap-4" style={{ marginTop: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}> */}
+                                    <div
+                                        className="flex items-center justify-between"
+                                        style={{
+                                            marginTop: "16px",
+                                            paddingLeft: "0.5rem",
+                                            paddingRight: "0.5rem",
+                                        }}
+                                    >
 
-                                    </div>
+                                        <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
 
-                                </div>
+                                            <motion.button whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                transition={spring.button}
+                                                className="px-1 text-white/80"
+                                                onClick={() =>
+                                                    onUpdateQuantity(
+                                                        item.label,
+                                                        Math.max(1, item.quantity - 1)
+                                                    )
+                                                }>-</motion.button>
 
-                                <p className="font-semibold text-white">
-                                    ${item.price}
-                                </p>
+                                            <span className="min-w-6 text-center text-white">
+                                                {item.quantity}
+                                            </span>
 
-                            </div>
+                                            <motion.button whileHover={{ scale: 1.05 }}
+                                                whileTap={{ scale: 0.95 }}
+                                                transition={spring.button}
+                                                className="px-1 text-white/80"
+                                                onClick={() =>
+                                                    onUpdateQuantity(
+                                                        item.label,
+                                                        item.quantity + 1
+                                                    )
+                                                }>+</motion.button>
 
-                            {/* Bottom Row */}
+                                        </div>
 
-                            {/* <div className="flex flex-col items-start gap-4" style={{ marginTop: "1rem", paddingLeft: "0.5rem", paddingRight: "0.5rem" }}> */}
-                            <div
-                                className="flex items-center justify-between"
-                                style={{
-                                    marginTop: "16px",
-                                    paddingLeft: "0.5rem",
-                                    paddingRight: "0.5rem",
-                                }}
-                            >
-
-                                <div className="flex items-center gap-3 rounded-full bg-white/10 px-4 py-2">
-
-                                    <motion.button whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        transition={spring.button}
-                                        className="px-1 text-white/80"
-                                        onClick={() =>
-                                            onUpdateQuantity(
-                                                item.label,
-                                                Math.max(1, item.quantity - 1)
-                                            )
-                                        }>-</motion.button>
-
-                                    <span className="min-w-6 text-center text-white">
-                                        {item.quantity}
-                                    </span>
-
-                                    <motion.button whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}
-                                        transition={spring.button}
-                                        className="px-1 text-white/80"
-                                        onClick={() =>
-                                            onUpdateQuantity(
-                                                item.label,
-                                                item.quantity + 1
-                                            )
-                                        }>+</motion.button>
-
-                                </div>
-
-                                {/* <motion.button
+                                        {/* <motion.button
                                     whileHover={{
                                         scale: 1.03,
                                     }}
@@ -296,34 +255,40 @@ export default function CartDrawer({
                                     Remove
                                 </motion.button> */}
 
-                                <motion.button
-                                    whileHover={{
-                                        scale: 1.03,
-                                    }}
-                                    whileTap={{
-                                        scale: 0.97,
-                                    }}
-                                    transition={spring.button}
-                                    onClick={() => onRemove(item.label)}
-                                    className="
+                                        <motion.button
+                                            whileHover={{
+                                                scale: 1.03,
+                                            }}
+                                            whileTap={{
+                                                scale: 0.97,
+                                            }}
+                                            transition={spring.button}
+                                            onClick={() => onRemove(item.label)}
+                                            className="
                                     text-sm
                                     font-medium
                                     text-white/60
                                     hover:text-red-300
                                     transition-colors
 "
-                                >
-                                    Remove
-                                </motion.button>
+                                        >
+                                            Remove
+                                        </motion.button>
 
-                            </div>
+                                    </div>
 
-                        </motion.div>
+                                </motion.div>
 
 
-                    ))}
+                            ))}
+                            {/* </div> */}
+
+                        </AnimatePresence>
+
+                    )}
                 </div>
 
+                {/* </div> */}
                 <div
                     className="mt-8 border-t border-white/15 pt-6"
                 >
