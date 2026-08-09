@@ -24,7 +24,7 @@
 // export default ProductDetail;
 
 // import React from "react";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // import { motion } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
@@ -42,6 +42,8 @@ const ProductDetail = ({
 
   const [quantity, setQuantity] = useState(1);
 
+  const detailRef = useRef(null);
+
   useEffect(() => {
     if (!added) return;
 
@@ -51,6 +53,15 @@ const ProductDetail = ({
 
     return () => clearTimeout(timer);
   }, [added]);
+
+  useEffect(() => {
+    if (!detailRef.current) return;
+
+    detailRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
 
   const handleAddToCart = () => {
     // onAddToCart(product);
@@ -68,6 +79,7 @@ const ProductDetail = ({
   return (
     // <section className="product-detail">
     <motion.section
+      ref={detailRef}
       layoutId={`card-${product.label}`}
       // transition={{
       //   layout: spring.card,
