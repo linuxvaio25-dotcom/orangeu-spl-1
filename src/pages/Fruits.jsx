@@ -127,7 +127,9 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
 
         {activeCategory && (
           <LayoutGroup>
-            <div
+
+
+            {/* <div
               className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
                 }`}
             >
@@ -147,7 +149,34 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
                   onAddToCart={addToCart}
                 />
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
+
+            <div className="products-stage">
+
+              <div
+                className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
+                  }`}
+              >
+                <ProductGrid
+                  category={activeCategory}
+                  onBack={() => setActiveCategory(null)}
+                  onSelectProduct={setSelectedProduct}
+                />
+              </div>
+
+              <AnimatePresence mode="wait">
+                {selectedProduct && (
+                  <ProductDetail
+                    product={selectedProduct}
+                    category={activeCategory}
+                    onBack={() => setSelectedProduct(null)}
+                    onAddToCart={addToCart}
+                  />
+                )}
+              </AnimatePresence>
+
+            </div>
+
           </LayoutGroup>
         )}
         {/* {cart.length > 0 && (
