@@ -57,10 +57,22 @@ const ProductDetail = ({
   useEffect(() => {
     if (!detailRef.current) return;
 
+    // Original scroll behavior (kept commented out for easy rollback):
+    // detailRef.current.scrollIntoView({
+    //   behavior: "smooth",
+    //   block: "start",
+    // });
+
     detailRef.current.scrollIntoView({
       behavior: "smooth",
-      block: "start",
+      block: "center",
     });
+
+    // If you want a fixed offset instead of centering, use the block: "start"
+    // version above and then adjust with a negative scrollBy, for example:
+    // requestAnimationFrame(() => {
+    //   window.scrollBy({ top: -80, behavior: "smooth" });
+    // });
   }, []);
 
   const handleAddToCart = () => {
@@ -87,12 +99,22 @@ const ProductDetail = ({
       className="product-detail"
     >
 
-      <button
+      {/* <button
         className="detail-back-btn"
         onClick={onBack}
       >
         ← Back
-      </button>
+      </button> */}
+
+      <motion.button
+        className="detail-back-btn"
+        onClick={onBack}
+        whileHover={{ x: -3 }}
+        whileTap={{ scale: 0.97 }}
+        transition={spring.button}
+      >
+        ← Back
+      </motion.button>
 
       <div className="product-detail-hero">
 

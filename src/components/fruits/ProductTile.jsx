@@ -113,7 +113,10 @@ export default function ProductTile({
                         {item.label}
                     </motion.span>
 
-                    <span className="inline-block mt-2 rounded-full ...">
+                    {/* <span className="inline-block mt-2 rounded-full ...">
+                        Fresh Today
+                    </span> */}
+                    <span className="block mt-2 text-base font-medium text-white/70">
                         Fresh Today
                     </span>
                 </h2>
@@ -122,20 +125,25 @@ export default function ProductTile({
                     {item.description}
                 </p>
 
-                <div className="mt-8 flex items-center justify-between">
+                {/* <div className="mt-8 flex items-center justify-between"> */}
+                <div className="mt-8 flex items-center justify-between gap-4">
 
                     {/* <span className="text-3xl font-bold text-white">
                         ${item.price.toFixed(2)}
                     </span> */}
 
-                    <motion.span
+                    {/* <motion.span
                         layoutId={`price-${item.label}`}
                         className="text-3xl font-bold text-white"
+                    > */}
+                    <motion.span
+                        layoutId={`price-${item.label}`}
+                        className="text-3xl font-bold text-white shrink-0"
                     >
                         ${item.price.toFixed(2)}
                     </motion.span>
 
-                    <span
+                    {/* <span
                         className="
               rounded-full
               bg-white/15
@@ -146,6 +154,18 @@ export default function ProductTile({
 
               group-hover:bg-white/30
             "
+                    > */}
+                    <span
+                        className="
+                            shrink-0
+                            rounded-full
+                            bg-white/15
+                            px-4
+                            py-2
+                            text-sm
+                            transition
+                            group-hover:bg-white/30
+                        "
                     >
                         View
                     </span>
@@ -155,6 +175,6 @@ export default function ProductTile({
             </div>
 
             {/* </button> */}
-        </motion.button>
+        </motion.button >
     );
 }
