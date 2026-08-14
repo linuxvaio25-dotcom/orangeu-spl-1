@@ -10,6 +10,7 @@ export default function ProductTile({
     return (
         // <button
         <motion.button
+  
             layoutId={`card-${item.label}`}
             // transition={{
             //     layout: spring.card,
@@ -44,6 +45,10 @@ export default function ProductTile({
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
 
             <div className="p-8 h-full flex flex-col">
+            {/* <div
+  className="h-full flex flex-col"
+  style={{ padding: "32px" }}
+> */}
 
                 {/* <motion.div
                     layoutId={`emoji-${item.label}`}
@@ -126,7 +131,9 @@ export default function ProductTile({
                 </p>
 
                 {/* <div className="mt-8 flex items-center justify-between"> */}
-                <div className="mt-8 flex items-center justify-between gap-4">
+                {/* <div className="mt-8 flex items-center justify-between gap-4"> */}
+                <div className="mt-8 flex  items-center justify-between gap-4">
+                {/* <div className="mt-8 flex items-center justify-between gap-4" style={{ paddingRight: "1rem" }}> */}
 
                     {/* <span className="text-3xl font-bold text-white">
                         ${item.price.toFixed(2)}
@@ -158,9 +165,10 @@ export default function ProductTile({
                     <span
                         className="
                             shrink-0
+                            whitespace-nowrap
                             rounded-full
                             bg-white/15
-                            px-4
+                            px-5
                             py-2
                             text-sm
                             transition
@@ -176,5 +184,6 @@ export default function ProductTile({
 
             {/* </button> */}
         </motion.button >
+
     );
 }

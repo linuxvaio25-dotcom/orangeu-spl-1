@@ -25,10 +25,20 @@ body::-webkit-scrollbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 } */
 
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+} */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 body {
