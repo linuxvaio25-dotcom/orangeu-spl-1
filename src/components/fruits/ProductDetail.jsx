@@ -1,32 +1,6 @@
-// const ProductDetail = ({ product, category, onBack, addToCart }) => {
-//   return (
-//     <div className="rounded-3xl border border-white/20 bg-white/10 p-8 text-white shadow-xl backdrop-blur">
-//       <button
-//         type="button"
-//         onClick={onBack}
-//         className="mb-6 rounded-full border border-white/30 px-4 py-2 text-sm font-medium transition hover:bg-white/20"
-//       >
-//         ← Back
-//       </button>
-//       <h2 className="text-3xl font-semibold">{product?.title || 'Product details'}</h2>
-//       <p className="mt-3 text-white/80">Category: {category?.title || 'Unknown'}</p>
-//       <button
-//         type="button"
-//         onClick={() => addToCart?.(product, 1)}
-//         className="mt-6 rounded-full bg-orange-500 px-5 py-2 font-semibold text-white"
-//       >
-//         Add to cart
-//       </button>
-//     </div>
-//   );
-// };
 
-// export default ProductDetail;
-
-// import React from "react";
 import React, { useState, useEffect, useRef } from "react";
 
-// import { motion } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { spring, duration, ease } from "../../utils/motion";
 
@@ -81,9 +55,6 @@ const ProductDetail = ({
     setAdded(true);
     setQuantity(1);
 
-    // setTimeout(() => {
-    //   setAdded(false);
-    // }, 800);
   };
 
   if (!product) return null;
@@ -99,12 +70,6 @@ const ProductDetail = ({
       className="product-detail"
     >
 
-      {/* <button
-        className="detail-back-btn"
-        onClick={onBack}
-      >
-        ← Back
-      </button> */}
 
       <motion.button
         className="detail-back-btn"
@@ -118,34 +83,6 @@ const ProductDetail = ({
 
       <div className="product-detail-hero">
 
-        {/* <motion.div
-          layoutId={`emoji-${product.label}`}
-          className="product-detail-emoji"
-        > */}
-        {/* <motion.div
-          layoutId={`emoji-${product.label}`}
-          className="emoji-wrapper"
-          transition={{
-            layout: {
-              type: "spring",
-              stiffness: 500,
-              damping: 40,
-            },
-          }}
-        > */}
-        {/* <motion.div className="emoji-wrapper">
-          <div className="emoji-glyph">
-            {product.emoji}
-          </div>
-        </motion.div> */}
-        {/* <motion.div
-          layoutId={`emoji-${product.label}`}
-          className="emoji-wrapper"
-        >
-          <div className="emoji-glyph">
-            {product.emoji}
-          </div>
-        </motion.div> */}
 
         {/* // Prevent emoji glyph stretching during shared layout transition.
 // Text-based emoji don't interpolate size cleanly, so animate position only. */}
@@ -162,11 +99,6 @@ const ProductDetail = ({
 
         <div className="product-detail-info">
 
-          {/* <motion.h2
-            layoutId={`title-${product.label}`}
-          >
-            {product.label}
-          </motion.h2> */}
 
           <h2>
             <motion.span layoutId={`title-${product.label}`}>
@@ -212,15 +144,6 @@ const ProductDetail = ({
       </div>
 
       <div className="detail-actions">
-
-        {/* Quantity selector goes here later */}
-
-        {/* <button
-          className="add-basket-btn"
-          onClick={() => onAddToCart(product)}
-        >
-          Add to Basket
-        </button> */}
 
         <div className="quantity-selector">
           <motion.button
@@ -270,26 +193,6 @@ const ProductDetail = ({
           onClick={handleAddToCart}
         >
           <AnimatePresence mode="wait">
-            {/* <motion.span
-              key={added ? "added" : "default"}
-              initial={{
-                opacity: 0,
-                y: 6,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              exit={{
-                opacity: 0,
-                y: -6,
-              }}
-              transition={{
-                duration: 0.18,
-              }}
-            >
-              {added ? "✓ Added" : "Add to Basket"}
-            </motion.span> */}
             <motion.span
               key={added ? "added" : "default"}
               initial={{
