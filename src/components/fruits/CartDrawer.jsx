@@ -47,6 +47,9 @@ export default function CartDrawer({
                     z-50
                     h-screen
                     w-[460px]
+                    // max-w-[100vw]
+                    // max-w-[calc(100vw-24px)]
+                    max-w-[calc(100vw-44px)]
                     bg-white/15
                     backdrop-blur-xl
                     border-l
