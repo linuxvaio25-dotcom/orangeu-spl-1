@@ -90,15 +90,49 @@ export default function CartDrawer({
 
     </div> */}
 
-                <h2 className="text-3xl font-bold text-white"
+                {/* <h2 className="text-3xl font-bold text-white"
                     style={{ marginTop: "40px" }}
                 >
                     Your Basket
                 </h2>
 
-                {/* <p className="mt-2 text-sm text-white/70">
-                    {cartItemCount} {cartItemCount === 1 ? "item" : "items"}
+
+                <p className="text-white/70">
+                    {cart.length} items
                 </p> */}
+
+                <div className="flex items-center justify-between">
+                    <h2
+                        className="text-3xl font-bold text-white"
+                        style={{ marginTop: "40px" }}
+                    >
+                        Your Basket
+                    </h2>
+
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={spring.button}
+                        onClick={onClose}
+                        aria-label="Close basket"
+                        className="
+                            mt-10
+                            flex
+                            h-10
+                            w-10
+                            items-center
+                            justify-center
+                            rounded-full
+                            bg-white/10
+                            text-xl
+                            text-white/80
+                            hover:bg-white/20
+                            hover:text-white
+                            "
+                    >
+                        ✕
+                    </motion.button>
+                </div>
 
                 <p className="text-white/70">
                     {cart.length} items
@@ -112,17 +146,17 @@ export default function CartDrawer({
 
                 <div className="flex-1 overflow-y-auto">
 
-                    {cart.length === 0 ? (
+                    {/* {cart.length === 0 ? (
 
                         <div
                             className="
-                flex
-                h-full
-                flex-col
-                items-center
-                justify-center
-                text-center
-            "
+                                flex
+                                h-full
+                                flex-col
+                                items-center
+                                justify-center
+                                text-center
+                            "
                         >
 
                             <div className="text-7xl">
@@ -139,7 +173,60 @@ export default function CartDrawer({
 
                         </div>
 
+                    ) : ( */}
+
+                    {cart.length === 0 ? (
+                        <div
+                            className="
+                            flex
+                            h-full
+                            flex-col
+                            items-center
+                            justify-center
+                            text-center
+                            "
+                        >
+                            <div className="text-7xl">
+                                🛒
+                            </div>
+
+                            <h3 className="mt-6 text-2xl font-semibold text-white">
+                                Your basket is empty
+                            </h3>
+
+                            <p className="mt-3 max-w-xs text-white/70">
+                                Start adding delicious fruit to build your order.
+                            </p>
+
+                            <motion.button
+                                whileHover={{
+                                    scale: 1.03,
+                                    y: -2,
+                                }}
+                                whileTap={{
+                                    scale: 0.97,
+                                }}
+                                transition={spring.button}
+                                onClick={onClose}
+                                className="
+        mt-6
+        rounded-full
+        bg-white/15
+        px-6
+        py-3
+        text-white
+        font-semibold
+        border
+        border-white/20
+        shadow-lg
+        hover:bg-white/25
+      "
+                            >
+                                Continue Shopping
+                            </motion.button>
+                        </div>
                     ) : (
+
                         <AnimatePresence mode="popLayout">
                             {/* <div
                                 style={{ marginTop: "100px" }}

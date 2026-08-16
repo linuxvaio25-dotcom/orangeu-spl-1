@@ -93,6 +93,15 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
     0
   );
 
+  const handleCategorySelect = (category) => {
+  setActiveCategory(category);
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
+
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
 
@@ -118,7 +127,8 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
 
             <CategoryGrid
               sections={fruitsections}
-              onSelect={setActiveCategory}
+              // onSelect={setActiveCategory}
+              onSelect={handleCategorySelect}
             />
           </>
         )}
