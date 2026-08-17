@@ -144,7 +144,8 @@ export default function CartDrawer({
 
                 {/* <div className="mt-32 space-y-4"> */}
 
-                <div className="flex-1 overflow-y-auto">
+                {/* <div className="flex-1 overflow-y-auto"> */}
+                <div className="cart-scrollbar flex-1 overflow-y-auto">
 
                     {/* {cart.length === 0 ? (
 
