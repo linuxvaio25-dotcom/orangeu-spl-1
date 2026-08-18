@@ -94,13 +94,13 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
   );
 
   const handleCategorySelect = (category) => {
-  setActiveCategory(category);
+    setActiveCategory(category);
 
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-};
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="relative min-h-screen overflow-hidden fruit-bg">
@@ -139,33 +139,17 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
           <LayoutGroup>
 
 
-            {/* <div
-              className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
-                }`}
-            >
-              <ProductGrid
-                category={activeCategory}
-                onBack={() => setActiveCategory(null)}
-                onSelectProduct={setSelectedProduct}
-              />
-            </div>
-
-            <AnimatePresence mode="wait">
-              {selectedProduct && (
-                <ProductDetail
-                  product={selectedProduct}
-                  category={activeCategory}
-                  onBack={() => setSelectedProduct(null)}
-                  onAddToCart={addToCart}
-                />
-              )}
-            </AnimatePresence> */}
-
+           
             <div className="products-stage">
 
+              {/* <div
+                className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
+                  }`}
+              > */}
               <div
                 className={`product-grid-wrapper ${selectedProduct ? "product-grid-blurred" : ""
                   }`}
+                inert={selectedProduct ? true : undefined}
               >
                 <ProductGrid
                   category={activeCategory}
@@ -189,31 +173,7 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
 
           </LayoutGroup>
         )}
-        {/* {cart.length > 0 && (
-          <motion.div
-            key={cart.length}
-            initial={{
-              scale: 0.9,
-              y: -6,
-              opacity: 0.6,
-            }}
-            animate={{
-              scale: 1,
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 24,
-            }}
-            className="fixed right-8 top-24 z-50 rounded-full bg-white/80 backdrop-blur-xl px-5 py-3 shadow-xl"
-          >
-            🛒 {cart.length}
-            🛒 {cartItemCount}
-          </motion.div>
-        )} */}
-
+      
         {cartItemCount > 0 && (
           <motion.button
             onClick={() => {
@@ -255,15 +215,7 @@ export default function Fruits({ isCartOpen, setIsCartOpen, setIsCartMenuHidden 
               shadow-xl
               text-lg
             "
-          //     className="
-          // fixed
-          // top-4
-          // left-4
-          // z-[9999]
-          // bg-red-500
-          // text-white
-          // p-6
-          // "
+
           >
             🛒 {cartItemCount}
           </motion.button>
