@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Fruits from './pages/Fruits';
-import Friends from './pages/Friends';
+import GiftsPage from './pages/GiftsPage';
 import ContactUs from './pages/ContactUs';
 import SignInSignUp from './pages/SignInSignUp';
 import './App.css';
@@ -64,7 +64,7 @@ function App() {
               />
             }
           />
-          <Route path="/friends" element={<Friends />} />
+          <Route path="/gifts" element={<GiftsPage />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/signin" element={<SignInSignUp />} />
         </Routes>

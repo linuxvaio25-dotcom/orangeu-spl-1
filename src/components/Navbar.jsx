@@ -52,7 +52,8 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Fruits', path: '/fruits' },
-    { label: 'Friends', path: '/friends', onClick: handleFriendsClick },
+    // { label: 'Friends', path: '/friends', onClick: handleFriendsClick },
+     { label: 'Gifts', path: '/gifts'},
     { label: 'Contact Us', path: '/contact' },
     { label: 'Sign In/Sign Up', path: '/signin' },
   ];

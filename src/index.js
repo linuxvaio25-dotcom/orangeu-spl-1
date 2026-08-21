@@ -163,6 +163,20 @@ export const fruitsections = [
         description:
           "Tiny bursts of berry flavor with antioxidants, perfect for topping yogurt or pancakes.",
       },
+      {
+        label: 'Watermelon',
+        emoji: '🍉',
+        price: 4.49,
+        description:
+          "Refreshing watermelon with a sweet and juicy taste, perfect for summer.",
+      },
+      {
+        label: 'Pineapple',
+        emoji: '🍍',
+        price: 1.89,
+        description:
+          "Sweet tropical pineapple juice that feels like a mini-vacation in every sip.",
+      },
     ]
   },
   {

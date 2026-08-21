@@ -67,6 +67,13 @@ const ProductDetail = ({
       // transition={{
       //   layout: spring.card,
       // }}
+      transition={{
+        layout: {
+          // duration: 0.35,
+          duration: 0.30,
+          ease: [0.22, 1, 0.36, 1],
+        },
+      }}
       className="product-detail"
     >
 
