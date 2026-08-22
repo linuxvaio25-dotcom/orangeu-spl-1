@@ -15,67 +15,72 @@ import { useEffect, useRef, useState } from "react";
 
 import { fruitsections } from "../../index";
 
-const DEFAULT_VIDEO = "/videos/fruits-1.mp4"; // or whichever video you want as the default
+// const DEFAULT_VIDEO = "/videos/fruits-1.mp4";
+// const DEFAULT_IMAGE = "/src/components/fruits/assets/ChatGPT Image17_14_53 oU-2.png";
+const DEFAULT_IMAGE = "/src/components/fruits/assets/ChatGPT Image17_14_53 oU-2.png";
 
 const AnimatedBackground = ({ category }) => {
-  // const videoRef = useRef(null);
-  //Refs
-  const videoARef = useRef(null);
-  const videoBRef = useRef(null);
-  const previousVideo = useRef(DEFAULT_VIDEO);
+  const previousImage = useRef(DEFAULT_IMAGE);
 
   //states
   const [activeLayer, setActiveLayer] = useState(0);
-  const [videoA, setVideoA] = useState(DEFAULT_VIDEO);
-  const [videoB, setVideoB] = useState(DEFAULT_VIDEO);
+  const [imageA, setImageA] = useState(DEFAULT_IMAGE);
+  const [imageB, setImageB] = useState(DEFAULT_IMAGE);
   // const [ambientColor, setAmbientColor] = useState("#F6A55A");
   const [ambientColor, setAmbientColor] = useState(
   fruitsections[0]?.color ?? "#F6A55A"
 );
 
+useEffect(() => {
+  const nextImage = category?.backgroundImage ?? DEFAULT_IMAGE;
+
+  if (nextImage === previousImage.current) return;
+
+  previousImage.current = nextImage;
+
+  if (activeLayer === 0) {
+    setImageB(nextImage);
+    setActiveLayer(1);
+  } else {
+    setImageA(nextImage);
+    setActiveLayer(0);
+  }
+}, [category]);
 
 
   // useEffect(() => {
-  //   if (videoRef.current) {
-  //     videoRef.current.play().catch(() => {});
-  //   }
-  // }, [category]);
+  //   const nextImage = category?.backgroundImage ?? DEFAULT_IMAGE;
 
-  // useEffect(() => {
-  //   const nextVideo = category?.video ?? DEFAULT_VIDEO;
+  //   if (nextImage === previousImage.current) return;
 
-  //   if (nextVideo === previousVideo.current) return;
+  //   previousImage.current = nextImage;
 
-  //   if (activeLayer === 0) {
-  //     setVideoB(nextVideo);
-  //   } else {
-  //     setVideoA(nextVideo);
-  //   }
+  //   const imageTimer = setTimeout(() => {
+  //     if (activeLayer === 0) setImageB(nextImage);
+  //     else setImageA(nextImage);
+  //   }, 0);
 
-  //   previousVideo.current = nextVideo;
-
-  //   setTimeout(() => {
+  //   const timer = setTimeout(() => {
   //     setActiveLayer((layer) => (layer === 0 ? 1 : 0));
   //   }, 100);
-  // }, [category]);
 
+  //   return () => {
+  //     clearTimeout(imageTimer);
+  //     clearTimeout(timer);
+  //   };
+  // }, [category, activeLayer]);
+
+  /*
+  // Video visibility handling retained for comparison with the image version.
   useEffect(() => {
     const nextVideo = category?.video ?? DEFAULT_VIDEO;
-
     if (nextVideo === previousVideo.current) return;
-
-    if (activeLayer === 0) {
-      setVideoB(nextVideo);
-    } else {
-      setVideoA(nextVideo);
-    }
-
+    if (activeLayer === 0) setVideoB(nextVideo);
+    else setVideoA(nextVideo);
     previousVideo.current = nextVideo;
-
     const timer = setTimeout(() => {
       setActiveLayer((layer) => (layer === 0 ? 1 : 0));
     }, 100);
-
     return () => clearTimeout(timer);
   }, [category, activeLayer]);
 
@@ -100,13 +105,10 @@ const AnimatedBackground = ({ category }) => {
     return () =>
       document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
+  */
 
   useEffect(() => {
-    // If a category is selected, stop cycling
-    if (category?.color) {
-      setAmbientColor(category.color);
-      return;
-    }
+    if (category?.color) return;
 
     const colors = fruitsections.map(section => section.color);
 
@@ -121,11 +123,16 @@ const AnimatedBackground = ({ category }) => {
   }, [category]);
 
   return (
+    // <div
+    //   aria-hidden="true"
+    //   className="pointer-events-none absolute inset-0 overflow-hidden"
+    // >
     <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden"
-    >
-      {/* {category?.video && (
+  aria-hidden="true"
+  className="pointer-events-none fixed inset-0 overflow-hidden"
+>
+      {/* Video version retained for comparison:
+      {category?.video && (
         <video
           ref={videoRef}
           key={category.video}
@@ -141,35 +148,26 @@ const AnimatedBackground = ({ category }) => {
       )} */}
 
       <div className="animated-background">
-
-        <video
-          ref={videoARef}
-          className={`bg-video animate-cinematic ${activeLayer === 0 ? "visible" : ""}`}
-          src={videoA}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={{ animationDelay: "0s" }}
+        <div
+          className={`bg-image animate-cinematic ${activeLayer === 0 ? "visible" : ""}`}
+          style={{ backgroundImage: `url("${imageA}")`, animationDelay: "0s" }}
+        />
+        <div
+          className={`bg-image animate-cinematic ${activeLayer === 1 ? "visible" : ""}`}
+          // style={{ backgroundImage: `url("${imageB}")`, animationDelay: "-19s" }}
+          style={{ backgroundImage: `url("${imageB}")`, animationDelay: "0s" }}
         />
 
-        <video
-          ref={videoBRef}
-          className={`bg-video animate-cinematic ${activeLayer === 1 ? "visible" : ""}`}
-          src={videoB}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          style={{ animationDelay: "-19s" }}
-        />
+        {/* Image equivalent of the old video layers:
+        <video ref={videoARef} className="bg-video" src={videoA} />
+        <video ref={videoBRef} className="bg-video" src={videoB} />
+        */}
 
       </div>
 
       {/* Atmosphere Overlay */}
-      <div className="absolute inset-0 bg-black/20" />
+      {/* <div className="absolute inset-0 bg-black/20" /> */}
+      <div className="absolute inset-0 bg-black/35" />
 
       {/* Warm Gradient */}
       {/* <div className="absolute inset-0 bg-gradient-to-br from-orange-200/30 via-transparent to-orange-500/20" /> */}
@@ -186,9 +184,9 @@ const AnimatedBackground = ({ category }) => {
         style={{
           background: `linear-gradient(
     135deg,
-    ${ambientColor}33,
+          ${category?.color ?? ambientColor}33,
     transparent 45%,
-    ${ambientColor}22
+    ${category?.color ?? ambientColor}22
   )`,
         }}
       />

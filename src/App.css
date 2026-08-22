@@ -188,7 +188,8 @@ button:hover {
 
 /* Fruit background */
 .fruit-bg {
-  background-image: url(/fruits-3.jpg);
+  /* background-image: url(/fruits-3.jpg); */
+  /* background-image: url('/src/components/fruits/assets/ChatGPT Image17_14_53 oU-2.png'); */
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;

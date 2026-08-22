@@ -123,7 +123,8 @@ export const fruitsections = [
 
     color: "from-red-400 to-orange-400 to-yellow-300",
 
-    video: "/videos/fruits-1.mp4",
+    // video: "/videos/fruits-1.mp4",
+    backgroundImage: oranges3,
 
     description: "Fresh fruit picked daily.",
 
@@ -188,7 +189,8 @@ export const fruitsections = [
 
     color: "from-yellow-400 via-orange-400 to-red-400",
 
-    video: "/videos/juice-1.mp4",
+    // video: "/videos/juice-1.mp4",
+    backgroundImage: pouring1,
 
     description:
       "Cold pressed juices made from real fruit.",
@@ -229,6 +231,13 @@ export const fruitsections = [
         description:
           "Sweet tropical mango juice that feels like a mini-vacation in every sip.",
       },
+      {
+        label: 'Pineapple Paradise',
+        emoji: '🍍',
+        price: 4.19,
+        description:
+          "A tropical pineapple juice with a sweet and tangy flavor, perfect for a refreshing treat.",
+      }
     ]
   },
   {
@@ -239,7 +248,8 @@ export const fruitsections = [
 
     color: "from-pink-500 via-purple-400 to-indigo-400",
 
-    video: "/videos/smoothie-1.mp4",
+    // video: "/videos/smoothie-1.mp4",
+    backgroundImage: smoothies1,
 
     description:
       'Creamy frozen fruit blends with yogurt, berries, and tropical flavors.',
@@ -289,7 +299,8 @@ export const fruitsections = [
 
     color: "from-emerald-500 via-lime-400 to-yellow-400",
 
-    video: "/videos/juice-1.mp4",
+    // video: "/videos/juice-1.mp4",
+    backgroundImage: fruits3,
 
     description:
       "Tropical fruits from around the world.",
@@ -319,7 +330,8 @@ export const fruitsections = [
 
     color: "from-amber-700 via-orange-500 to-yellow-300",
 
-    video: "/videos/juice-1.mp4",
+    // video: "/videos/juice-1.mp4",
+    backgroundImage: cake1,
 
     description:
       "Cold pressed juices made from real fruit.",
@@ -341,7 +353,8 @@ export const fruitsections = [
 
     color: "from-rose-700 via-red-500 to-orange-300",
 
-    video: "/videos/juice-1.mp4",
+    // video: "/videos/juice-1.mp4",
+    backgroundImage: wine1,
 
     description:
       "Cold pressed juices made from real fruit.",
