@@ -245,9 +245,9 @@
     gap: 16px;
   }
 
-  .detail-card {
+  /* .detail-card {
     padding: 18px;
-  }
+  } */
 
   .detail-actions {
     margin-top: 24px;
@@ -352,6 +352,7 @@
   opacity: .35;
   transform: scale(.98);
   pointer-events: none;
+  /* backdrop-filter: blur(55px); */
 }
 
 /* animated background */

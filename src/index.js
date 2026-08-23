@@ -124,7 +124,8 @@ export const fruitsections = [
     color: "from-red-400 to-orange-400 to-yellow-300",
 
     // video: "/videos/fruits-1.mp4",
-    backgroundImage: oranges3,
+    // backgroundImage: oranges3,
+    backgroundImage: fruits3,
 
     description: "Fresh fruit picked daily.",
 
