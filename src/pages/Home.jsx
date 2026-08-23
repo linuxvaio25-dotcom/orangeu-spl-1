@@ -3,6 +3,7 @@ import { initAnimatedWords } from '../animatedtext';
 //import { words } from '../index';
 import { words, cardImages1, cardImages2, cardImages3 } from '../index';
 import ScrollSection from "../components/ScrollSection";
+import '../components/home/home.css';
 
 const Home = () => {
   useEffect(() => { initAnimatedWords(); }, []);
@@ -51,8 +52,8 @@ const Home = () => {
   return (
     <div
       // className="flex-1 min-h-screen flex flex-col items-center justify-center px-4 py-12 relative overflow-hidden"
-      className="flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden"
-      style={{ background: 'radial-gradient(circle at 10% 20%, #fffdf5 0%, #ffe6c2 20%, #ffd09a 50%, #ffb76b 100%)' }}
+      className="home-background flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden"
+      // style={{ background: 'radial-gradient(circle at 10% 20%, #fffdf5 0%, #ffe6c2 20%, #ffd09a 50%, #ffb76b 100%)' }}
     >
       {/* <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative orange-fade-zoom">

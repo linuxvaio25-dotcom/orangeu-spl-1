@@ -119,7 +119,7 @@ export const fruitsections = [
   {
     title: "Fruits",
 
-    emoji: "🍎",
+    emoji: "🍊",
 
     color: "from-red-400 to-orange-400 to-yellow-300",
 
@@ -178,6 +178,20 @@ export const fruitsections = [
         price: 1.89,
         description:
           "Sweet tropical pineapple juice that feels like a mini-vacation in every sip.",
+      },
+      {
+        label: 'Lemon',
+        emoji: '🍋',
+        price: 1.29,
+        description:
+          "Zesty lemon juice with a bright, tangy flavor for a refreshing boost.",
+      },
+      {
+        label: 'Peach',
+        emoji: '🍑',
+        price: 2.49,
+        description:
+          "Juicy peach with a sweet and fragrant flavor, perfect for snacking or desserts.",
       },
     ]
   },
@@ -320,9 +334,35 @@ export const fruitsections = [
         price: 4.99,
         description:
           "Tropical passion fruit with a sweet and tangy flavor.",
-      }
+      },
+      {
+        label: 'Kiwi',
+        emoji: '🥝',
+        price: 3.49,
+        description:
+          "Tangy and sweet kiwi fruit, perfect for snacking or adding to smoothies.",
+      },
+      {
+        label: 'Coconut',
+        emoji: '🥥',
+        price: 2.99,
+        description:
+          "Fresh coconut with a sweet and nutty flavor, great for tropical drinks and desserts.",
+      },
+      {
+        label: 'Papaya',
+        emoji: '🍈',
+        price: 3.99,
+        description:
+          "Sweet and tropical papaya with a creamy texture and a delightful flavor.",   
+      },
     ]
   },
+  // {
+  //   title: "Nuts",
+  //     }
+  //   ]
+  // },
   {
     title: "Bakery",
 
