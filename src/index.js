@@ -125,7 +125,7 @@ export const fruitsections = [
 
     // video: "/videos/fruits-1.mp4",
     // backgroundImage: oranges3,
-    backgroundImage: fruits3,
+    backgroundImage: fruits4,
 
     description: "Fresh fruit picked daily.",
 
@@ -193,6 +193,21 @@ export const fruitsections = [
         description:
           "Juicy peach with a sweet and fragrant flavor, perfect for snacking or desserts.",
       },
+      {
+        label: 'Cherry',
+        emoji: '🍒',
+        price: 3.99,
+        description:
+          "Sweet and tart cherries with a vibrant flavor, great for snacking or baking.",
+      },
+      {
+        label: 'Grapefruit',
+        emoji: '🍊',
+        price: 1.79,
+        description:
+          "Tangy grapefruit with a refreshing citrus flavor, perfect for breakfast or juicing.",
+      },
+      
     ]
   },
   {
@@ -305,6 +320,20 @@ export const fruitsections = [
         description:
           "A protein-packed smoothie with mixed berries and a creamy finish for workout recovery.",
       },
+      {
+        label: 'Coconut Pineapple',
+        emoji: '🥥🍍',
+        price: 5.99,
+        description:
+          "A tropical smoothie with coconut and pineapple for a creamy, refreshing flavor.",
+      },
+      {
+        label: 'Peach Mango',
+        emoji: '🍑🥭',
+        price: 5.99,
+        description:
+          "A tropical smoothie with peaches and mango for a sweet, exotic flavor.",   
+      },
     ]
   },
   {
@@ -315,7 +344,7 @@ export const fruitsections = [
     color: "from-emerald-500 via-lime-400 to-yellow-400",
 
     // video: "/videos/juice-1.mp4",
-    backgroundImage: fruits3,
+    backgroundImage: fruits2,
 
     description:
       "Tropical fruits from around the world.",
@@ -385,6 +414,62 @@ export const fruitsections = [
         description:
           "Tiny bursts of berry flavor with antioxidants, .",
       },
+      {
+        label: 'Mango Cake',
+        emoji: '🥭',
+        price: 15.99,
+        description:
+          "Sweet tropical mango juice that feels like a mini-vacation in every sip.",
+      },
+      {
+        label: 'Pineapple Cake',
+        emoji: '🍍',
+        price: 14.99,
+        description:
+          "Tropical pineapple cake with a bold and refreshing flavor.", 
+      },
+      {
+        label: 'Coconut Cake',
+        emoji: '🥥',
+        price: 13.99,
+        description:
+          "Fresh coconut cake with a sweet and nutty flavor, great for tropical drinks and desserts.",
+      },
+      {
+        label: 'Passion Fruit Cake',
+        emoji: '🥭',
+        price: 17.99,
+        description:
+          "Tropical passion fruit cake with a sweet and tangy flavor.",
+      },
+      {
+        label: 'Peachy Cake',
+        emoji: '🍑',
+        price: 16.99,
+        description:
+          "Sweet and juicy peach cake with a delightful flavor.",
+      },
+      {
+        label: 'Apple Cake',
+        emoji: '🍎',
+        price: 12.99,
+        description:
+          "Crisp and sweet apple cake with a delightful flavor.", 
+      },
+      {
+        label: 'Cocnut Cream Pie',
+        emoji: '🥥🥧',
+        price: 18.99,
+        description:
+          "Creamy coconut cream pie with a sweet and nutty flavor.",
+      },
+      {
+        label: 'Lemon Tart',
+        emoji: '🍋🥧',
+        price: 14.99,
+        description:
+          "Tangy lemon tart with a sweet and zesty flavor.",  
+      },
     ]
   },
   {
@@ -408,6 +493,41 @@ export const fruitsections = [
         description:
           "Tiny bursts of berry flavor with antioxidants, .",
       },
+      {
+        label: 'Mango Flavored Wine',
+        emoji: '🥭',
+        price: 25.99,
+        description:
+          "Sweet tropical mango juice that feels like a mini-vacation in every sip.",
+      },
+      {
+        label: 'Pineapple Flavored Wine',
+        emoji: '🍍',
+        price: 24.99,
+        description:
+          "Tropical pineapple juice with a bold and refreshing flavor.",
+      },
+      {
+        label: 'Coconut Flavored Wine',
+        emoji: '🥥',
+        price: 26.99,
+        description:
+          "Fresh coconut with a sweet and nutty flavor, great for tropical drinks and desserts.",
+      },
+      {
+        label: 'Passion Fruit Flavored Wine',
+        emoji: '🥭',
+        price: 27.99,
+        description:
+          "Tropical passion fruit with a sweet and tangy flavor.",
+      },
+      {
+        label: 'Peachy Moscato',
+        emoji: '🍑',
+        price: 28.99,
+        description:
+          "A sweet and fruity Moscato wine with a delightful peach flavor.",
+      }
     ]
   }
 ];
@@ -428,6 +548,7 @@ import pineapple1 from './assets/pineapple-2b.jpg';
 import lemons2 from './assets/lemons-2b.jpg';
 import fruits2 from './assets/fruits-2b.jpg';
 import fruits3 from './assets/fruits-3b.jpg';
+import fruits4 from './assets/anyfruit-1.jpg';
 
 //cards2
 import cake1 from './assets/cake-1b.jpg';

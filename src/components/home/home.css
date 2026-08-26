@@ -14,7 +14,10 @@
 	content: '';
 	position: absolute;
 	inset: 0;
-	background-image: url('./assets/ChatGPT Image17_14_53 oU-2.png');
+	/* background-image: url('./assets/ChatGPT Image17_14_53 oU-2.png'); */
+	/* background-image: url('./assets/oU_8-23-26_17_45_04.png'); */
+	/* background-image: url('./assets/oU_8-23-26_17_49_37.png'); */
+	background-image: url('./assets/ChatGPT Image-8_25_26-21_49_32.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

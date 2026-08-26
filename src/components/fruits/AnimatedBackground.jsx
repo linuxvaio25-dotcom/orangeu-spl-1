@@ -148,13 +148,23 @@ useEffect(() => {
       )} */}
 
       <div className="animated-background">
+        {/* Original sharp background layers, retained for comparison:
         <div
           className={`bg-image animate-cinematic ${activeLayer === 0 ? "visible" : ""}`}
           style={{ backgroundImage: `url("${imageA}")`, animationDelay: "0s" }}
         />
         <div
           className={`bg-image animate-cinematic ${activeLayer === 1 ? "visible" : ""}`}
-          // style={{ backgroundImage: `url("${imageB}")`, animationDelay: "-19s" }}
+          style={{ backgroundImage: `url("${imageB}")`, animationDelay: "0s" }}
+        />
+        */}
+
+        <div
+          className={`${imageA === DEFAULT_IMAGE ? "bg-image" : "bg-image-blurred"} animate-cinematic ${activeLayer === 0 ? "visible" : ""}`}
+          style={{ backgroundImage: `url("${imageA}")`, animationDelay: "0s" }}
+        />
+        <div
+          className={`${imageB === DEFAULT_IMAGE ? "bg-image" : "bg-image-blurred"} animate-cinematic ${activeLayer === 1 ? "visible" : ""}`}
           style={{ backgroundImage: `url("${imageB}")`, animationDelay: "0s" }}
         />
 
@@ -167,7 +177,7 @@ useEffect(() => {
 
       {/* Atmosphere Overlay */}
       {/* <div className="absolute inset-0 bg-black/20" /> */}
-      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-black/45" />
 
       {/* Warm Gradient */}
       {/* <div className="absolute inset-0 bg-gradient-to-br from-orange-200/30 via-transparent to-orange-500/20" /> */}
