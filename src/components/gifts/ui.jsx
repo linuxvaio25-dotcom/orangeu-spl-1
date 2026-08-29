@@ -1,4 +1,5 @@
 import React from "react";
+import giftsBackground from "./assets/giftsBG_8_27_26-2.png";
 
 /**
  * components/ui.jsx
@@ -9,7 +10,8 @@ import React from "react";
  */
 
 export const TOKENS = {
-//   bg: "#EDE3CB",
+  // bg: "#EDE3CB",
+  // bg: "#c7824a",
   bg: "#c7824a",
   ink: "#20301D",
   card: "#FBF7EC",
@@ -26,7 +28,7 @@ export function Avatar({ initials, status, size = 44 }) {
         style={{
           background: TOKENS.leaf,
           color: TOKENS.card,
-          fontFamily: "'Fraunces', serif",
+          // fontFamily: "'Fraunces', serif",
           fontSize: size * 0.36,
           border: `2px solid ${TOKENS.ink}`,
         }}
@@ -50,7 +52,11 @@ export function Eyebrow({ children }) {
   return (
     <p
       className="text-[11px] uppercase tracking-[0.18em]"
-      style={{ fontFamily: "'JetBrains Mono', monospace", color: TOKENS.leaf, opacity: 0.8 }}
+      // style={{ fontFamily: "'JetBrains Mono', monospace", color: TOKENS.leaf, opacity: 0.8 }}
+      style={{
+        color: TOKENS.leaf,
+        opacity: 0.8
+      }}
     >
       {children}
     </p>
@@ -62,7 +68,6 @@ export function RelationTag({ relation }) {
     <span
       className="rounded-full px-2 py-0.5 text-[10px] uppercase tracking-wide"
       style={{
-        fontFamily: "'JetBrains Mono', monospace",
         background: relation === "family" ? "#3B5B3622" : "#B7901722",
         color: TOKENS.leaf,
       }}
@@ -87,6 +92,35 @@ export function Card({ className = "", children }) {
   );
 }
 
+export function GiftsBackground() {
+  return (
+    <div
+      aria-hidden="true"
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      style={{ zIndex: 0 }}
+    >
+      <div
+        className="absolute inset-0"
+        style={{
+          // background: TOKENS.bg,
+          backgroundImage: `url(${giftsBackground})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "blur(3px)",
+          transform: "scale(1.12)",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "rgba(251, 247, 236, 0.18)",
+        }}
+      />
+    </div>
+  );
+}
+
 export function Stamp({ emoji, color, size = 56, label }) {
   return (
     <div className="flex flex-col items-center gap-1">
@@ -107,7 +141,7 @@ export function Stamp({ emoji, color, size = 56, label }) {
       {label && (
         <span
           className="text-[10px] uppercase tracking-widest"
-          style={{ fontFamily: "'JetBrains Mono', monospace", color: TOKENS.ink, opacity: 0.7 }}
+          style={{ color: TOKENS.ink, opacity: 0.7 }}
         >
           {label}
         </span>
