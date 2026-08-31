@@ -6,13 +6,16 @@ let tl;
 export function init() {
   tl && tl.revert && tl.revert();
 
-  // Start: bubble is a small circle, content hidden
-  gsap.set('.menu-bubble', { scale: 1, transformOrigin: 'center center' });
+  // Start: bubble is a small circle, content hidden.
+  // Keep the menu hidden until the scroll-based state intentionally reveals it.
+  gsap.set('.menu-bubble', { scale: 1, opacity: 0, transformOrigin: 'center center' });
   gsap.set('.nav-content', { visibility: 'hidden' });
   gsap.set('.nav-item', { opacity: 0, y: 30 });
   gsap.set('.nav-close', { opacity: 0, scale: 0, rotate: -90 });
   gsap.set('.nav-login', { opacity: 0 });
-  gsap.set('.menu-toggle', { opacity: 1, pointerEvents: 'auto' });
+  // Previous code kept the toggle visible on initial load:
+  // gsap.set('.menu-toggle', { opacity: 1, pointerEvents: 'auto' });
+  gsap.set('.menu-toggle', { opacity: 0, pointerEvents: 'none' });
 
   tl = gsap.timeline({ paused: true })
 

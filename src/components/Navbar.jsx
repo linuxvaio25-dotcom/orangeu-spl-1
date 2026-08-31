@@ -14,7 +14,9 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
   const navigate = useNavigate();
   const isHomePage = location.pathname === '/';
 
-  const [showNavbar, setShowNavbar] = useState(() => !isHomePage);
+  // Older direct toggle state kept here for reference:
+  // const [showNavbar, setShowNavbar] = useState(() => !isHomePage);
+  const [showNavbar, setShowNavbar] = useState(false);
   const [scrollOpacity, setScrollOpacity] = useState(0); // Track opacity based on scroll
 
   useEffect(() => {
@@ -34,7 +36,7 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
       return;
     }
 
-    // Original binary approach (commented out for reference):
+    // Previous binary toggle logic kept for reference:
     // const trigger = ScrollTrigger.create({
     //   trigger: triggerTarget,
     //   start: 'top 70%',
@@ -43,14 +45,16 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
     //   onLeaveBack: () => setShowNavbar(false),
     // });
 
-    // New fade-in approach: gradually increase opacity based on scroll progress
+    // Only reveal the menu after the user has actually scrolled.
+    // This prevents the button from loading visible at the top of the page.
     const trigger = ScrollTrigger.create({
       trigger: triggerTarget,
-      start: 'top 85%',        // Fade-in begins when section is 85% from top
-      end: 'top 40%',          // Fade-in completes when section is 40% from top
+      start: 'top 90%',
+      end: 'top 35%',
       onUpdate: (self) => {
-        setScrollOpacity(self.progress); // 0 to 1 based on scroll
-        setShowNavbar(self.progress > 0.05); // Show after tiny scroll threshold
+        const nextOpacity = Math.min(Math.max(self.progress, 0), 1);
+        setScrollOpacity(nextOpacity);
+        setShowNavbar(nextOpacity > 0.06);
       },
       onLeaveBack: () => {
         setScrollOpacity(0);
@@ -93,7 +97,7 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
         style={{
           opacity: (isCartOpen || isCartMenuHidden) ? 0 : scrollOpacity,
           pointerEvents: (isCartOpen || isCartMenuHidden || scrollOpacity === 0) ? "none" : "auto",
-          transition: isHomePage ? "none" : "opacity 0.25s ease", // No transition on home for smooth fade
+          transition: "opacity 0.25s ease",
         }}
       />
 
@@ -109,7 +113,7 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
         style={{
           opacity: (isCartOpen || isCartMenuHidden) ? 0 : scrollOpacity,
           pointerEvents: (isCartOpen || isCartMenuHidden || scrollOpacity === 0) ? "none" : "auto",
-          transition: isHomePage ? "none" : "opacity 0.25s ease",
+          transition: "opacity 0.25s ease",
         }}
       >
         {scrollOpacity > 0.1 ? 'MENU' : null}

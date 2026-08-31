@@ -217,6 +217,23 @@ button:hover {
   width: 100%;
 } */
 
+/* Original desktop typography:
+.section-title {
+  font-size: 5rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+  opacity: 0;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+*/
+
 .section-title {
   font-size: 5rem;
   font-weight: 700;
@@ -296,6 +313,20 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 5, 15, 0.50);
 }
 
+/* Original desktop word layout:
+.animated-words {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: center;
+}
+
+.word {
+    display: inline-block;
+    white-space: nowrap;
+}
+*/
+
 .animated-words {
     display: flex;
     flex-direction: row;
@@ -306,6 +337,96 @@ button:hover {
 .word {
     display: inline-block; /* required for GSAP y/rotation to work correctly */
     white-space: nowrap;
+}
+
+/* Earlier mobile attempts kept for reference:
+   - centered hero baseline
+   - absolute-positioned word block
+   - 2-column / 4-column grid attempts
+   - text-alignment and sizing tweaks
+   - extra hero min-height spacing experiments
+   The block below is the stable, final version.
+*/
+
+@media (max-width: 640px) {
+  .hero-section {
+    /* min-height: 62vh; */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .orange-fade-zoom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1.75rem;
+    transform: translateY(-0.6rem);
+  }
+
+  .orange-fade-zoom img {
+    display: block;
+    width: min(80vw, 320px);
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    line-height: 0.95;
+  }
+
+  .animated-words {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    text-align: center;
+    /* font-size: clamp(0.82rem, 3vw, 1.15rem); */
+    font-size: clamp(1rem, 4vw, 2.15rem);
+    width: min(88vw, 240px);
+    max-width: min(88vw, 240px);
+    margin: 0.5rem auto 0;
+  }
+
+  .word {
+    display: block;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  .section {
+    padding: 0 20px;
+  }
+
+  .cards-container {
+    gap: 12px;
+  }
+
+  .card {
+    width: min(170px, calc(100vw - 1.5rem));
+  }
+
+  .card h3 {
+    font-size: 0.95rem;
+  }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 10px;
+  }
 }
 
 .topbar-hidden {
