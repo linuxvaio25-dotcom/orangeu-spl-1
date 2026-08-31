@@ -105,7 +105,8 @@ export default Home; */}
               ))}
             </div>
             */}
-            <div className="animated-words hero-words text-2xl text-black font-extrabold">
+            {/* <div className="animated-words hero-words text-2xl text-black font-extrabold"> */}
+              <div className="animated-words text-2xl text-black font-extrabold">
               {words.map((w) => (
                 <span key={w} className="word">
                   {w}
