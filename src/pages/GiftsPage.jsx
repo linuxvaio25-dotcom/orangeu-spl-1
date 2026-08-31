@@ -62,7 +62,7 @@ function withDerived(friend) {
   };
 }
 
-export default function GiftsPage() {
+export default function GiftsPage({ onNavigateToFruits = () => {} }) {
   // Local, mutable copies seeded from data/index.js so gifting/accepting
   // requests updates the UI without touching the imported module.
   const [friends, setFriends] = useState(() =>
@@ -205,7 +205,7 @@ export default function GiftsPage() {
         <header className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <Eyebrow>
-              The Grove · Friends &amp; Family
+              OrangeU · Friends &amp; Family
             </Eyebrow>
 
             <h1
@@ -268,6 +268,7 @@ export default function GiftsPage() {
           query={query}
           onRespondToRequest={respondToRequest}
           onOpenPicker={setPickerFriend}
+          onNavigateToFruits={onNavigateToFruits}
         />
 
         <AnimatePresence>

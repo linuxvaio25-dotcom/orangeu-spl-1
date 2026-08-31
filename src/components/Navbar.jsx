@@ -15,10 +15,12 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
   const isHomePage = location.pathname === '/';
 
   const [showNavbar, setShowNavbar] = useState(() => !isHomePage);
+  const [scrollOpacity, setScrollOpacity] = useState(0); // Track opacity based on scroll
 
   useEffect(() => {
     if (!isHomePage) {
       setShowNavbar(true);
+      setScrollOpacity(1);
       return;
     }
 
@@ -28,15 +30,32 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
 
     if (!triggerTarget) {
       setShowNavbar(false);
+      setScrollOpacity(0);
       return;
     }
 
+    // Original binary approach (commented out for reference):
+    // const trigger = ScrollTrigger.create({
+    //   trigger: triggerTarget,
+    //   start: 'top 70%',
+    //   end: 'bottom 20%',
+    //   onEnter: () => setShowNavbar(true),
+    //   onLeaveBack: () => setShowNavbar(false),
+    // });
+
+    // New fade-in approach: gradually increase opacity based on scroll progress
     const trigger = ScrollTrigger.create({
       trigger: triggerTarget,
-      start: 'top 70%',
-      end: 'bottom 20%',
-      onEnter: () => setShowNavbar(true),
-      onLeaveBack: () => setShowNavbar(false),
+      start: 'top 85%',        // Fade-in begins when section is 85% from top
+      end: 'top 40%',          // Fade-in completes when section is 40% from top
+      onUpdate: (self) => {
+        setScrollOpacity(self.progress); // 0 to 1 based on scroll
+        setShowNavbar(self.progress > 0.05); // Show after tiny scroll threshold
+      },
+      onLeaveBack: () => {
+        setScrollOpacity(0);
+        setShowNavbar(false);
+      },
     });
 
     return () => trigger.kill();
@@ -68,40 +87,32 @@ const Navbar = ({ isCartOpen, isCartMenuHidden }) => {
       {/* The circle that expands — sits near the transition into the first section on home */}
       {/* {!isCartOpen && (
         <> */}
+      {/* Original: className={`menu-bubble ${showNavbar ? 'bubble-visible' : 'bubble-hidden'}`} */}
       <div
-        className={`menu-bubble ${showNavbar ? 'bubble-visible' : 'bubble-hidden'}`}
-        // style={{
-        //   opacity: isCartOpen ? 0 : 1,
-        //   pointerEvents: isCartOpen ? "none" : "auto",
-        //   transition: "opacity 0.25s ease",
-        // }}
+        className="menu-bubble"
         style={{
-          opacity: isCartOpen || isCartMenuHidden ? 0 : 1,
-          pointerEvents: isCartOpen || isCartMenuHidden ? "none" : "auto",
-          transition: "opacity 0.25s ease",
+          opacity: (isCartOpen || isCartMenuHidden) ? 0 : scrollOpacity,
+          pointerEvents: (isCartOpen || isCartMenuHidden || scrollOpacity === 0) ? "none" : "auto",
+          transition: isHomePage ? "none" : "opacity 0.25s ease", // No transition on home for smooth fade
         }}
       />
 
 
       {/* Toggle button — sits on top of bubble, same position */}
+      {/* Original: className={`menu-toggle ${showNavbar ? 'bubble-visible' : 'bubble-hidden'}`} */}
       <button
         id="menuToggle"
         aria-expanded="false"
         aria-label="Open menu"
-        className={`menu-toggle ${showNavbar ? 'bubble-visible' : 'bubble-hidden'}`}
+        className="menu-toggle"
         onClick={toggleNav}
-        // style={{
-        //   opacity: isCartOpen ? 0 : 1,
-        //   pointerEvents: isCartOpen ? "none" : "auto",
-        //   transition: "opacity 0.25s ease",
-        // }}
         style={{
-          opacity: isCartOpen || isCartMenuHidden ? 0 : 1,
-          pointerEvents: isCartOpen || isCartMenuHidden ? "none" : "auto",
-          transition: "opacity 0.25s ease",
+          opacity: (isCartOpen || isCartMenuHidden) ? 0 : scrollOpacity,
+          pointerEvents: (isCartOpen || isCartMenuHidden || scrollOpacity === 0) ? "none" : "auto",
+          transition: isHomePage ? "none" : "opacity 0.25s ease",
         }}
       >
-        {showNavbar ? 'MENU' : null}
+        {scrollOpacity > 0.1 ? 'MENU' : null}
       </button>
       {/* </>
       )} */}

@@ -51,6 +51,7 @@
   transition: opacity 0.4s ease;
 }
 
+/* Original binary approach (kept for reference):
 .bubble-hidden {
   opacity: 0;
   visibility: hidden;
@@ -63,6 +64,7 @@
   visibility: visible;
   transform: scale(1);
 }
+*/
 
 /* ── Toggle button — overlaps the bubble exactly ────── */
 .menu-toggle {
