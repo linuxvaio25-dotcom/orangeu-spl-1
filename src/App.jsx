@@ -41,30 +41,81 @@ function AppShell() {
   const navigate = useNavigate();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCartMenuHidden, setIsCartMenuHidden] = useState(false);
-  const [showFruitTransition, setShowFruitTransition] = useState(false);
-  const [transitionPhase, setTransitionPhase] = useState('expand');
-  const [transitionOrigin, setTransitionOrigin] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
 
-  function triggerFruitTransition(event) {
-    const rect = event?.currentTarget?.getBoundingClientRect();
+  //code below was commented out on 8-31-26
+  // const [showFruitTransition, setShowFruitTransition] = useState(false);
+  // const [transitionPhase, setTransitionPhase] = useState('expand');
+  // const [transitionOrigin, setTransitionOrigin] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
 
-    setTransitionOrigin({
-      x: rect ? rect.left + rect.width / 2 : window.innerWidth / 2,
-      y: rect ? rect.top + rect.height / 2 : window.innerHeight / 2,
-    });
+  // function triggerFruitTransition(event) {
+  //   const rect = event?.currentTarget?.getBoundingClientRect();
 
-    setTransitionPhase('expand');
-    setShowFruitTransition(true);
+  //   setTransitionOrigin({
+  //     x: rect ? rect.left + rect.width / 2 : window.innerWidth / 2,
+  //     y: rect ? rect.top + rect.height / 2 : window.innerHeight / 2,
+  //   });
 
+  //   setTransitionPhase('expand');
+  //   setShowFruitTransition(true);
+
+  //   window.setTimeout(() => {
+  //     setTransitionPhase('contract');
+  //   }, 480);
+
+  //   window.setTimeout(() => {
+  //     setShowFruitTransition(false);
+  //     navigate('/fruits');
+  //   }, 1200);
+  // }
+
+// ```jsx
+const [showFruitTransition, setShowFruitTransition] = useState(false);
+const [transitionPhase, setTransitionPhase] = useState("expand");
+
+const [transitionOrigin, setTransitionOrigin] = useState({
+  x: window.innerWidth / 2,
+  y: window.innerHeight / 2,
+});
+
+function triggerFruitTransition(event) {
+  const rect = event?.currentTarget?.getBoundingClientRect();
+
+  const origin = {
+    x: rect
+      ? rect.left + rect.width / 2
+      : window.innerWidth / 2,
+
+    y: rect
+      ? rect.top + rect.height / 2
+      : window.innerHeight / 2,
+  };
+
+  // Remember exactly where the Send fruit button was.
+  setTransitionOrigin(origin);
+
+  // Start with the small circle.
+  setTransitionPhase("expand");
+  setShowFruitTransition(true);
+
+  // Let the circle completely cover the viewport first.
+  window.setTimeout(() => {
+    // Navigate while the screen is still completely covered.
+    navigate("/fruits");
+
+    // Give React Router a moment to render Fruits underneath.
     window.setTimeout(() => {
-      setTransitionPhase('contract');
-    }, 480);
+      // Now reveal the Fruits page.
+      setTransitionPhase("contract");
 
-    window.setTimeout(() => {
-      setShowFruitTransition(false);
-      navigate('/fruits');
-    }, 1200);
-  }
+      // Remove the overlay after the reveal animation finishes.
+      window.setTimeout(() => {
+        setShowFruitTransition(false);
+      }, 700);
+    }, 100);
+  }, 700);
+}
+// ```
+
 
   return (
     <>

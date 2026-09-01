@@ -385,6 +385,14 @@ export const fruitsections = [
         description:
           "Sweet and tropical papaya with a creamy texture and a delightful flavor.",   
       },
+      {
+        label: 'Carambola(Starfruit)',
+        emoji: '⭐',
+        price: 4.49,
+        description:
+          "Exotic starfruit with a unique shape and a sweet-tart flavor.",
+      },
+      
     ]
   },
   // {
