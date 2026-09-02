@@ -17,7 +17,7 @@
 	/* background-image: url('./assets/ChatGPT Image17_14_53 oU-2.png'); */
 	/* background-image: url('./assets/oU_8-23-26_17_45_04.png'); */
 	/* background-image: url('./assets/oU_8-23-26_17_49_37.png'); */
-	background-image: url('./assets/ChatGPT Image-8_25_26-21_49_32.png');
+	background-image: url('./assets/Image-8_25_26-day.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -171,8 +171,15 @@
 }
 
 .card-image {
+  /* Original oval-style version kept for reference:
   width: 100%;
   aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  */
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   object-position: center;
   border-radius: 50%;
@@ -307,8 +314,12 @@
   }
 
   .card-image {
+    /* Original mobile oval version kept for reference:
     width: 100%;
     aspect-ratio: 1 / 1;
+    */
+    width: 170px;
+    height: 170px;
     margin-bottom: 10px;
   }
 }

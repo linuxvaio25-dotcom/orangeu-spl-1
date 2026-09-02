@@ -1,26 +1,73 @@
 .about-background {
+    /* Original version that caused the issue:
     content: '';
     position: absolute;
     inset: 0;
-    /* background-image: url('./assets/ChatGPT Image17_14_53 oU-2.png'); */
-    /* background-image: url('./assets/oU_8-23-26_17_45_04.png'); */
-    /* background-image: url('./assets/oU_8-23-26_17_49_37.png'); */
-    background-image: url('./assets/ChatGPT Image-8_25_26-21_49_32.png');
+    background-image: url('./assets/Image-8_25_26-night.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     opacity: 0.7;
     z-index: 0;
+    */
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    /* background-image: url('./src/components/about/assets/Image-8_25_26-night.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+    
+}
+
+.about-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    opacity: 0.9;
+    z-index: 0;
+     background-image: url('./src/components/about/assets/Image-8_25_26-night.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter: blur(30px),
+}
+
+.about-background > * {
+    position: relative;
+    z-index: 1;
 }
 
 .about-title {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 700;
     margin-bottom: 60px;
     text-align: center;
+    color: white;
     /* opacity: 0; */
-    -webkit-text-stroke: 0.5px rgba(199, 97, 14, 0.788);
+    /* -webkit-text-stroke: 0.5px rgba(199, 97, 14, 0.788); */
     text-shadow:
-        2px 2px 5px rgba(0, 0, 0, 0.3);
+        2px 2px 5px rgba(0, 0, 0, 10);
+}
+img {
+    width: 470px;
+    height: 210px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+    img {
+        width: 350px;
+        height: 130px;
+    }
+
+    .about-title {
+    font-size: 4rem;
+    
+}
 }

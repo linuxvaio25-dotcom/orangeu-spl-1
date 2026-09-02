@@ -10,7 +10,7 @@ import ContactUs from './pages/ContactUs';
 import SignInSignUp from './pages/SignInSignUp';
 import FruitTransitionOverlay from './components/gifts/FruitTransitionOverlay';
 import './App.css';
-import './styles/fruits.css';
+import './components/fruits/fruits.css';
 
 function ScrollToTop() {
   const { pathname } = useLocation();

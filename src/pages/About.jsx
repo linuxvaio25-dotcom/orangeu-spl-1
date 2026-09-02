@@ -3,7 +3,8 @@ import '../components/about/about.css';
 
 const About = () => {
   return (
-    <div className="home-background flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden">
+    // <div className="home-background flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden">
+    <div className="about-background flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden">
     <div className="flex-1 px-4 py-8">
       <style>{`
         @keyframes fadeInUp {
@@ -25,7 +26,11 @@ const About = () => {
 
       <div className="max-w-1xl mx-auto">
         {/* <h1 className="text-5xl font-bold text-gray-900 mb-6">About OrangeU</h1> */}
-        <h1 className="about-title">About OrangeU</h1>
+        {/* <h1 className="about-title">About OrangeU</h1> */}
+        <h1 className="about-title">About<img
+                 src="/ou-logo-1.png"
+              alt="Orange" 
+            /></h1>
       </div>
 
       <div className="flex flex-col gap-16">
