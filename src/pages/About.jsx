@@ -1,7 +1,9 @@
 import React from 'react';
+import '../components/about/about.css';
 
 const About = () => {
   return (
+    <div className="home-background flex-1 min-h-screen px-4 py-12 relative overflow-x-hidden">
     <div className="flex-1 px-4 py-8">
       <style>{`
         @keyframes fadeInUp {
@@ -21,17 +23,18 @@ const About = () => {
         }
       `}</style>
 
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-5xl font-bold text-gray-900 mb-6">About OrangeU</h1>
+      <div className="max-w-1xl mx-auto">
+        {/* <h1 className="text-5xl font-bold text-gray-900 mb-6">About OrangeU</h1> */}
+        <h1 className="about-title">About OrangeU</h1>
       </div>
 
       <div className="flex flex-col gap-16">
-        <div className="max-w-4xl mx-auto w-full">
+        <div className="max-w-1xl mx-auto w-full">
           {/* Tile 1 - left aligned, right + bottom border with shadow */}
           {/* Border commented out for comparison - re-add "border-r-4 border-b-4 border-orange-400" to className to restore */}
           <div
             // className="fade-tile bg-white rounded-lg shadow-2xl shadow-orange-500/50 max-w-2xl mr-auto"
-            className="fade-tile bg-white rounded-lg shadow-2xl max-w-2xl w-full"
+            className="fade-tile bg-white rounded-lg shadow-2xl shadow-black max-w-2xl w-full"
             // style={{ animationDelay: '0.3s', padding: '2rem 3rem' }}
             style={{ animationDelay: '0.8s', padding: '2rem 3rem' }}
           >
@@ -46,7 +49,7 @@ const About = () => {
         <div className="w-full flex justify-end">
           <div
             // className="fade-tile bg-white rounded-lg shadow-2xl shadow-orange-500/50 max-w-2xl w-full"
-            className="fade-tile bg-white rounded-lg shadow-2xl max-w-2xl w-full"
+            className="fade-tile bg-white rounded-lg shadow-2xl shadow-black max-w-2xl w-full"
             // style={{ animationDelay: '0.8s', padding: '2rem 3rem' }}
             style={{ animationDelay: '1.3s', padding: '2rem 3rem' }}
           >
@@ -74,7 +77,7 @@ const About = () => {
           {/* Border commented out for comparison - re-add "border-r-4 border-b-4 border-orange-400" to className to restore */}
           <div
             // className="fade-tile bg-white rounded-lg shadow-2xl shadow-orange-500/50 max-w-2xl mr-auto"
-            className="fade-tile bg-white rounded-lg shadow-2xl max-w-2xl w-full"
+            className="fade-tile bg-white rounded-lg shadow-2xl shadow-black max-w-2xl w-full"
             // style={{ animationDelay: '1.3s', padding: '2rem 3rem' }}
             style={{ animationDelay: '1.8s', padding: '2rem 3rem' }}
           >
@@ -84,6 +87,7 @@ const About = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

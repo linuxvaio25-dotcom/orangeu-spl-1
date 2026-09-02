@@ -112,4 +112,7 @@ export const friends = [
 export const requests = [
   { id: "r1", name: "Diego Ramos", initials: "DR", mutuals: 4 },
   { id: "r2", name: "Yuki Tanaka", initials: "YT", mutuals: 2 },
+  { id: "r3", name: "Sofia Rossi", initials: "SR", mutuals: 5 },
+  { id: "r4", name: "Lyle Hassan", initials: "LH", mutuals: 3 },
+  { id: "r5", name: "Santo Cano", initials: "SC", mutuals: 1 },
 ];

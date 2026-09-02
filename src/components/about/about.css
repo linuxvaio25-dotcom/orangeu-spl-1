@@ -1,0 +1,26 @@
+.about-background {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background-image: url('./assets/ChatGPT Image17_14_53 oU-2.png'); */
+    /* background-image: url('./assets/oU_8-23-26_17_45_04.png'); */
+    /* background-image: url('./assets/oU_8-23-26_17_49_37.png'); */
+    background-image: url('./assets/ChatGPT Image-8_25_26-21_49_32.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.about-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 60px;
+    text-align: center;
+    /* opacity: 0; */
+    -webkit-text-stroke: 0.5px rgba(199, 97, 14, 0.788);
+    text-shadow:
+        2px 2px 5px rgba(0, 0, 0, 0.3);
+}

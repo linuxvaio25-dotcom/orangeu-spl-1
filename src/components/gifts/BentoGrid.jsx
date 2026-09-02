@@ -117,7 +117,6 @@ export default function BentoGrid({
                       <div className="flex items-center gap-1.5">
                         <p
                           className="text-sm font-medium"
-                          // style={{ fontFamily: "'Inter', sans-serif" }}
                         >
                           {f.name}
                         </p>
@@ -142,7 +141,6 @@ export default function BentoGrid({
                 <div className="mt-3 flex items-center justify-between">
                   <p
                     className="flex items-center gap-1 text-xs opacity-60"
-                    style={{ fontFamily: "'JetBrains Mono', monospace" }}
                   >
                     <Clock size={12} />
 
@@ -157,7 +155,7 @@ export default function BentoGrid({
                     style={{
                       background: TOKENS.stamp,
                       color: TOKENS.card,
-                      fontFamily: "'Inter', sans-serif",
+
                     }}
                   >
                     <Send size={12} />
@@ -186,7 +184,6 @@ export default function BentoGrid({
               <Card className="sm:col-span-2 lg:col-span-2 text-center">
                 <p
                   className="text-sm opacity-60"
-                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   No one in your grove matches "{query}".
                 </p>
@@ -201,14 +198,22 @@ export default function BentoGrid({
 
       {/* Requests */}
       <Card className="lg:col-span-1">
+        <div className="flex items-center justify-between">
+          <Eyebrow>Friend Requests</Eyebrow>
+          {/* <div className="mt-3 flex flex-col gap-3"> */}
 
-        <Eyebrow>Requests</Eyebrow>
-        <div className="mt-3 flex flex-col gap-3">
-          {requests.length === 0 && (
+          {/* {requests.length === 0 && (
             <p className="text-sm opacity-60" >
               No pending requests. Your grove gate is quiet.
-            </p>
+            </p> */}
+          {requests.length > 0 && (
+            <span className="text-xs opacity-60">
+              {requests.length}
+            </span>
           )}
+        </div>
+
+        <div className="mt-4 flex flex-col gap-3">
           <AnimatePresence initial={false}>
             {requests.map((r) => (
               <motion.div
@@ -218,7 +223,8 @@ export default function BentoGrid({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.22 }}
-                className="flex items-center justify-between gap-2"
+                // className="flex items-center justify-between gap-2"
+                className="flex items-center justify-between gap-3 rounded-2xl p-2"
               >
                 <div className="flex items-center gap-2 min-w-0">
                   <Avatar initials={r.initials} size={34} />
@@ -232,7 +238,8 @@ export default function BentoGrid({
                 <div className="flex gap-1.5 shrink-0">
                   <button
                     onClick={() => onRespondToRequest(r.id, true)}
-                    className="grid h-7 w-7 place-items-center rounded-full"
+                    // className="grid h-7 w-7 place-items-center rounded-full"
+                    className="grid h-8 w-8 place-items-center rounded-full transition-transform hover:scale-105"
                     style={{ background: TOKENS.leaf, color: TOKENS.card }}
                     aria-label={`Accept ${r.name}`}
                   >
@@ -240,7 +247,8 @@ export default function BentoGrid({
                   </button>
                   <button
                     onClick={() => onRespondToRequest(r.id, false)}
-                    className="grid h-7 w-7 place-items-center rounded-full border"
+                    // className="grid h-7 w-7 place-items-center rounded-full border"
+                    className="grid h-8 w-8 place-items-center rounded-full border transition-transform hover:scale-105"
                     style={{ borderColor: TOKENS.cardLine }}
                     aria-label={`Decline ${r.name}`}
                   >
@@ -254,14 +262,21 @@ export default function BentoGrid({
       </Card>
 
       {/* Leaderboard */}
+      {/* <Card className="lg:col-span-1 lg:row-span-2">
+        <Eyebrow>Top Growers</Eyebrow> */}
+      {/* Leaderboard */}
       <Card className="lg:col-span-1 lg:row-span-2">
-        <Eyebrow>Top Growers</Eyebrow>
+        <div className="flex items-center justify-between">
+          <Eyebrow>Top Growers</Eyebrow>
+
+          <Sprout size={17} strokeWidth={1.8} className="opacity-60" />
+        </div>
         <p className="mt-1 text-xs opacity-60" >
           Who's gifted you the most
         </p>
         <ul className="mt-4 flex flex-col gap-4">
           {leaderboard.map((l, i) => (
-            <li key={l.id} className="flex items-center gap-3">
+            <li key={l.id} className="flex items-center justify-between gap-3 rounded-2xl p-2">
               {/* <span
                 className="text-lg w-5 text-right"
                 style={{ fontFamily: "'Quicksand', sans-serif", fontWeight: 600, color: TOKENS.leaf }}
@@ -298,13 +313,35 @@ export default function BentoGrid({
       </Card>
 
       {/* Invite tile */}
-      <Card className="lg:col-span-1 flex flex-col items-start justify-between">
+      {/* <Card className="lg:col-span-1 flex flex-col items-start justify-between">
         <Eyebrow>Grow Your Grove</Eyebrow>
         <p className="mt-2 text-sm opacity-70" >
           Invite someone new and send their first fruit on us.
         </p>
         <button
           className="mt-4 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium"
+          style={{ background: TOKENS.ink, color: TOKENS.card }}
+        >
+          <UserPlus size={15} />
+          Invite a friend
+        </button>
+      </Card> */}
+
+      {/* Invite tile */}
+      <Card className="lg:col-span-1 flex flex-col items-start justify-between">
+        <div>
+          <div className="flex items-center justify-between w-full">
+            <Eyebrow>Grow Your Grove</Eyebrow>
+            <UserPlus size={17} strokeWidth={1.8} className="opacity-60" />
+          </div>
+
+          <p className="mt-3 text-sm leading-relaxed opacity-70">
+            Invite someone new and send their first fruit on us.
+          </p>
+        </div>
+
+        <button
+          className="mt-5 inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-transform hover:scale-105"
           style={{ background: TOKENS.ink, color: TOKENS.card }}
         >
           <UserPlus size={15} />
@@ -346,7 +383,7 @@ export default function BentoGrid({
                 style={{ background: TOKENS.stamp, color: TOKENS.card }}
               >
                 <Send size={12} />
-                Send fruit
+                Gift fruit
               </button>
               {/* <button
           onClick={() => onOpenPicker(f)}
