@@ -64,7 +64,8 @@ export default function BentoGrid({
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
         {/* Your Orchard */}
-        <Card className="sm:col-span-2 lg:col-span-2 flex flex-col justify-between">
+        {/* <Card className="sm:col-span-2 lg:col-span-2 flex flex-col justify-between"> */}
+        <Card className="sm:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col justify-between">
           <div>
             <Eyebrow>Your Orchard</Eyebrow>
 
@@ -122,7 +123,7 @@ export default function BentoGrid({
           </div>
 
           {/* <div className="mt-4 flex max-h-64 flex-col gap-3 overflow-y-auto pr-1"> */}
-          <div className="requests-scroll mt-4 flex max-h-64 flex-col gap-3 overflow-y-auto pr-1">
+          <div className="card-scroll mt-4 flex max-h-64 flex-col gap-3 overflow-y-auto pr-1">
             <AnimatePresence initial={false}>
               {requests.map((r) => (
                 <motion.div
@@ -189,7 +190,8 @@ export default function BentoGrid({
         </Card>
 
         {/* Top Growers */}
-        <Card className="lg:col-span-1">
+        {/* <Card className="lg:col-span-1"> */}
+        <Card className="lg:col-span-1 lg:row-span-2">
           <div className="flex items-center justify-between">
             <Eyebrow>Top Growers</Eyebrow>
 
@@ -204,7 +206,8 @@ export default function BentoGrid({
             Who's gifted you the most
           </p>
 
-          <ul className="mt-4 flex max-h-64 flex-col gap-3 overflow-y-auto pr-1">
+          {/* <ul className="mt-4 flex max-h-64 flex-col gap-3 overflow-y-auto pr-1"> */}
+          <ul className="card-scroll mt-4 flex max-h-64 flex-col gap-3 overflow-y-auto pr-1">
             {leaderboard.map((l, i) => (
               <li
                 key={l.id}
@@ -355,11 +358,10 @@ export default function BentoGrid({
 
                     <span className="truncate">
                       {f.lastGift
-                        ? `${
-                            f.lastGift.direction === "sent"
-                              ? "you sent"
-                              : "they sent"
-                          } · ${timeAgo(f.lastGift.date)}`
+                        ? `${f.lastGift.direction === "sent"
+                          ? "you sent"
+                          : "they sent"
+                        } · ${timeAgo(f.lastGift.date)}`
                         : "no gifts yet"}
                     </span>
                   </p>
@@ -433,17 +435,17 @@ export default function BentoGrid({
                 )}
               </div>
 
-              <div className="mt-3 flex items-center justify-between gap-2">
+              {/* <div className="mt-3 flex items-center justify-between gap-2"> */}
+              <div className="mt-4 flex min-h-8 items-center justify-between gap-2">
                 <p className="flex min-w-0 items-center gap-1 text-xs opacity-60">
                   <Clock size={12} />
 
                   <span className="truncate">
                     {f.lastGift
-                      ? `${
-                          f.lastGift.direction === "sent"
-                            ? "you sent"
-                            : "they sent"
-                        } · ${timeAgo(f.lastGift.date)}`
+                      ? `${f.lastGift.direction === "sent"
+                        ? "you sent"
+                        : "they sent"
+                      } · ${timeAgo(f.lastGift.date)}`
                       : "no gifts yet"}
                   </span>
                 </p>
@@ -490,11 +492,14 @@ export default function BentoGrid({
             </span>
           </div>
 
-          <ul className="mt-4 flex flex-col gap-4">
+          {/* <ul className="mt-4 flex flex-col gap-4"> */}
+          {/* <ul className="mt-4 max-h-48 overflow-y-auto pr-1 flex flex-col gap-4 growers-scroll"> */}
+          <ul className="card-scroll mt-4 flex max-h-64 flex-col gap-4 overflow-y-auto pr-1">
             {activity.map((a) => (
+              //changed to wrap text for smaller screens
               <li
                 key={a.id}
-                className="flex items-center gap-3 rounded-2xl p-2"
+                className="flex items-start gap-3 rounded-2xl p-2"
               >
                 <Stamp
                   emoji={a.emoji}
@@ -503,30 +508,94 @@ export default function BentoGrid({
                 />
 
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm">
+                  <p className="text-sm leading-relaxed">
                     {a.direction === "sent" ? (
                       <>
-                        <span className="font-medium">
-                          You
-                        </span>{" "}
-                        sent {a.friendName.split(" ")[0]}{" "}
-                        {a.fruit}
+                        <span className="font-medium">You</span>{" "}
+                        sent {a.friendName.split(" ")[0]} {a.fruit}
                       </>
                     ) : (
                       <>
-                        <span className="font-medium">
-                          {a.friendName}
-                        </span>{" "}
+                        <span className="font-medium">{a.friendName}</span>{" "}
                         sent you {a.fruit}
                       </>
                     )}
                   </p>
-
-                  <p className="text-xs opacity-50">
-                    {timeAgo(a.date)}
-                  </p>
                 </div>
+
+                <span className="shrink-0 pt-0.5 text-xs opacity-50">
+                  {timeAgo(a.date)}
+                </span>
               </li>
+
+
+              // <li
+              //   key={a.id}
+              //   className="flex items-center gap-3 rounded-2xl p-2"
+              // >
+              //   <Stamp
+              //     emoji={a.emoji}
+              //     color={a.color}
+              //     size={34}
+              //   />
+
+              //   <div className="min-w-0 flex-1">
+              //     <p className="truncate text-sm">
+              //       {a.direction === "sent" ? (
+              //         <>
+              //           <span className="font-medium">You</span>{" "}
+              //           sent {a.friendName.split(" ")[0]} {a.fruit}
+              //         </>
+              //       ) : (
+              //         <>
+              //           <span className="font-medium">{a.friendName}</span>{" "}
+              //           sent you {a.fruit}
+              //         </>
+              //       )}
+              //     </p>
+              //   </div>
+
+              //   <span className="shrink-0 text-xs opacity-50">
+              //     {timeAgo(a.date)}
+              //   </span>
+              // </li>
+
+
+              // <li
+              //   key={a.id}
+              //   className="flex items-center gap-3 rounded-2xl p-2"
+              // >
+              //   <Stamp
+              //     emoji={a.emoji}
+              //     color={a.color}
+              //     size={34}
+              //   />
+
+              //   <div className="min-w-0 flex-1">
+              //     <p className="text-sm">
+              //       {a.direction === "sent" ? (
+              //         <>
+              //           <span className="font-medium">
+              //             You
+              //           </span>{" "}
+              //           sent {a.friendName.split(" ")[0]}{" "}
+              //           {a.fruit}
+              //         </>
+              //       ) : (
+              //         <>
+              //           <span className="font-medium">
+              //             {a.friendName}
+              //           </span>{" "}
+              //           sent you {a.fruit}
+              //         </>
+              //       )}
+              //     </p>
+
+              //     <p className="text-xs opacity-50">
+              //       {timeAgo(a.date)}
+              //     </p>
+              //   </div>
+              // </li>
             ))}
 
             {activity.length === 0 && (

@@ -101,7 +101,8 @@ export default function GiftsPage({ onNavigateToFruits = () => {} }) {
       [...derivedFriends]
         .filter((f) => f.receivedCount > 0)
         .sort((a, b) => b.receivedCount - a.receivedCount)
-        .slice(0, 3),
+        // .slice(0, 3),
+        .slice(0, 8),
     [derivedFriends]
   );
 
